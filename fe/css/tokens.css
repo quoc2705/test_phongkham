@@ -1,0 +1,110 @@
+/* ═══ Design tokens — PhòngKhám+ ═══ */
+:root {
+  /* Brand */
+  --c-navy:       #0c1929;
+  --c-navy-mid:   #152a45;
+  --c-navy-light: #2563eb;
+  --c-accent:     #06b6d4;
+  --c-accent-dark:#0891b2;
+  --c-mint:       var(--c-accent);
+  --c-mint-dark:  var(--c-accent-dark);
+
+  /* Surfaces */
+  --c-white:      #ffffff;
+  --c-bg:         #f8fafc;
+  --c-bg-subtle:  #f1f5f9;
+  --c-surface:    #ffffff;
+  --c-surface-elevated: #ffffff;
+  --c-border:     #e2e8f0;
+  --c-border-strong: #cbd5e1;
+  --c-text:       #0f172a;
+  --c-text-secondary: #475569;
+  --c-muted:      #64748b;
+  --c-placeholder:#94a3b8;
+
+  /* Semantic */
+  --c-success: #10b981;
+  --c-success-bg: #ecfdf5;
+  --c-warning: #f59e0b;
+  --c-warning-bg: #fffbeb;
+  --c-danger:  #ef4444;
+  --c-danger-bg: #fef2f2;
+  --c-info:    #3b82f6;
+  --c-info-bg: #eff6ff;
+  --c-sky:     #eff6ff;
+  --c-sky-mid: #dbeafe;
+
+  /* Sidebar */
+  --sidebar-bg: linear-gradient(180deg, #0c1929 0%, #111827 50%, #0f172a 100%);
+  --sidebar-w: 272px;
+  --header-h:  64px;
+
+  /* Radius */
+  --radius-xs: 6px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+  --radius-2xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.07), 0 2px 4px -2px rgba(15, 23, 42, 0.05);
+  --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.08), 0 4px 6px -4px rgba(15, 23, 42, 0.05);
+  --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  --shadow-glow: 0 0 0 1px rgba(37, 99, 235, 0.08), 0 4px 24px rgba(37, 99, 235, 0.12);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --t-fast:   0.15s var(--ease-out);
+  --t-normal: 0.25s var(--ease-out);
+  --t-slow:   0.4s var(--ease-out);
+
+  /* Typography */
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Plus Jakarta Sans', var(--font-sans);
+  --text-xs: 0.75rem;
+  --text-sm: 0.8125rem;
+  --text-base: 0.875rem;
+  --text-lg: 1rem;
+  --text-xl: 1.125rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+
+  /* Spacing scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+}
+
+[data-theme="dark"] {
+  --c-bg:         #0b1220;
+  --c-bg-subtle:  #111827;
+  --c-surface:    #151d2e;
+  --c-surface-elevated: #1a2332;
+  --c-border:     #1e293b;
+  --c-border-strong: #334155;
+  --c-text:       #f1f5f9;
+  --c-text-secondary: #94a3b8;
+  --c-muted:      #64748b;
+  --c-placeholder:#475569;
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --shadow-lg: 0 10px 24px rgba(0, 0, 0, 0.4);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --t-fast: 0.01ms;
+    --t-normal: 0.01ms;
+    --t-slow: 0.01ms;
+  }
+}

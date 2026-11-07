@@ -1,0 +1,95 @@
+{
+  "operation": "POST /api/users/register/",
+  "method": "POST",
+  "path_template": "/api/users/register/",
+  "fingerprint": "1873d31c",
+  "case_id": "4Z5Ivp",
+  "code_sample": "curl -X POST -H 'Content-Type: application/json' -d '{\"email\": \"0@0.com\", \"ho_ten\": \"\", \"so_dien_thoai\": \"0000000000\", \"ten_dang_nhap\": \"\", \"vai_tro\": \"ADMIN\"}' http://127.0.0.1:8000/api/users/register/",
+  "sequence": [
+    {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/api/users/register/",
+      "url_template": "http://127.0.0.1:8000/api/users/register/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "X-Schemathesis-TestCaseId": "4Z5Ivp",
+        "Content-Type": "application/json",
+        "Content-Length": "106"
+      },
+      "response": {
+        "status_code": 400,
+        "headers": {
+          "content-type": "application/json",
+          "vary": "Accept, Cookie, origin",
+          "allow": "POST, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "505",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "server": "daphne"
+        },
+        "body": "{\"error\":\"D\u1eef li\u1ec7u \u0111\u0103ng k\u00fd kh\u00f4ng h\u1ee3p l\u1ec7\",\"details\":{\"nguoi_dung\":{\"ten_dang_nhap\":[\"Tr\u01b0\u1eddng n\u00e0y kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf tr\u1ed1ng.\"],\"password\":[\"This field may not be null.\"],\"password2\":[\"This field may not be null.\"],\"ho_ten\":[\"Tr\u01b0\u1eddng n\u00e0y kh\u00f4ng \u0111\u01b0\u1ee3c b\u1ecf tr\u1ed1ng.\"],\"gioi_tinh\":[\"This field may not be null.\"],\"dia_chi\":[\"This field may not be null.\"]},\"ngay_sinh\":[\"This field may not be null.\"],\"gioi_tinh\":[\"This field may not be null.\"],\"dia_chi\":[\"This field may not be null.\"]}}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "positive_data_acceptance",
+          "status": "failure",
+          "message": "Schema-valid request rejected\n\nValid data should have been accepted\nExpected: 2xx, 3xx, 401, 403, 404, 409, 429, 5xx"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 0.01728999987244606,
+          "mode": "positive"
+        },
+        "components": {
+          "BODY": "positive"
+        },
+        "phase": {
+          "name": "fuzzing",
+          "data": {
+            "type": "FuzzingPhaseData",
+            "description": "Positive test case",
+            "location": null,
+            "parameter": null,
+            "parameter_location": null,
+            "mutations": []
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {}
+      },
+      "path": "/api/users/register/",
+      "path_parameters": {},
+      "query": {},
+      "case_headers": {},
+      "cookies": {},
+      "case_body": {
+        "encoding": "json",
+        "value": {
+          "email": "0@0.com",
+          "ho_ten": "",
+          "so_dien_thoai": "0000000000",
+          "ten_dang_nhap": "",
+          "vai_tro": "ADMIN"
+        }
+      },
+      "media_type": "application/json",
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "POST /api/users/register/"
+    }
+  ],
+  "aliases": [
+    "4dkHOJ"
+  ]
+}

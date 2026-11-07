@@ -1,0 +1,140 @@
+{
+  "operation": "PATCH /api/thuoc/vaccine/{id}/",
+  "method": "PATCH",
+  "path_template": "/api/thuoc/vaccine/{id}/",
+  "fingerprint": "8212de5d",
+  "case_id": "7srwQn",
+  "code_sample": "curl -X PATCH -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' -H 'Content-Type: multipart/form-data; boundary=2500993e3e62cd37f5d47fd3b0bc58fa' -d $'--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"ma_vaccine\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"ten_vaccine\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"gia_nhap\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"gia_tiem\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"phong_benh\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"do_tuoi_ap_dung\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"so_mui\"\\r\\n\\r\\n0\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"lich_tiem\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"khoang_cach_mui\"\\r\\n\\r\\n0\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"bao_quan\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"han_su_dung\"\\r\\n\\r\\n2000-01-01\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"nha_san_xuat\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"nuoc_san_xuat\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"thanh_phan\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"chong_chi_dinh\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"phan_ung_sau_tiem\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"mo_ta\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"hinh_anh\"\\r\\n\\r\\nhttps://0.com\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"trang_thai\"\\r\\n\\r\\nfalse\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"la_vaccine_dich_vu\"\\r\\n\\r\\nfalse\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"loai_vaccine\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"nha_cung_cap\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa--\\r\\n' http://127.0.0.1:8000/api/thuoc/vaccine/null%2Cnull/\n\n\u26a0\ufe0f  Request body contains non-printable characters. Actual value: b'--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"ma_vaccine\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"ten_vaccine\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"gia_nhap\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"gia_tiem\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"phong_benh\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"do_tuoi_ap_dung\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"so_mui\"\\r\\n\\r\\n0\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"lich_tiem\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"khoang_cach_mui\"\\r\\n\\r\\n0\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"bao_quan\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"han_su_dung\"\\r\\n\\r\\n2000-01-01\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"nha_san_xuat\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"nuoc_san_xuat\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"thanh_phan\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"chong_chi_dinh\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"phan_ung_sau_tiem\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"mo_ta\"\\r\\n\\r\\n\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"hinh_anh\"\\r\\n\\r\\nhttps://0.com\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"trang_thai\"\\r\\n\\r\\nfalse\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"la_vaccine_dich_vu\"\\r\\n\\r\\nfalse\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"loai_vaccine\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa\\r\\nContent-Disposition: form-data; name=\"nha_cung_cap\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--2500993e3e62cd37f5d47fd3b0bc58fa--\\r\\n'",
+  "sequence": [
+    {
+      "method": "PATCH",
+      "url": "http://127.0.0.1:8000/api/thuoc/vaccine/null%2Cnull/",
+      "url_template": "http://127.0.0.1:8000/api/thuoc/vaccine/{id}/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "7srwQn",
+        "Cookie": "[Filtered]",
+        "Content-Length": "2169",
+        "Content-Type": "multipart/form-data; boundary=0fae397de1faa3f794d04b1360b65162"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 2.859998494386673e-05,
+          "mode": "negative"
+        },
+        "components": {
+          "PATH": "negative",
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "BODY": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Incorrect type",
+            "location": "/type",
+            "parameter": "id",
+            "parameter_location": "PATH",
+            "scenario": "incorrect_type"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [
+          [
+            "path",
+            "id"
+          ]
+        ],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "PATH": {
+            "id": "null,null"
+          },
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/thuoc/vaccine/{id}/",
+      "path_parameters": {
+        "id": "null%2Cnull"
+      },
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "json",
+        "value": {
+          "ma_vaccine": "",
+          "ten_vaccine": "",
+          "gia_nhap": "",
+          "gia_tiem": "",
+          "phong_benh": "",
+          "do_tuoi_ap_dung": "",
+          "so_mui": 0,
+          "lich_tiem": "",
+          "khoang_cach_mui": 0,
+          "bao_quan": "",
+          "han_su_dung": "2000-01-01",
+          "nha_san_xuat": "",
+          "nuoc_san_xuat": "",
+          "thanh_phan": "",
+          "chong_chi_dinh": "",
+          "phan_ung_sau_tiem": "",
+          "mo_ta": "",
+          "hinh_anh": "https://0.com",
+          "trang_thai": false,
+          "la_vaccine_dich_vu": false,
+          "loai_vaccine": "e3e70682-c209-1cac-a29f-6fbed82c07cd",
+          "nha_cung_cap": "e3e70682-c209-1cac-a29f-6fbed82c07cd"
+        }
+      },
+      "media_type": "multipart/form-data",
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "PATCH /api/thuoc/vaccine/{id}/"
+    }
+  ],
+  "aliases": [
+    "3gH6Km"
+  ]
+}

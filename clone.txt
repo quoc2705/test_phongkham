@@ -1,0 +1,28 @@
+git clone https://github.com/quoc2075/Maneger-Medical-System.git
+cd Maneger-Medical-System
+python -m venv venv
+venv\Scripts\activate
+pip install -r requirements.txt
+copy be\.env.example be\.env
+cd be
+python manage.py migrate
+python manage.py runserver
+
+
+# Chạy ứng dụng Desktop App giả lập (Tkinter GUI):
+.venv\Scripts\python -X utf8 app_desktop_phongkham.py
+
+# 1. Chạy toàn bộ 73 Test Cases bằng Pytest (pytest-django):
+.venv\Scripts\pytest
+
+# 2. Chạy toàn bộ 73 Test Cases bằng Django TestCase (unittest):
+.venv\Scripts\python -X utf8 be\manage.py test test_feature1_web test_feature2_app test_feature3_performance test_feature4_api test_feature5_unit -v 2
+
+# 3. Chạy kiểm thử trình duyệt Web SPA bằng Selenium WebDriver:
+.venv\Scripts\python -X utf8 be\selenium_web_runner.py --headless
+
+# 4. Chạy kiểm thử hiệu năng chịu tải bằng Locust (hoặc mở PhongKham_JMeter_LoadTest.jmx trên JMeter):
+.venv\Scripts\locust -f be/locustfile.py --host=http://127.0.0.1:8000
+
+# 5. Kiểm thử App & API trên Postman: Import file PhongKham_Postman_Collection.json
+ khong su dung pretrain 

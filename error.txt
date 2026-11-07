@@ -1,0 +1,28 @@
+================================================================================
+CHẠY KIỂM THỬ GIAO DIỆN WEB SPA BẰNG SELENIUM WEBDRIVER (URL=http://127.0.0.1:8000)
+================================================================================
+[INFO] Lưu ý: Hãy bật `python be/manage.py runserver` trước khi chạy độc lập, hoặc chạy qua `pytest` / `manage.py test`. Chi tiết: Message: unknown error: net::ERR_CONNECTION_REFUSED
+  (Session info: chrome=157.0.8103.38)
+Stacktrace:
+Symbols not available. Dumping unresolved backtrace:
+        (No symbol) [0x7ff62d789ca5]
+        (No symbol) [0x7ff62d6894f0]
+        (No symbol) [0x7ff62d512763]
+        (No symbol) [0x7ff62dd38251]
+        (No symbol) [0x7ff62d508c67]
+        (No symbol) [0x7ff62da831df]
+        (No symbol) [0x7ff62da825b1]
+        (No symbol) [0x7ff62da82679]
+        (No symbol) [0x7ff62d50634d]
+        (No symbol) [0x7ff62d507272]
+        (No symbol) [0x7ff62d5137b0]
+        (No symbol) [0x7ff62d5463a4]
+        (No symbol) [0x7ff62d53d11a]
+        (No symbol) [0x7ff62d545481]
+        (No symbol) [0x7ff62d52b389]
+        (No symbol) [0x7ff62d52c6b3]
+        (No symbol) [0x7ff62dc55281]
+        (No symbol) [0x7ff62dc7c4eb]
+        (No symbol) [0x7ff62dc70ba0]
+        (No symbol) [0x7ff62d8b2eee]
+        (No symbol) [0x7ff62d6

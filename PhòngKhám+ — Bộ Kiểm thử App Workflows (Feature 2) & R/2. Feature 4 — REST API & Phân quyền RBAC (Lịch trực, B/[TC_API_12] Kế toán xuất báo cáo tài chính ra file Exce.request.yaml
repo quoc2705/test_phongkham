@@ -1,0 +1,14 @@
+$kind: http-request
+name: "[TC_API_12] Kế toán xuất báo cáo tài chính ra file Excel (.xlsx) (200 OK)"
+url: "{{base_url}}/api/thuoc/dashboard/ke-toan/tai-chinh-xuat/?dinh_dang=xlsx"
+method: GET
+headers:
+  Authorization: Bearer {{token_ketoan}}
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('TC_API_12: Xuất báo cáo tài chính Excel thành công (HTTP 200)', function () {
+          pm.response.to.have.status(200);
+      });
+    language: text/javascript
+order: 4000

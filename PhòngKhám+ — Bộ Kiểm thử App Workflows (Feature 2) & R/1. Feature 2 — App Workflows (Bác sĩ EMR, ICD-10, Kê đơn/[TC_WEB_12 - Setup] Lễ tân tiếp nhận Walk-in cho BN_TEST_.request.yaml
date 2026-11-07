@@ -1,0 +1,29 @@
+$kind: http-request
+name: "[TC_WEB_12 / Setup] Lễ tân tiếp nhận Walk-in cho BN_TEST_01"
+url: "{{base_url}}/api/lich-hen/lich-hen/walk_in/"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token_letan}}
+body:
+  type: text
+  content: |-
+    {
+      "ma_benh_nhan": "BN_TEST_01",
+      "loai_lich": "KHAM_BENH",
+      "tu_dong_chon_bac_si": true,
+      "ma_phong": "P101",
+      "ten_phong": "Phòng Khám Nội 1",
+      "ghi_chu": "Khám viêm họng cấp"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('TC_WEB_12: HTTP 201 Created & CHECKED_IN', function () {
+          pm.response.to.have.status(201);
+          var d = pm.response.json();
+          pm.expect(d.trang_thai).to.eql('CHECKED_IN');
+          pm.collectionVariables.set('lich_hen_id', d.id);
+      });
+    language: text/javascript
+order: 1000

@@ -1,0 +1,103 @@
+{
+  "operation": "POST /api/admin/bac-si/",
+  "method": "POST",
+  "path_template": "/api/admin/bac-si/",
+  "fingerprint": "0ff9b31f",
+  "case_id": "tmFTk8",
+  "code_sample": "curl -X POST -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' http://127.0.0.1:8000/api/admin/bac-si/",
+  "sequence": [
+    {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/api/admin/bac-si/",
+      "url_template": "http://127.0.0.1:8000/api/admin/bac-si/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "tmFTk8",
+        "Cookie": "[Filtered]",
+        "Content-Length": "0"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "OPTIONS, DELETE, PUT, GET, POST",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 0.0687681999988854,
+          "mode": "positive"
+        },
+        "components": {
+          "HEADER": "positive",
+          "COOKIE": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Default positive test case",
+            "location": null,
+            "parameter": null,
+            "parameter_location": null,
+            "scenario": "default_positive_test"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/admin/bac-si/",
+      "path_parameters": {},
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "POST /api/admin/bac-si/"
+    }
+  ],
+  "aliases": [
+    "cClsvl"
+  ]
+}

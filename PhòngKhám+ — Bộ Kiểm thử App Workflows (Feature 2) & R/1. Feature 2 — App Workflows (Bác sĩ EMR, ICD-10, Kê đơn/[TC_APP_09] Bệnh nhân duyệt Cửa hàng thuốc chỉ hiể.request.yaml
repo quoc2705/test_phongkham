@@ -1,0 +1,19 @@
+$kind: http-request
+name: "[TC_APP_09] Bệnh nhân duyệt Cửa hàng thuốc chỉ hiển thị thuốc OTC (Ẩn thuốc kê đơn)"
+url: "{{base_url}}/api/thuoc/thuoc/?page_size=20"
+method: GET
+headers:
+  Authorization: Bearer {{token_bn1}}
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('TC_APP_09: Cửa hàng thuốc ẩn thuốc kê đơn TH_RX_01', function () {
+          pm.response.to.have.status(200);
+          var body = pm.response.json();
+          var items = body.results || body;
+          var codes = items.map(function(x) { return x.ma_thuoc; });
+          pm.expect(codes).to.include('TH_OTC_01');
+          pm.expect(codes).to.not.include('TH_RX_01');
+      });
+    language: text/javascript
+order: 5000

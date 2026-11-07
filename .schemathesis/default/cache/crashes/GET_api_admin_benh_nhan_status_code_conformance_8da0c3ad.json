@@ -1,0 +1,102 @@
+{
+  "operation": "GET /api/admin/benh-nhan/",
+  "method": "GET",
+  "path_template": "/api/admin/benh-nhan/",
+  "fingerprint": "8da0c3ad",
+  "case_id": "6MNtIh",
+  "code_sample": "curl -X GET -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' http://127.0.0.1:8000/api/admin/benh-nhan/",
+  "sequence": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/api/admin/benh-nhan/",
+      "url_template": "http://127.0.0.1:8000/api/admin/benh-nhan/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "6MNtIh",
+        "Cookie": "[Filtered]"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "OPTIONS, DELETE, PUT, GET, POST",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 0.00018119998276233673,
+          "mode": "positive"
+        },
+        "components": {
+          "HEADER": "positive",
+          "COOKIE": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Default positive test case",
+            "location": null,
+            "parameter": null,
+            "parameter_location": null,
+            "scenario": "default_positive_test"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/admin/benh-nhan/",
+      "path_parameters": {},
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "GET /api/admin/benh-nhan/"
+    }
+  ],
+  "aliases": [
+    "x8tX8J"
+  ]
+}

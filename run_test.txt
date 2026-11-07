@@ -1,0 +1,101 @@
+================================================================================
+1. WEB TESTING (SELENIUM WEBDRIVER — TỰ ĐỘNG MỞ TRÌNH DUYỆT & ĐIỀN FORM CHẬM)
+================================================================================
+- Bước 1 (Terminal 1): Đảm bảo server đang chạy:
+  .venv\Scripts\python be\manage.py runserver 127.0.0.1:8000
+- Bước 2 (Terminal 2 - Chạy chế độ trình chiếu chậm mặc định 2.2 giây/bước):
+  .venv\Scripts\python -X utf8 be\selenium_web_runner.py
+  (Hoặc muốn chậm hơn nữa, ví dụ dừng 3.5 giây mỗi bước thì gõ):
+  .venv\Scripts\python -X utf8 be\selenium_web_runner.py --delay=3.5
+- Làm gì tiếp theo?: KHÔNG CẦN BẤM GÌ CẢ! Quan sát cửa sổ Chrome/Edge tự động bật lên, hiện thanh Banner thông báo từng Test Case (TC_WEB_01, TC_WEB_02, TC_WEB_03, TC_WEB_12, TC_WEB_18) ở trên đầu trang, tự động tô viền xanh từng ô input, gõ chậm từng chữ vào form Đăng nhập -> Đặt lịch Bệnh nhân -> Tiếp nhận Walk-in Lễ tân, và dừng lại 8 giây đếm ngược ở cuối trước khi đóng!
+- Lệnh chấm điểm đầy đủ 20 Test Cases Web (17 Passed, 3 Failed):
+  .venv\Scripts\pytest be/test_feature1_web.py
+
+
+================================================================================
+2. UNIT TESTING (TRÌNH CHIẾU HỘP TRẮNG TRỰC QUAN + BÁO CÁO HTML + PYTEST — 13 TCS)
+================================================================================
+- Cách 2.1 (MỞ CỬA SỔ TRÌNH CHIẾU KIỂM THỬ HỘP TRẮNG TỰ ĐỘNG TỪNG BƯỚC — RẤT TRỰC QUAN):
+  .venv\Scripts\python -X utf8 be\unit_visual_runner.py
+  (Hoặc muốn chạy chậm hơn nữa, ví dụ 3 giây/câu thì gõ):
+  .venv\Scripts\python -X utf8 be\unit_visual_runner.py --delay=3
+  -> Làm gì tiếp theo?: KHÔNG CẦN BẤM GÌ CẢ!
+     1) Cửa sổ "Trình chiếu Kiểm thử Đơn vị Hộp trắng (White-Box Unit Test Inspector)" tự động bật lên và chạy lần lượt từ [01/13] TC_UNIT_01 đến [13/13] TC_UNIT_13.
+     2) Bên trái tô màu từng câu PASSED (Xanh lá) / FAILED (Đỏ - Phát hiện BUG-10 & BUG-11).
+     3) Bên phải tự động SOI CODE HỘP TRẮNG (hiển thị chính xác dòng code Python của hàm đang được test trong dự án) kèm 3 khung: Dữ liệu đầu vào (Input) -> Kỳ vọng SRS (Expected) -> Kết quả thực tế (Actual).
+     4) Có sẵn nút "⏸ Tạm dừng", "🔁 Chạy lại từ đầu" và nút "🌐 Mở Báo cáo HTML trên Trình duyệt" ngay trên thanh công cụ!
+
+- Cách 2.2 (Tự động xuất & bật Báo cáo Giao diện Web HTML `unit_test_report.html` lên trình duyệt):
+  .venv\Scripts\python -X utf8 be\unit_visual_runner.py --headless --open-browser
+
+- Cách 2.3 (Chạy trên Terminal bằng Pytest hoặc Django TestCase truyền thống):
+  .venv\Scripts\pytest be/test_feature5_unit.py
+  .venv\Scripts\python -X utf8 be\manage.py test test_feature5_unit -v 2
+
+
+================================================================================
+3. APP TESTING (DESKTOP APP TKINTER GUI — TỰ ĐỘNG CHUYỂN TAB & ĐIỀN FORM 16 TCS)
+================================================================================
+- Lệnh mở Desktop App tự động chạy từng bước (mặc định 1.8 giây/bước):
+  .venv\Scripts\python -X utf8 app_desktop_phongkham.py
+  (Hoặc nếu muốn chạy chậm hơn nữa, ví dụ 3 giây mỗi câu Test Case thì gõ):
+  .venv\Scripts\python -X utf8 app_desktop_phongkham.py --delay=3
+- Làm gì tiếp theo?: KHÔNG CẦN BẤM GÌ CẢ! Ngay khi cửa sổ phần mềm Desktop App hiện lên:
+  1) Thanh Banner trên đầu cửa sổ sẽ tự động đếm từ [1/16] TC_APP_01 đến [16/16] TC_APP_16.
+  2) Ứng dụng tự động chuyển qua lại giữa Tab 1 (Bác sĩ: Mở hồ sơ, nhập ICD-10, Kê đơn thuốc, Tiêm chủng) và Tab 2 (Bệnh nhân: Cửa hàng thuốc, Giỏ hàng, Đặt đơn Online, Thanh toán VNPay, Hủy đơn), tự động điền dữ liệu lên các ô form và đổi màu Banner (Xanh lá = Passed, Đỏ = Failed phát hiện Bug SRS).
+  3) Khi chạy xong câu 16, ứng dụng tự động chuyển sang Tab 3 để hiển thị bảng tổng kết 16/16 Test Cases (13 Passed màu xanh, 3 Failed màu đỏ).
+  (Lưu ý: Trên thanh Banner có nút "⏸ Tạm dừng Tự động" và "🔁 Chạy lại Tự động từ đầu" nếu bạn muốn dừng lại giải thích giữa chừng).
+
+.venv\Scripts\python -X utf8 app_desktop_phongkham.py
+
+================================================================================
+4. API TESTING (SCHEMATHESIS OPENAPI 3.0 + SWAGGER UI — 14 TEST CASES)
+================================================================================
+- Cách 4.1 (Chạy tự động 100% kiểm chứng OpenAPI 3.0 Schema + Schemathesis + 14 Test Cases API):
+  .venv\Scripts\python -X utf8 be\api_schema_runner.py
+  -> Làm gì tiếp theo?: KHÔNG CẦN BẤM GÌ CẢ! Tự động sinh file PhongKham_OpenAPI_Schema.json (18 API Paths trọng tâm Feature 4 kèm mã chuẩn 200/201/400/401/403/404), nạp vào Schemathesis Engine kiểm tra route API và chạy lần lượt 14 câu TC_API_01 -> TC_API_14 (12 Passed, 2 Failed).
+
+- Cách 4.2 (Chạy công cụ Schemathesis CLI bắn dữ liệu Fuzzing tự động theo OpenAPI Schema vào Server để dò lỗi 500):
+  + Bước 1 (Terminal 1 - Bật server): .venv\Scripts\python be\manage.py runserver 127.0.0.1:8000
+  + Bước 2 (Terminal 2 - Chạy Schemathesis CLI kiểm tra lỗi 500 Server Error & Status Code):
+    .venv\Scripts\st run PhongKham_OpenAPI_Schema.json --url=http://127.0.0.1:8000 -c not_a_server_error -c status_code_conformance --max-examples=5
+  -> Giải thích kết quả:
+     * Các API có bảo mật JWT (`doctor-schedule`, `ban-thuoc-le`, `ban-theo-toa`, `phieu-nhap`, `tai-chinh-xuat`) đều PASSED (chặn 401/403/400 an toàn, không bị sập 500).
+     * Riêng nhóm `/api/bao-cao/bao-cao/` nếu bị Schemathesis báo FAILED (500 Internal Server Error) là do Schemathesis đã tự động phát hiện ra đúng lỗi thật của code gốc (`BUG-08`: `BaoCaoViewSet` để `AllowAny` không chặn quyền và thiếu validate dữ liệu rỗng/sai kiểu ngày tháng)!
+
+- Cách 4.3 (Mở giao diện Swagger UI trực tiếp trên trình duyệt):
+  + Khi server đang chạy, mở trình duyệt vào: http://127.0.0.1:8000/api/docs/
+
+
+================================================================================
+5. PERFORMANCE TESTING (LOCUST & APACHE JMETER — 10 TEST CASES HIỆU NĂNG & CHỊU TẢI)
+================================================================================
+* Bước chuẩn bị bắt buộc: Mở Terminal 1 để bật Server Django trước:
+  .venv\Scripts\python be\manage.py runserver 127.0.0.1:8000
+
+- Cách 5.1 (CHẠY TỰ ĐỘNG 100% TRÊN TERMINAL — Headless Mode, không cần mở trình duyệt):
+  .venv\Scripts\locust -f be/locustfile.py --headless -u 25 -r 5 -t 30s --host=http://127.0.0.1:8000 --html=locust_report.html
+  -> Làm gì tiếp theo?: KHÔNG CẦN LÀM GÌ THÊM. Locust tự động sinh 25 người dùng ảo đồng thời (Lễ tân, Bệnh nhân, Kế toán), bắn tải liên tục trong 30 giây, tự động in bảng thống kê độ trễ (ms) & RPS ra Terminal, đồng thời xuất ra file báo cáo "locust_report.html".
+
+- Cách 5.2 (MỞ GIAO DIỆN BIỂU ĐỒ WEB UI CỦA LOCUST):
+  + Bước 1 (Terminal 2): .venv\Scripts\locust -f be/locustfile.py --host=http://127.0.0.1:8000
+  + Bước 2: Mở trình duyệt vào http://localhost:8089 -> Nhập Number of users = 25, Spawn rate = 5 -> Bấm "Start".
+
+- Cách 5.3 (Chấm điểm 10 Test Cases Performance & Concurrency bằng Pytest — 9 Passed, 1 Failed):
+  .venv\Scripts\pytest be/test_feature3_performance.py
+
+
+Feature 1 — Web Testing (TC_WEB_01..TC_WEB_20): Dùng Selenium WebDriver để tự động bật trình duyệt Chrome/Edge, 
+tự gõ dữ liệu vào form Đặt lịch khám & Tiếp nhận Walk-in trên giao diện Web SPA.
+Feature 2 — App Testing (TC_APP_01..TC_APP_16): Dùng Ứng dụng Desktop App Giả lập (Tkinter GUI) để tự động chuyển tab, 
+điền form khám bệnh ICD-10, kê đơn thuốc, tiêm chủng và đặt đơn thuốc Online (kết hợp Postman Collection).
+Feature 3 — Performance Testing (TC_PERF_01..TC_PERF_10): Dùng Locust (và Apache JMeter) để giả lập 25 người dùng đồng thời (Bệnh nhân, Lễ tân, Kế toán) 
+bắn tải liên tục vào Server đo độ trễ phản hồi (ms), thông lượng (RPS)
+ và kiểm tra tranh chấp dữ liệu (Race Condition).
+Feature 4 — API Testing (TC_API_01..TC_API_14): Dùng Schemathesis kết hợp OpenAPI 3.0 (drf-spectacular / Swagger UI) 
+để tự động kiểm tra hợp đồng cấu trúc JSON, phân quyền RBAC (401/403) 
+và bắn dữ liệu Fuzzing tìm lỗi 500 Server Error.
+Feature 5 — Unit Testing (TC_UNIT_01..TC_UNIT_13): Dùng Pytest (pytest-django) 
+kết hợp White-Box Visual Inspector để kiểm thử hộp trắng trực tiếp từng hàm Python 
+bên trong models.py / stock.py / views.py (thuật toán trừ kho FIFO đa lô, cảnh báo hạn dùng, tính tiền BHYT)
+ và xuất báo cáo unit_test_report.html.

@@ -1,0 +1,35 @@
+================================================================================
+BẢN TEST DATA & KỊCH BẢN KIỂM THỬ — PHIÊN BẢN V2.0 (datav2.txt)
+Giai đoạn 2: Tách 5 file Python độc lập & Phân bổ số lượng TC theo độ phức tạp (63 TCs)
+================================================================================
+
+1. TỔNG QUAN PHIÊN BẢN V2.0:
+- Cải tiến lớn:
+  1) Xóa file gộp cũ, tách thành 5 file kiểm thử độc lập dùng chung fixture `be/base_test_setup.py`:
+     - `be/test_feature1_web.py`
+     - `be/test_feature2_app.py`
+     - `be/test_feature3_performance.py`
+     - `be/test_feature4_api.py`
+     - `be/test_feature5_unit.py`
+  2) Thiết kế số lượng Test Case phù hợp độ phức tạp từng chức năng (không gán cứng 5 TC/chức năng):
+     - Feature 1 (Web): 13 TCs (Func 1.1: 7 TCs, Func 1.2: 6 TCs) -> 11 Passed, 2 Failed
+     - Feature 2 (App): 16 TCs (Func 2.1: 8 TCs, Func 2.2: 8 TCs) -> 13 Passed, 3 Failed
+     - Feature 3 (Performance): 10 TCs (Func 3.1: 5 TCs, Func 3.2: 5 TCs) -> 9 Passed, 1 Failed
+     - Feature 4 (API): 14 TCs (Func 4.1: 7 TCs, Func 4.2: 7 TCs) -> 12 Passed, 2 Failed
+     - Feature 5 (Unit): 10 TCs (Func 5.1: 5 TCs, Func 5.2: 5 TCs) -> 9 Passed, 1 Failed
+- Tổng số Test Cases V2.0: 63 Test Cases (54 Passed = 85.71%, 9 Failed = 14.29%).
+
+--------------------------------------------------------------------------------
+2. DỮ LIỆU KIỂM THỬ MỞ RỘNG TRONG BẢN V2.0 (TEST DATA V2.0):
+--------------------------------------------------------------------------------
+Bổ sung thêm vào `be/base_test_setup.py`:
+- Lô thuốc đã hết hạn (`LO-PARA-EXPIRED`, so_luong=999, han_su_dung = today - 5 ngày) để kiểm thử thuật toán FIFO tự động bỏ qua lô quá hạn.
+- Lô vaccine đã hết hạn (`LO-VC-EXPIRED`, so_luong=50, han_su_dung = today - 2 ngày).
+- Dữ liệu kiểm thử phân quyền chéo (RBAC) giữa 6 vai trò trên các API Lịch trực, Bán thuốc tại quầy, Nhập kho dược và Xuất báo cáo tài chính.
+
+--------------------------------------------------------------------------------
+3. HẠN CHẾ CỦA BẢN V2.0 (LÝ DO NÂNG CẤP LÊN V3.0):
+--------------------------------------------------------------------------------
+- Ở 2 sheet `Web` và `App` trong file Excel, cột `Test Case Procedure` mới ghi ngắn gọn bước gọi API, chưa liệt kê tường minh từng trường **Dữ liệu nhập (`du_lieu_nhap`)** trên giao diện form.
+- Feature 5 (Unit Test) mới có 10 TCs (5 + 5), cần bổ sung thêm các kịch bản White-box cho cảnh báo thuốc sắp hết hạn và đồng bộ BHYT đơn thuốc.
+

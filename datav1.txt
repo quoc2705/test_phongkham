@@ -1,0 +1,39 @@
+================================================================================
+BẢN TEST DATA & KỊCH BẢN KIỂM THỬ — PHIÊN BẢN V1.0 (datav1.txt)
+Giai đoạn 1: Khởi tạo 50 Test Cases đồng bộ (5 Features x 2 Chức năng x 5 TCs)
+================================================================================
+
+1. TỔNG QUAN PHIÊN BẢN V1.0:
+- Cách tổ chức file: Gộp chung trong 1 file duy nhất `be/test_5features_report.py`.
+- Công cụ sử dụng: Django TestCase (`manage.py test`) & DRF APIClient.
+- Tổng số Test Cases: 50 Test Cases (Mỗi chức năng cố định 5 Test Cases):
+  + Feature 1 (Web): 10 TCs (Func 1.1: 5 TCs, Func 1.2: 5 TCs) -> 8 Passed, 2 Failed
+  + Feature 2 (App): 10 TCs (Func 2.1: 5 TCs, Func 2.2: 5 TCs) -> 8 Passed, 2 Failed
+  + Feature 3 (Performance): 10 TCs (Func 3.1: 5 TCs, Func 3.2: 5 TCs) -> 9 Passed, 1 Failed
+  + Feature 4 (API): 10 TCs (Func 4.1: 5 TCs, Func 4.2: 5 TCs) -> 8 Passed, 2 Failed
+  + Feature 5 (Unit): 10 TCs (Func 5.1: 5 TCs, Func 5.2: 5 TCs) -> 9 Passed, 1 Failed
+- Kết quả thực thi V1.0: 42 Passed (84.00%), 8 Failed (16.00%).
+
+--------------------------------------------------------------------------------
+2. DỮ LIỆU KIỂM THỬ NỀN (TEST DATA V1.0):
+--------------------------------------------------------------------------------
+a) Tài khoản 6 vai trò (Mật khẩu chung: Password@123):
+   - Admin: admin_test (vai_tro='ADMIN')
+   - Bác sĩ 1: bacsi1_test (vai_tro='BAC_SI', ma_bac_si='BS_TEST_01', có lịch trực SANG/CHIEU/TOI)
+   - Lễ tân: letan_test (vai_tro='NHAN_VIEN', chuc_vu='LE_TAN', ma_nhan_vien='NV_LT_01')
+   - Bán thuốc: banthuoc_test (vai_tro='NHAN_VIEN', chuc_vu='BAN_THUOC', ma_nhan_vien='NV_BT_01')
+   - Kế toán: ketoan_test (vai_tro='NHAN_VIEN', chuc_vu='KE_TOAN', ma_nhan_vien='NV_KT_01')
+   - Bệnh nhân 1: benhnhan1_test (ma_benh_nhan='BN_TEST_01', BHYT='DN4010123456789')
+   - Bệnh nhân 2: benhnhan2_test (ma_benh_nhan='BN_TEST_02', không có BHYT)
+
+b) Danh mục Thuốc & Vaccine khởi tạo:
+   - Thuốc OTC: Paracetamol 500mg (ma_thuoc='TH_OTC_01', gia_ban=2000, can_don_thuoc=False, Tổng tồn=150 viên chia 2 lô: Lô 1=50v, Lô 2=100v)
+   - Thuốc Kê đơn (Rx): Augmentin 625mg (ma_thuoc='TH_RX_01', gia_ban=8000, can_don_thuoc=True, Tồn=80 viên)
+   - Vaccine: Influvac Tetra 0.5ml (ma_vaccine='VC_CUM_01', gia_ban=350000, Tổng tồn=10 liều chia 2 lô: Lô 1=3 liều, Lô 2=7 liều)
+
+--------------------------------------------------------------------------------
+3. HẠN CHẾ CỦA BẢN V1.0 (LÝ DO NÂNG CẤP LÊN V2.0):
+--------------------------------------------------------------------------------
+- Tất cả 10 chức năng đều bị gán cứng 5 TC/chức năng, chưa phản ánh đúng độ phức tạp khác nhau giữa các chức năng.
+- Toàn bộ 50 Test Cases nằm chung trong 1 file `be/test_5features_report.py`, chưa tách riêng thành 5 file độc lập theo từng Feature.
+

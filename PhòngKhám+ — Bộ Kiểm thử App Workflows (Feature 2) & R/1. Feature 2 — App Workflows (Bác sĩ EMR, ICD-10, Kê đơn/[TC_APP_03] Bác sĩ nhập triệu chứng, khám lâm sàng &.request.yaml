@@ -1,0 +1,29 @@
+$kind: http-request
+name: "[TC_APP_03] Bác sĩ nhập triệu chứng, khám lâm sàng & lưu mã ICD-10 (J02.9)"
+url: "{{base_url}}/api/benh-an/ho-so-benh-an/{{ho_so_id}}/nhap_chan_doan/"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token_bacsi1}}
+body:
+  type: text
+  content: |-
+    {
+      "trieu_chung": "Đau rát họng, sốt 38.5 độ C, ho khan",
+      "ket_qua_kham_lam_sang": "Niêm mạc họng đỏ xung huyết, amidan sưng nhẹ",
+      "ma_icd10": "J02.9",
+      "ten_benh": "Viêm họng cấp, không đặc hiệu",
+      "loai_benh": "NGOAI_TRU",
+      "muc_do": "TRUNG_BINH",
+      "mo_ta": "Theo dõi viêm họng cấp do vi khuẩn",
+      "ket_luan": "Điều trị nội khoa kháng sinh và hạ sốt 5 ngày"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('TC_APP_03: Lưu chẩn đoán ICD-10 J02.9 thành công (HTTP 200)', function () {
+          pm.response.to.have.status(200);
+          pm.expect(pm.response.json().ma_icd10).to.eql('J02.9');
+      });
+    language: text/javascript
+order: 3000

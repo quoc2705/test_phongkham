@@ -1,0 +1,120 @@
+{
+  "operation": "PATCH /api/users/update_me/",
+  "method": "PATCH",
+  "path_template": "/api/users/update_me/",
+  "fingerprint": "65166907",
+  "case_id": "6sOqTf",
+  "code_sample": "curl -X PATCH -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' -H 'Content-Type: multipart/form-data; boundary=c3abe71de79e0585dafb6ba9b560055e' -d $'--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ten_dang_nhap\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ho_ten\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"email\"\\r\\n\\r\\n0@0.com\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"so_dien_thoai\"\\r\\n\\r\\n0000000000\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"vai_tro\"\\r\\n\\r\\nBENH_NHAN\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"avatar\"\\r\\n\\r\\nhttps://0.com\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"dia_chi\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ngay_sinh\"\\r\\n\\r\\n2000-01-01\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"gioi_tinh\"\\r\\n\\r\\nNU\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"cccd\"\\r\\n\\r\\n000000000\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"nguoi_lien_he_khan\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"sdt_lien_he_khan\"\\r\\n\\r\\n0000000000\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ngay_tao\"\\r\\n\\r\\n{}\\r\\n--c3abe71de79e0585dafb6ba9b560055e--\\r\\n' http://127.0.0.1:8000/api/users/update_me/\n\n\u26a0\ufe0f  Request body contains non-printable characters. Actual value: b'--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ten_dang_nhap\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ho_ten\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"email\"\\r\\n\\r\\n0@0.com\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"so_dien_thoai\"\\r\\n\\r\\n0000000000\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"vai_tro\"\\r\\n\\r\\nBENH_NHAN\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"avatar\"\\r\\n\\r\\nhttps://0.com\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"dia_chi\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ngay_sinh\"\\r\\n\\r\\n2000-01-01\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"gioi_tinh\"\\r\\n\\r\\nNU\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"cccd\"\\r\\n\\r\\n000000000\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"nguoi_lien_he_khan\"\\r\\n\\r\\n\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"sdt_lien_he_khan\"\\r\\n\\r\\n0000000000\\r\\n--c3abe71de79e0585dafb6ba9b560055e\\r\\nContent-Disposition: form-data; name=\"ngay_tao\"\\r\\n\\r\\n{}\\r\\n--c3abe71de79e0585dafb6ba9b560055e--\\r\\n'",
+  "sequence": [
+    {
+      "method": "PATCH",
+      "url": "http://127.0.0.1:8000/api/users/update_me/",
+      "url_template": "http://127.0.0.1:8000/api/users/update_me/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "6sOqTf",
+        "Cookie": "[Filtered]",
+        "Content-Length": "1284",
+        "Content-Type": "multipart/form-data; boundary=5a8194d4c7711fe174517f02f8f5f5d2"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "PATCH, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 5.679996684193611e-05,
+          "mode": "negative"
+        },
+        "components": {
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "BODY": "negative"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "ngay_tao: Value is not allowed",
+            "location": "/properties/ngay_tao/not",
+            "parameter": "multipart/form-data",
+            "parameter_location": "BODY",
+            "scenario": "matches_not_schema"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/users/update_me/",
+      "path_parameters": {},
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "json",
+        "value": {
+          "ten_dang_nhap": "",
+          "ho_ten": "",
+          "email": "0@0.com",
+          "so_dien_thoai": "0000000000",
+          "vai_tro": "BENH_NHAN",
+          "avatar": "https://0.com",
+          "dia_chi": "",
+          "ngay_sinh": "2000-01-01",
+          "gioi_tinh": "NU",
+          "cccd": "000000000",
+          "nguoi_lien_he_khan": "",
+          "sdt_lien_he_khan": "0000000000",
+          "ngay_tao": {}
+        }
+      },
+      "media_type": "multipart/form-data",
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "PATCH /api/users/update_me/"
+    }
+  ],
+  "aliases": [
+    "b6cYYU"
+  ]
+}

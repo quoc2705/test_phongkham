@@ -1,0 +1,87 @@
+{
+  "operation": "POST /api/users/register/",
+  "method": "POST",
+  "path_template": "/api/users/register/",
+  "fingerprint": "8f8b8d92",
+  "case_id": "urxCYN",
+  "code_sample": "curl -X POST http://127.0.0.1:8000/api/users/register/",
+  "sequence": [
+    {
+      "method": "POST",
+      "url": "http://127.0.0.1:8000/api/users/register/",
+      "url_template": "http://127.0.0.1:8000/api/users/register/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "X-Schemathesis-TestCaseId": "urxCYN",
+        "Content-Length": "0"
+      },
+      "response": {
+        "status_code": 400,
+        "headers": {
+          "content-type": "application/json",
+          "vary": "Accept, Cookie, origin",
+          "allow": "POST, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "559",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "server": "daphne"
+        },
+        "body": "{\"error\":\"D\u1eef li\u1ec7u \u0111\u0103ng k\u00fd kh\u00f4ng h\u1ee3p l\u1ec7\",\"details\":{\"nguoi_dung\":{\"ten_dang_nhap\":[\"This field may not be null.\"],\"password\":[\"This field may not be null.\"],\"password2\":[\"This field may not be null.\"],\"ho_ten\":[\"This field may not be null.\"],\"email\":[\"This field may not be null.\"],\"so_dien_thoai\":[\"This field may not be null.\"],\"gioi_tinh\":[\"This field may not be null.\"],\"dia_chi\":[\"This field may not be null.\"]},\"ngay_sinh\":[\"This field may not be null.\"],\"gioi_tinh\":[\"This field may not be null.\"],\"dia_chi\":[\"This field may not be null.\"]}}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 400\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 6.200047209858894e-06,
+          "mode": "negative"
+        },
+        "components": {
+          "BODY": "negative"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Missing request body",
+            "location": null,
+            "parameter": null,
+            "parameter_location": "BODY",
+            "scenario": "missing_parameter"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {}
+      },
+      "path": "/api/users/register/",
+      "path_parameters": {},
+      "query": {},
+      "case_headers": {},
+      "cookies": {},
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "POST /api/users/register/"
+    }
+  ],
+  "aliases": [
+    "Zxtntx"
+  ]
+}

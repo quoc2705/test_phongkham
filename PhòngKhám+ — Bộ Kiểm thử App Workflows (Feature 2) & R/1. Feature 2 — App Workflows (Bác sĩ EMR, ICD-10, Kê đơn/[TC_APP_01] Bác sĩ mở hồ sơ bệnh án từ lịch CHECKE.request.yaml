@@ -1,0 +1,25 @@
+$kind: http-request
+name: "[TC_APP_01] Bác sĩ mở hồ sơ bệnh án từ lịch CHECKED_IN"
+url: "{{base_url}}/api/lich-hen/lich-hen/{{lich_hen_id}}/mo_ho_so_benh_an/"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token_bacsi1}}
+body:
+  type: text
+  content: |-
+    {
+      "phong_kham": "P101 - Phòng Khám Nội 1",
+      "ghi_chu_tiep_nhan": "Bắt đầu khám lâm sàng"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('TC_APP_01: Mở hồ sơ bệnh án thành công (HTTP 201)', function () {
+          pm.response.to.have.status(201);
+          var d = pm.response.json();
+          pm.expect(d.lich_hen.trang_thai).to.eql('DANG_KHAM');
+          pm.collectionVariables.set('ho_so_id', d.ho_so.id);
+      });
+    language: text/javascript
+order: 2000

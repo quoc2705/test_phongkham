@@ -1,0 +1,13 @@
+# Use this workspace to collaborate
+workspace:
+  id: 1d48278c-b091-4d5e-84f3-1c607be97012
+
+localResources:
+  collections:
+    - ../PhòngKhám+ — Bộ Kiểm thử App Workflows (Feature 2) & R
+
+# Each entry here maps a local resource to one or more corresponding objects in Postman Cloud
+
+cloudResources:
+  collections:
+    ../PhòngKhám+ — Bộ Kiểm thử App Workflows (Feature 2) & R: 80f48963-0080-4206-ba4b-bb3c00dea7ea

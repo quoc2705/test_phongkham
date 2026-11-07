@@ -1,0 +1,113 @@
+{
+  "operation": "GET /api/thuoc/kho-vaccine/{id}/",
+  "method": "GET",
+  "path_template": "/api/thuoc/kho-vaccine/{id}/",
+  "fingerprint": "c07d5f76",
+  "case_id": "w0m4E3",
+  "code_sample": "curl -X GET -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' http://127.0.0.1:8000/api/thuoc/kho-vaccine/null%2Cnull/",
+  "sequence": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/api/thuoc/kho-vaccine/null%2Cnull/",
+      "url_template": "http://127.0.0.1:8000/api/thuoc/kho-vaccine/{id}/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "w0m4E3",
+        "Cookie": "[Filtered]"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 2.7900096029043198e-05,
+          "mode": "negative"
+        },
+        "components": {
+          "PATH": "negative",
+          "HEADER": "positive",
+          "COOKIE": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Incorrect type",
+            "location": "/type",
+            "parameter": "id",
+            "parameter_location": "PATH",
+            "scenario": "incorrect_type"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [
+          [
+            "path",
+            "id"
+          ]
+        ],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "PATH": {
+            "id": "null,null"
+          },
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/thuoc/kho-vaccine/{id}/",
+      "path_parameters": {
+        "id": "null%2Cnull"
+      },
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "GET /api/thuoc/kho-vaccine/{id}/"
+    }
+  ],
+  "aliases": [
+    "Tkdoxa"
+  ]
+}

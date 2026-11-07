@@ -1,0 +1,9 @@
+{
+  "format_version": 1,
+  "schemathesis_version": "4.33.1",
+  "schema_location": "file:///D:/Ki%E1%BB%83m%20th%E1%BB%AD%20ph%E1%BA%A7n%20m%E1%BB%81m/Maneger-Medical-System-main/Maneger-Medical-System-main/PhongKham_OpenAPI_Schema.json",
+  "base_url": "http://127.0.0.1:8000",
+  "created_at": "2026-11-06T19:26:43.172642+00:00",
+  "next_run_id": 3,
+  "auth_identities": {}
+}

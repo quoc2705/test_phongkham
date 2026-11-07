@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Báo cáo Kiểm thử Đơn vị Hộp trắng (Unit Test) — PhòngKhám+</title>
+<style>
+  body { font-family: 'Segoe UI', Tahoma, sans-serif; background: #0f172a; color: #f8fafc; margin: 0; padding: 24px; }
+  .container { max-width: 1280px; margin: 0 auto; }
+  .hero { background: linear-gradient(135deg, #1e293b, #0f172a); border: 1px solid #334155; border-radius: 12px; padding: 20px 24px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  .hero h1 { margin: 0 0 6px 0; font-size: 22px; color: #38bdf8; }
+  .hero p { margin: 0; color: #94a3b8; font-size: 14px; }
+  .stats { display: flex; gap: 14px; }
+  .stat-box { background: #1e293b; border: 1px solid #475569; padding: 10px 18px; border-radius: 10px; text-align: center; min-width: 95px; }
+  .stat-val { font-size: 22px; font-weight: 700; }
+  .stat-lbl { font-size: 12px; color: #94a3b8; }
+  .pass-color { color: #4ade80; }
+  .fail-color { color: #f87171; }
+  .filter-bar { margin-bottom: 16px; display: flex; gap: 10px; }
+  .filter-btn { background: #1e293b; color: #e2e8f0; border: 1px solid #475569; padding: 8px 16px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+  .filter-btn.active, .filter-btn:hover { background: #0284c7; border-color: #38bdf8; color: #fff; }
+  .tc-card { background: #1e293b; border-radius: 10px; padding: 16px 20px; margin-bottom: 16px; border-left: 6px solid #4ade80; box-shadow: 0 4px 12px rgba(0,0,0,0.25); }
+  .card-fail { border-left-color: #ef4444; background: #261922; }
+  .tc-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 8px; }
+  .tc-id { font-weight: 700; font-size: 15px; color: #38bdf8; margin-right: 10px; }
+  .tc-group, .tc-tech { background: #334155; color: #e2e8f0; padding: 3px 10px; border-radius: 6px; font-size: 12px; margin-right: 6px; }
+  .tc-time { color: #94a3b8; font-size: 13px; margin-right: 10px; }
+  .badge { padding: 4px 12px; border-radius: 6px; font-weight: 700; font-size: 12px; }
+  .badge-pass { background: #166534; color: #4ade80; }
+  .badge-fail { background: #991b1b; color: #fecaca; }
+  .tc-title { font-size: 15px; font-weight: 600; margin-bottom: 6px; color: #f1f5f9; }
+  .tc-target { font-size: 13px; color: #cbd5e1; margin-bottom: 12px; }
+  .tc-target code { background: #0f172a; color: #fbbf24; padding: 3px 8px; border-radius: 4px; }
+  .tc-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-bottom: 12px; }
+  .box { background: #0f172a; border: 1px solid #334155; border-radius: 8px; padding: 10px 12px; }
+  .box-actual-pass { border-color: #15803d; }
+  .box-actual-fail { border-color: #b91c1c; background: #1f1218; }
+  .box-title { font-size: 12px; font-weight: 700; color: #38bdf8; margin-bottom: 6px; text-transform: uppercase; }
+  .box pre { margin: 0; white-space: pre-wrap; font-family: Consolas, monospace; font-size: 12.5px; color: #e2e8f0; line-height: 1.45; }
+  .code-details summary { cursor: pointer; color: #93c5fd; font-size: 13px; font-weight: 600; padding: 6px 0; }
+  .code-block { background: #090d16; color: #a5f3fc; padding: 12px; border-radius: 8px; border: 1px solid #1e293b; overflow-x: auto; font-family: Consolas, monospace; font-size: 12.5px; line-height: 1.45; margin-top: 6px; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="hero">
+    <div>
+      <h1>BÁO CÁO TRỰC QUAN KIỂM THỬ ĐƠN VỊ HỘP TRẮNG (FEATURE 5 — UNIT TESTING)</h1>
+      <p>Hệ thống Quản lý Phòng khám Đa khoa PhòngKhám+ | Soi mã nguồn Python, Đầu vào, Kỳ vọng SRS & Thực tế</p>
+    </div>
+    <div class="stats">
+      <div class="stat-box"><div class="stat-val">13</div><div class="stat-lbl">Tổng Unit TCs</div></div>
+      <div class="stat-box"><div class="stat-val pass-color">11 (84.6%)</div><div class="stat-lbl">PASSED</div></div>
+      <div class="stat-box"><div class="stat-val fail-color">2 (15.4%)</div><div class="stat-lbl">FAILED (BUG-10, 11)</div></div>
+      <div class="stat-box"><div class="stat-val">227 ms</div><div class="stat-lbl">Tổng thời gian</div></div>
+    </div>
+  </div>
+  <div class="filter-bar">
+    <button class="filter-btn active" onclick="filterCards('ALL', this)">Tất cả (13)</button>
+    <button class="filter-btn" onclick="filterCards('PASSED', this)">Đạt — PASSED (11)</button>
+    <button class="filter-btn" onclick="filterCards('FAILED', this)">Lỗi SRS — FAILED (2)</button>
+  </div>
+  <div id="cards-root">
+    
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[01/13] TC_UNIT_01</span>
+                  <span class="tc-group">5.1 - FIFO Kho &amp; Cảnh báo HSD</span>
+                  <span class="tc-tech">EP (Phân vùng tương đương)</span>
+                </div>
+                <div>
+                  <span class="tc-time">28.4 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_01 [EP]: Phương thức Thuoc.ton_kho() chỉ cộng các lô còn hạn sử dụng (han_su_dung &gt; today), bỏ qua lô hết hạn (REQ-FIFO-01).</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>thuoc/models.py :: Thuoc.ton_kho() &amp; KhoThuoc.con_han()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Lô 1 (Còn hạn +60 ngày): 50 viên
+• Lô 2 (Còn hạn +180 ngày): 100 viên
+• Lô 3 (Đã hết hạn -5 ngày): 30 viên</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Thuoc.ton_kho() chỉ cộng Lô 1 + Lô 2 = 150 viên (bỏ qua 30 viên Lô 3 hết hạn).
+• lo_het_han.con_han() == False.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• Thuoc.ton_kho() trả về 150 viên.
+• lo_het_han.con_han() == False | lo1.con_han() == True (Khớp 100% SRS REQ-FIFO-01).</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/thuoc/models.py :: Thuoc.ton_kho ===
+ 142 |     def ton_kho(self):
+ 143 |         &quot;&quot;&quot;Tính tổng tồn kho còn hạn sử dụng&quot;&quot;&quot;
+ 144 |         kho_con_hang = self.kho_thuoc.filter(han_su_dung__gt=date.today())
+ 145 |         return sum(item.so_luong for item in kho_con_hang)
+
+# === be/thuoc/models.py :: KhoThuoc.con_han ===
+ 201 |     def con_han(self):
+ 202 |         return self.han_su_dung &gt; date.today()
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[02/13] TC_UNIT_02</span>
+                  <span class="tc-group">5.1 - FIFO Kho &amp; Cảnh báo HSD</span>
+                  <span class="tc-tech">BVA (Phân tích giá trị biên)</span>
+                </div>
+                <div>
+                  <span class="tc-time">15.1 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_02 [BVA - Biên ngày]: Lô có han_su_dung == today bị tính là hết hạn (con_han=False); lô ở biên today + 60 ngày bật sap_het_han=True.</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>thuoc/models.py :: KhoThuoc.con_han() &amp; KhoThuoc.sap_het_han()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Lô biên: han_su_dung == today (50 viên)
+• Lô 1: han_su_dung == today + 60 ngày (nằm trong ngưỡng &lt;= 90 ngày)
+• Lô 2: han_su_dung == today + 180 ngày (&gt; 90 ngày)</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Lô có HSD == today bị coi là hết hạn (con_han() == False).
+• Lô +60 ngày bật sap_het_han() == True; Lô +180 ngày sap_het_han() == False.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• lo_hom_nay.con_han() == False; ton_kho() giữ nguyên 80 viên.
+• lo1.sap_het_han() == True; lo2.sap_het_han() == False.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/thuoc/models.py :: KhoThuoc.con_han ===
+ 201 |     def con_han(self):
+ 202 |         return self.han_su_dung &gt; date.today()
+
+# === be/thuoc/models.py :: KhoThuoc.sap_het_han ===
+ 204 |     def sap_het_han(self):
+ 205 |         from datetime import timedelta
+ 206 |         return self.han_su_dung &lt;= date.today() + timedelta(days=90)
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[03/13] TC_UNIT_03</span>
+                  <span class="tc-group">5.1 - FIFO Kho &amp; Cảnh báo HSD</span>
+                  <span class="tc-tech">White-box Logic Path (FIFO)</span>
+                </div>
+                <div>
+                  <span class="tc-time">19.9 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_03 [White-box FIFO]: Hàm _giam_ton_kho_thuoc() ưu tiên trừ hết lô có HSD gần nhất (lo1: 50 viên) rồi mới trừ sang lô kế tiếp (lo2: 20 viên).</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>donhang/views.py :: _giam_ton_kho_thuoc(thuoc, so_luong)</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Lô 1 (HSD gần nhất +60 ngày): 50 viên
+• Lô 2 (HSD xa hơn +180 ngày): 100 viên
+• Gọi _giam_ton_kho_thuoc(thuoc_otc, 70)</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Ưu tiên trừ vét cạn Lô 1 trước (50 -&gt; 0 viên), phần thiếu 20 viên trừ tiếp vào Lô 2 (100 -&gt; 80 viên).
+• Tổng tồn còn lại = 80 viên.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• Hàm trả về True.
+• Lô 1 còn 0 viên, Lô 2 còn 80 viên, Tổng tồn = 80 viên (Đúng chuẩn FIFO Đa lô).</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/donhang/views.py :: _giam_ton_kho_thuoc ===
+ 147 | def _giam_ton_kho_thuoc(thuoc, so_luong_can_tru):
+ 148 |     &quot;&quot;&quot;
+ 149 |     Trừ tồn kho theo từng lô còn hạn (ưu tiên lô hết hạn sớm).
+ 150 |     Trả về True nếu trừ đủ, False nếu thiếu hàng.
+ 151 |     &quot;&quot;&quot;
+ 152 |     con_lai = int(so_luong_can_tru or 0)
+ 153 |     if con_lai &lt;= 0:
+ 154 |         return True
+ 155 | 
+ 156 |     ton_hien_tai = _thuoc_ton_kho(thuoc)
+ 157 |     if ton_hien_tai &lt; con_lai:
+ 158 |         return False
+ 159 | 
+ 160 |     lo_hang = thuoc.kho_thuoc.filter(
+ 161 |         han_su_dung__gt=timezone.now().date(),
+ 162 |         so_luong__gt=0
+ 163 |     ).order_by(&#x27;han_su_dung&#x27;, &#x27;ngay_nhap&#x27;)
+ 164 | 
+ 165 |     for lo in lo_hang:
+ 166 |         if con_lai &lt;= 0:
+ 167 |             break
+ 168 |         muc_tru = min(lo.so_luong, con_lai)
+ 169 |         lo.so_luong -= muc_tru
+ 170 |         lo.save(update_fields=[&#x27;so_luong&#x27;])
+ 171 |         con_lai -= muc_tru
+ 172 | 
+ 173 |     return con_lai == 0
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[04/13] TC_UNIT_04</span>
+                  <span class="tc-group">5.1 - FIFO Kho &amp; Cảnh báo HSD</span>
+                  <span class="tc-tech">BVA (Biên vượt tồn kho)</span>
+                </div>
+                <div>
+                  <span class="tc-time">15.5 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_04 [BVA - Biên tồn kho]: Khi yêu cầu trừ 151 viên (&gt; 150 viên khả dụng), _giam_ton_kho_thuoc() trả về False và giữ nguyên các lô.</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>donhang/views.py :: _giam_ton_kho_thuoc(thuoc, 151)</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Tổng tồn khả dụng: 150 viên (Lô 1: 50 + Lô 2: 100)
+• Gọi _giam_ton_kho_thuoc(thuoc_otc, 151) (vượt biên +1 viên)</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Hàm trả về False ngay lập tức.
+• Không làm thay đổi số lượng của bất kỳ lô nào (Lô 1 = 50, Lô 2 = 100).</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• Hàm trả về False.
+• Bảo toàn nguyên vẹn Lô 1 = 50 viên, Lô 2 = 100 viên.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/donhang/views.py :: _giam_ton_kho_thuoc ===
+ 147 | def _giam_ton_kho_thuoc(thuoc, so_luong_can_tru):
+ 148 |     &quot;&quot;&quot;
+ 149 |     Trừ tồn kho theo từng lô còn hạn (ưu tiên lô hết hạn sớm).
+ 150 |     Trả về True nếu trừ đủ, False nếu thiếu hàng.
+ 151 |     &quot;&quot;&quot;
+ 152 |     con_lai = int(so_luong_can_tru or 0)
+ 153 |     if con_lai &lt;= 0:
+ 154 |         return True
+ 155 | 
+ 156 |     ton_hien_tai = _thuoc_ton_kho(thuoc)
+ 157 |     if ton_hien_tai &lt; con_lai:
+ 158 |         return False
+ 159 | 
+ 160 |     lo_hang = thuoc.kho_thuoc.filter(
+ 161 |         han_su_dung__gt=timezone.now().date(),
+ 162 |         so_luong__gt=0
+ 163 |     ).order_by(&#x27;han_su_dung&#x27;, &#x27;ngay_nhap&#x27;)
+ 164 | 
+ 165 |     for lo in lo_hang:
+ 166 |         if con_lai &lt;= 0:
+ 167 |             break
+ 168 |         muc_tru = min(lo.so_luong, con_lai)
+ 169 |         lo.so_luong -= muc_tru
+ 170 |         lo.save(update_fields=[&#x27;so_luong&#x27;])
+ 171 |         con_lai -= muc_tru
+ 172 | 
+ 173 |     return con_lai == 0
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[05/13] TC_UNIT_05</span>
+                  <span class="tc-group">5.1 - FIFO Kho &amp; Cảnh báo HSD</span>
+                  <span class="tc-tech">White-box Logic Path (FIFO Vaccine)</span>
+                </div>
+                <div>
+                  <span class="tc-time">14.5 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_05 [White-box FIFO]: Hàm tru_ton_vaccine_mot_lieu() trừ đúng 1 liều ở lô hết hạn sớm nhất và trả về metadata lô.</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>thuoc/stock.py :: tru_ton_vaccine_mot_lieu(vaccine)</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Lô Vaccine LO-VC-01 (HSD gần nhất, tồn = 20 liều)
+• Gọi tru_ton_vaccine_mot_lieu(vaccine)</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Trừ đúng 1 liều tại lô LO-VC-01 (20 -&gt; 19 liều) và trả về dict metadata {&#x27;lo_sx&#x27;: &#x27;LO-VC-01&#x27;, ...}.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• Trả về info[&#x27;lo_sx&#x27;] == &#x27;LO-VC-01&#x27;.
+• Tồn kho LO-VC-01 giảm chính xác từ 20 xuống 19 liều.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/thuoc/stock.py :: tru_ton_vaccine_mot_lieu ===
+  11 | def tru_ton_vaccine_mot_lieu(vaccine, *, lo_sx=None, han_su_dung=None):
+  12 |     &quot;&quot;&quot;
+  13 |     Trừ 1 liều vaccine trong kho (FIFO theo ngày nhập nếu không chỉ định lô).
+  14 |     Gọi trong transaction.atomic() và sau select_for_update ở caller hoặc tại đây.
+  15 | 
+  16 |     Trả về dict: lo_sx (str), han_su_dung (date).
+  17 |     &quot;&quot;&quot;
+  18 |     if isinstance(vaccine, str):
+  19 |         vaccine = Vaccine.objects.get(pk=vaccine)
+  20 | 
+  21 |     today = date.today()
+  22 |     qs = (
+  23 |         KhoVaccine.objects.select_for_update()
+  24 |         .filter(vaccine=vaccine, so_luong__gt=0, han_su_dung__gt=today)
+  25 |     )
+  26 |     if lo_sx and han_su_dung:
+  27 |         kho = qs.filter(lo_sx=lo_sx, han_su_dung=han_su_dung).first()
+  28 |         if kho is None:
+  29 |             raise VaccineHetTonError(
+  30 |                 &#x27;Không tìm thấy tồn kho cho vaccine/lô/hạn sử dụng này hoặc số lượng đã hết.&#x27;
+  31 |             )
+  32 |     else:
+  33 |         kho = qs.order_by(&#x27;ngay_nhap&#x27;).first()
+  34 |         if kho is None:
+  35 |             raise VaccineHetTonError(
+  36 |                 &#x27;Vaccine không còn tồn kho còn hạn. Vui lòng nhập kho trước khi xác nhận tiêm.&#x27;
+  37 |             )
+  38 | 
+  39 |     kho.so_luong -= 1
+  40 |     kho.save(update_fields=[&#x27;so_luong&#x27;])
+  41 |     return {&#x27;lo_sx&#x27;: (kho.lo_sx or &#x27;&#x27;).strip(), &#x27;han_su_dung&#x27;: kho.han_su_dung}
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[06/13] TC_UNIT_06</span>
+                  <span class="tc-group">5.1 - FIFO Kho &amp; Cảnh báo HSD</span>
+                  <span class="tc-tech">Exception Handling (Ngoại lệ)</span>
+                </div>
+                <div>
+                  <span class="tc-time">15.7 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_06 [Exception]: Hàm tru_ton_vaccine_mot_lieu() ném ngoại lệ VaccineHetTonError khi tất cả các lô đều hết tồn.</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>thuoc/stock.py :: tru_ton_vaccine_mot_lieu() -&gt; VaccineHetTonError</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Cập nhật tồn kho lô vaccine = 0 liều
+• Gọi tru_ton_vaccine_mot_lieu(vaccine)</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Ném đúng ngoại lệ tùy chỉnh VaccineHetTonError để cảnh báo hết tồn kho.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• Đã bắt được ngoại lệ VaccineHetTonError đúng thiết kế.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/thuoc/stock.py :: tru_ton_vaccine_mot_lieu ===
+  11 | def tru_ton_vaccine_mot_lieu(vaccine, *, lo_sx=None, han_su_dung=None):
+  12 |     &quot;&quot;&quot;
+  13 |     Trừ 1 liều vaccine trong kho (FIFO theo ngày nhập nếu không chỉ định lô).
+  14 |     Gọi trong transaction.atomic() và sau select_for_update ở caller hoặc tại đây.
+  15 | 
+  16 |     Trả về dict: lo_sx (str), han_su_dung (date).
+  17 |     &quot;&quot;&quot;
+  18 |     if isinstance(vaccine, str):
+  19 |         vaccine = Vaccine.objects.get(pk=vaccine)
+  20 | 
+  21 |     today = date.today()
+  22 |     qs = (
+  23 |         KhoVaccine.objects.select_for_update()
+  24 |         .filter(vaccine=vaccine, so_luong__gt=0, han_su_dung__gt=today)
+  25 |     )
+  26 |     if lo_sx and han_su_dung:
+  27 |         kho = qs.filter(lo_sx=lo_sx, han_su_dung=han_su_dung).first()
+  28 |         if kho is None:
+  29 |             raise VaccineHetTonError(
+  30 |                 &#x27;Không tìm thấy tồn kho cho vaccine/lô/hạn sử dụng này hoặc số lượng đã hết.&#x27;
+  31 |             )
+  32 |     else:
+  33 |         kho = qs.order_by(&#x27;ngay_nhap&#x27;).first()
+  34 |         if kho is None:
+  35 |             raise VaccineHetTonError(
+  36 |                 &#x27;Vaccine không còn tồn kho còn hạn. Vui lòng nhập kho trước khi xác nhận tiêm.&#x27;
+  37 |             )
+  38 | 
+  39 |     kho.so_luong -= 1
+  40 |     kho.save(update_fields=[&#x27;so_luong&#x27;])
+  41 |     return {&#x27;lo_sx&#x27;: (kho.lo_sx or &#x27;&#x27;).strip(), &#x27;han_su_dung&#x27;: kho.han_su_dung}
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-fail" data-status="FAILED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[07/13] TC_UNIT_07</span>
+                  <span class="tc-group">5.1 - FIFO Kho &amp; Cảnh báo HSD</span>
+                  <span class="tc-tech">White-box Defect Detection (BUG-10)</span>
+                </div>
+                <div>
+                  <span class="tc-time">16.2 ms</span>
+                  <span class="badge badge-fail">FAILED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_07 [White-box - FAILED vs SRS]: Theo SRS REQ-FIFO-02, Thuoc.sap_het_han() chỉ cảnh báo lô sắp hết hạn khi lô đó còn tồn (so_luong &gt; 0).</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>thuoc/models.py :: Thuoc.sap_het_han()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Lô A (LO-EMPTY-SOON): Đã bán hết (so_luong = 0), HSD còn 10 ngày
+• Lô B (LO-FULL-LONG): Còn 100 viên, HSD còn 365 ngày
+• Gọi t_check.sap_het_han()</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Theo SRS REQ-FIFO-02: Thuoc.sap_het_han() phải trả về False (vì lô sắp hết hạn đã bán hết sạch so_luong = 0, còn lô đang bán còn hạn 365 ngày).</pre>
+                </div>
+                <div class="box box-actual-fail">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• [PHÁT HIỆN BUG-10]: Thuoc.sap_het_han() trả về True! Do truy vấn self.kho.filter(...) trong be/thuoc/models.py thiếu điều kiện so_luong__gt=0.
+• Assertion Trace: AssertionError: True is not false : LỖI SRS (REQ-FIFO-02): Thuoc.sap_het_han() không lọc so_luong__gt=0 nên cảnh báo nhầm cả lô đã bán hết (so_luong=0)!</pre>
+                </div>
+              </div>
+              <details class="code-details" open>
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/thuoc/models.py :: Thuoc.sap_het_han ===
+ 154 |     def sap_het_han(self):
+ 155 |         &quot;&quot;&quot;Kiểm tra thuốc sắp hết hạn (trong vòng 3 tháng)&quot;&quot;&quot;
+ 156 |         from datetime import timedelta
+ 157 |         ba_thang_toi = date.today() + timedelta(days=90)
+ 158 |         return self.kho_thuoc.filter(
+ 159 |             han_su_dung__lte=ba_thang_toi,
+ 160 |             han_su_dung__gt=date.today()
+ 161 |         ).exists()
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[08/13] TC_UNIT_08</span>
+                  <span class="tc-group">5.2 - BHYT, Tiền tệ &amp; Thời gian</span>
+                  <span class="tc-tech">EP &amp; BVA (Chỉ số Y sinh &amp; BHYT)</span>
+                </div>
+                <div>
+                  <span class="tc-time">13.6 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_08 [EP &amp; BVA]: Kiểm tra các hàm tính tuổi, chỉ số BMI, phân loại thể trạng và hạn thẻ BHYT trên model BenhNhan.</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>nguoidung/models.py :: BenhNhan.tuoi(), get_bmi(), kiem_tra_bhyt_con_han()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Bệnh nhân 1: Cao 170cm, Nặng 65kg, BHYT còn hạn
+• Bệnh nhân 2: Thẻ BHYT đã quá hạn</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• BMI = 65 / (1.7 * 1.7) = 22.49 (&#x27;Bình thường&#x27;).
+• bn1.kiem_tra_bhyt_con_han() == True; bn2.kiem_tra_bhyt_con_han() == False.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• BMI = 22.49 (&#x27;Bình thường&#x27;), tuổi &gt;= 30.
+• Kiểm tra hạn thẻ BHYT trả về True/False chính xác.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/nguoidung/models.py :: BenhNhan.get_bmi ===
+ 251 |     def get_bmi(self):
+ 252 |         if self.chieu_cao and self.can_nang:
+ 253 |             height_m = self.chieu_cao / 100
+ 254 |             bmi = self.can_nang / (height_m * height_m)
+ 255 |             return round(bmi, 2)
+ 256 |         return None
+
+# === be/nguoidung/models.py :: BenhNhan.kiem_tra_bhyt_con_han ===
+ 246 |     def kiem_tra_bhyt_con_han(self):
+ 247 |         if self.ngay_het_han_bhyt:
+ 248 |             return self.ngay_het_han_bhyt &gt;= date.today()
+ 249 |         return False
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[09/13] TC_UNIT_09</span>
+                  <span class="tc-group">5.2 - BHYT, Tiền tệ &amp; Thời gian</span>
+                  <span class="tc-tech">Formula Verification (Công thức BHYT)</span>
+                </div>
+                <div>
+                  <span class="tc-time">20.8 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_09 [Formula]: Kiểm tra ChiTietDonThuoc.thanh_tien() và DonThuoc.save() tính đúng số tiền BHYT chi trả (80%) và bệnh nhân đồng chi trả (20%).</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>benhan/models.py :: ChiTietDonThuoc.thanh_tien() &amp; DonThuoc.tinh_tong_tien()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Đơn thuốc có ty_le_bao_hiem = 80%
+• Chi tiết: 10 viên x 18,000đ = 180,000đ</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Tổng tiền = 180,000đ
+• BHYT chi trả (80%) = 144,000đ
+• Bệnh nhân đồng chi trả (20%) = 36,000đ.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• thanh_tien() = 180,000đ | so_tien_bao_hiem = 144,000đ | so_tien_benh_nhan_tra = 36,000đ.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/benhan/models.py :: ChiTietDonThuoc.thanh_tien ===
+ 384 |     def thanh_tien(self):
+ 385 |         from decimal import Decimal
+ 386 |         if self.la_thuoc_mua_ngoai:
+ 387 |             return Decimal(&#x27;0&#x27;)
+ 388 |         gia = self.don_gia_tai_thoi_diem or Decimal(&#x27;0&#x27;)
+ 389 |         return gia * self.so_luong
+
+# === be/benhan/models.py :: DonThuoc.tinh_tong_tien ===
+ 276 |     def tinh_tong_tien(self):
+ 277 |         tong = sum(item.thanh_tien() for item in self.chi_tiet_don_thuoc.all())
+ 278 |         self.tong_tien = tong
+ 279 |         self.save()
+ 280 |         return tong
+
+# === be/benhan/models.py :: DonThuoc.save ===
+ 247 |     def save(self, *args, **kwargs):
+ 248 |         if not self.ma_don:
+ 249 |             from django.db.models import Max
+ 250 |             import datetime
+ 251 |             
+ 252 |             year = datetime.datetime.now().year
+ 253 |             month = datetime.datetime.now().month
+ 254 |             prefix = f&quot;DT{year}{month:02d}&quot;
+ 255 |             
+ 256 |             last_don = DonThuoc.objects.filter(ma_don__startswith=prefix).aggregate(
+ 257 |                 Max(&#x27;ma_don&#x27;)
+ 258 |             )[&#x27;ma_don__max&#x27;]
+ 259 |             
+ 260 |             if last_don:
+ 261 |                 last_number = int(last_don[-4:])
+ 262 |                 new_number = last_number + 1
+ 263 |             else:
+ 264 |                 new_number = 1
+ 265 |             
+ 266 |             self.ma_don = f&quot;{prefix}{new_number:04d}&quot;
+ 267 |         
+ 268 |         if self.ma_bao_hiem and self.ty_le_bao_hiem &gt; 0:
+ 269 |             self.so_tien_bao_hiem = self.tong_tien * self.ty_le_bao_hiem / 100
+ 270 |             self.so_tien_benh_nhan_tra = self.tong_tien - self.so_tien_bao_hiem
+ 271 |         else:
+ 272 |             self.so_tien_benh_nhan_tra = self.tong_tien
+ 273 |         
+ 274 |         super().save(*args, **kwargs)
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[10/13] TC_UNIT_10</span>
+                  <span class="tc-group">5.2 - BHYT, Tiền tệ &amp; Thời gian</span>
+                  <span class="tc-tech">BVA (Biên tiền tệ &amp; Giảm giá)</span>
+                </div>
+                <div>
+                  <span class="tc-time">15.1 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_10 [BVA]: Kiểm tra DonHang.save() tự tính tong_tien = tong_tien_hang + phi_ship - giam_gia và clean() chặn giảm giá vượt tổng.</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>donhang/models.py :: DonHang.save() &amp; DonHang.clean()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• TH1: Tiền hàng 100,000đ + Ship 15,000đ - Giảm giá 5,000đ
+• TH2 (Biên âm): Tiền hàng 50,000đ, Giảm giá 60,000đ (vượt tổng tiền)</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• TH1: Tự động tính tong_tien = 110,000đ.
+• TH2: DonHang.clean() ném ValidationError chặn giảm giá vượt tổng tiền.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• TH1: tong_tien == 110,000đ.
+• TH2: Đã ném ValidationError đúng quy tắc tài chính.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/donhang/models.py :: DonHang.clean ===
+ 256 |     def clean(self):
+ 257 |         if self.tong_tien is not None and self.tong_tien &lt; 0:
+ 258 |             raise ValidationError({&#x27;tong_tien&#x27;: &#x27;Tổng tiền không thể âm&#x27;})
+ 259 |         if (
+ 260 |             self.giam_gia is not None
+ 261 |             and self.tong_tien_hang is not None
+ 262 |             and self.giam_gia &gt; self.tong_tien_hang
+ 263 |         ):
+ 264 |             raise ValidationError({&#x27;giam_gia&#x27;: &#x27;Giảm giá không thể lớn hơn tổng tiền hàng&#x27;})
+
+# === be/donhang/models.py :: DonHang.save ===
+ 210 |     def save(self, *args, **kwargs):
+ 211 |         # FIX: Chỉ tính tong_tien lần đầu tạo mới (adding),
+ 212 |         # không ghi đè khi update để tránh mất dữ liệu đã chỉnh sửa.
+ 213 |         if self._state.adding and not self.tong_tien:
+ 214 |             self.tong_tien = self.tong_tien_hang + self.phi_ship - self.giam_gia
+ 215 |         super().save(*args, **kwargs)
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[11/13] TC_UNIT_11</span>
+                  <span class="tc-group">5.2 - BHYT, Tiền tệ &amp; Thời gian</span>
+                  <span class="tc-tech">BVA (Biên khung giờ Ca làm việc)</span>
+                </div>
+                <div>
+                  <span class="tc-time">14.8 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_11 [BVA - Biên giờ]: Kiểm tra phan_ca_tu_thoi_diem() tại các mốc biên SANG/CHIEU/TOI và bounds_for_local_days().</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>nguoidung/doctor_schedule.py :: phan_ca_tu_thoi_diem() &amp; bounds_for_local_days()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Mốc giờ: 08:30 (Sáng), 14:15 (Chiều), 19:00 (Tối)
+• Khoảng ngày: 2026-11-01 đến 2026-11-05</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Trả về đúng mã ca &#x27;SANG&#x27;, &#x27;CHIEU&#x27;, &#x27;TOI&#x27; và chuẩn hóa mốc datetime đầu ngày / cuối ngày.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• phan_ca_tu_thoi_diem() trả về &#x27;SANG&#x27;, &#x27;CHIEU&#x27;, &#x27;TOI&#x27; chính xác; bounds_for_local_days() hợp lệ.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/nguoidung/doctor_schedule.py :: phan_ca_tu_thoi_diem ===
+  20 | def phan_ca_tu_thoi_diem(dt=None):
+  21 |     &quot;&quot;&quot;Suy ra ca làm từ datetime (aware → local).&quot;&quot;&quot;
+  22 |     if dt is None:
+  23 |         dt = timezone.now()
+  24 |     if timezone.is_aware(dt):
+  25 |         dt = timezone.localtime(dt)
+  26 |     h = dt.hour
+  27 |     if h &lt; 12:
+  28 |         return CA_SANG
+  29 |     if h &lt; 18:
+  30 |         return CA_CHIEU
+  31 |     return CA_TOI
+
+# === be/phongkham/time_utils.py :: bounds_for_local_days ===
+  28 | def bounds_for_local_days(tu_ngay: Union[date, str], den_ngay: Union[date, str]) -&gt; Tuple[datetime, datetime]:
+  29 |     &quot;&quot;&quot;Đầu ngày tu → cuối ngày den (Asia/Ho_Chi_Minh).&quot;&quot;&quot;
+  30 |     tz = _local_tz()
+  31 |     a = _as_date(tu_ngay)
+  32 |     b = _as_date(den_ngay)
+  33 |     start = datetime.combine(a, time.min, tzinfo=tz)
+  34 |     end = datetime.combine(b, time.max, tzinfo=tz)
+  35 |     return start, end
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-pass" data-status="PASSED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[12/13] TC_UNIT_12</span>
+                  <span class="tc-group">5.2 - BHYT, Tiền tệ &amp; Thời gian</span>
+                  <span class="tc-tech">BVA (Biên sinh học Bệnh nhân)</span>
+                </div>
+                <div>
+                  <span class="tc-time">16.3 ms</span>
+                  <span class="badge badge-pass">PASSED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_12 [BVA - Biên sinh học]: Kiểm tra BenhNhan.clean() chặn ngày sinh ở tương lai và chặn chiều cao خارج ngưỡng [30..250 cm].</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>nguoidung/models.py :: BenhNhan.clean()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Gán chiều cao bệnh nhân vượt ngưỡng sinh học: chieu_cao = 280.00 cm (&gt; biên tối đa 250 cm)</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Phương thức BenhNhan.clean() ném ngoại lệ ValidationError chặn dữ liệu bất thường.</pre>
+                </div>
+                <div class="box box-actual-pass">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• Đã bắt được ValidationError khi chieu_cao = 280.00 cm.</pre>
+                </div>
+              </div>
+              <details class="code-details" >
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/nguoidung/models.py :: BenhNhan.clean ===
+ 271 |     def clean(self):
+ 272 |         &quot;&quot;&quot;Validate dữ liệu trước khi save&quot;&quot;&quot;
+ 273 |         super().clean()
+ 274 |         
+ 275 |         # Validate BHYT dates
+ 276 |         if self.ngay_dang_ky_bhyt and self.ngay_het_han_bhyt:
+ 277 |             if self.ngay_het_han_bhyt &lt;= self.ngay_dang_ky_bhyt:
+ 278 |                 raise ValidationError({
+ 279 |                     &#x27;ngay_het_han_bhyt&#x27;: &#x27;Ngày hết hạn phải sau ngày đăng ký&#x27;
+ 280 |                 })
+ 281 |         
+ 282 |         # Validate ngày sinh không phải tương lai
+ 283 |         if self.ngay_sinh and self.ngay_sinh &gt; date.today():
+ 284 |             raise ValidationError({
+ 285 |                 &#x27;ngay_sinh&#x27;: &#x27;Ngày sinh không thể trong tương lai&#x27;
+ 286 |             })
+ 287 |         
+ 288 |         # Validate chiều cao, cân nặng hợp lý
+ 289 |         if self.chieu_cao and (self.chieu_cao &lt; 30 or self.chieu_cao &gt; 250):
+ 290 |             raise ValidationError({
+ 291 |                 &#x27;chieu_cao&#x27;: &#x27;Chiều cao không hợp lý (30-250 cm)&#x27;
+ 292 |             })
+ 293 |         
+ 294 |         if self.can_nang and (self.can_nang &lt; 2 or self.can_nang &gt; 300):
+ 295 |             raise ValidationError({
+ 296 |                 &#x27;can_nang&#x27;: &#x27;Cân nặng không hợp lý (2-300 kg)&#x27;
+ 297 |             })
+</pre>
+              </details>
+            </div>
+            
+            <div class="tc-card card-fail" data-status="FAILED">
+              <div class="tc-header">
+                <div>
+                  <span class="tc-id">[13/13] TC_UNIT_13</span>
+                  <span class="tc-group">5.2 - BHYT, Tiền tệ &amp; Thời gian</span>
+                  <span class="tc-tech">White-box Defect Detection (BUG-11)</span>
+                </div>
+                <div>
+                  <span class="tc-time">21.1 ms</span>
+                  <span class="badge badge-fail">FAILED</span>
+                </div>
+              </div>
+              <div class="tc-title">TC_UNIT_13 [White-box - FAILED vs SRS]: Theo SRS UC007/REQ-RX-04, khi tạo DonThuoc cho bệnh nhân có BHYT còn hạn phải tự động lấy mã và tỷ lệ BHYT.</div>
+              <div class="tc-target">Hàm mục tiêu (White-box Target): <code>benhan/models.py :: DonThuoc.save() &amp; tinh_tong_tien()</code></div>
+              <div class="tc-grid">
+                <div class="box box-input">
+                  <div class="box-title">1. Dữ liệu đầu vào (Test Input)</div>
+                  <pre>• Bệnh nhân bn1 có thẻ BHYT còn hạn (ma_bhyt=&#x27;DN4010012345678&#x27;, mức hưởng 80%)
+• Tạo DonThuoc(ho_so=hs, benh_nhan=bn1, bac_si=bacsi1) và gọi tinh_tong_tien()</pre>
+                </div>
+                <div class="box box-expected">
+                  <div class="box-title">2. Kết quả kỳ vọng (Expected SRS)</div>
+                  <pre>• Theo SRS UC007/REQ-RX-04: DonThuoc.save() phải tự động lấy mã BHYT &amp; tỷ lệ hưởng từ hồ sơ BenhNhan còn hạn -&gt; so_tien_bao_hiem &gt; 0.</pre>
+                </div>
+                <div class="box box-actual-fail">
+                  <div class="box-title">3. Kết quả thực tế (Actual Output)</div>
+                  <pre>• [PHÁT HIỆN BUG-11]: so_tien_bao_hiem = 0.00đ! Do DonThuoc.save() trong be/benhan/models.py không tự động đồng bộ thông tin BHYT từ model BenhNhan.
+• Assertion Trace: AssertionError: Decimal(&#x27;0.00&#x27;) not greater than Decimal(&#x27;0.00&#x27;) : LỖI SRS (UC007/REQ-RX-04): DonThuoc không tự động đồng bộ thông tin thẻ BHYT còn hạn từ hồ sơ BenhNhan nên tính so_tien_bao_hiem = 0!</pre>
+                </div>
+              </div>
+              <details class="code-details" open>
+                <summary>Soi mã nguồn Hộp trắng (White-Box Python Source Code) — Nhấn để đóng/mở</summary>
+                <pre class="code-block"># === be/benhan/models.py :: DonThuoc.save ===
+ 247 |     def save(self, *args, **kwargs):
+ 248 |         if not self.ma_don:
+ 249 |             from django.db.models import Max
+ 250 |             import datetime
+ 251 |             
+ 252 |             year = datetime.datetime.now().year
+ 253 |             month = datetime.datetime.now().month
+ 254 |             prefix = f&quot;DT{year}{month:02d}&quot;
+ 255 |             
+ 256 |             last_don = DonThuoc.objects.filter(ma_don__startswith=prefix).aggregate(
+ 257 |                 Max(&#x27;ma_don&#x27;)
+ 258 |             )[&#x27;ma_don__max&#x27;]
+ 259 |             
+ 260 |             if last_don:
+ 261 |                 last_number = int(last_don[-4:])
+ 262 |                 new_number = last_number + 1
+ 263 |             else:
+ 264 |                 new_number = 1
+ 265 |             
+ 266 |             self.ma_don = f&quot;{prefix}{new_number:04d}&quot;
+ 267 |         
+ 268 |         if self.ma_bao_hiem and self.ty_le_bao_hiem &gt; 0:
+ 269 |             self.so_tien_bao_hiem = self.tong_tien * self.ty_le_bao_hiem / 100
+ 270 |             self.so_tien_benh_nhan_tra = self.tong_tien - self.so_tien_bao_hiem
+ 271 |         else:
+ 272 |             self.so_tien_benh_nhan_tra = self.tong_tien
+ 273 |         
+ 274 |         super().save(*args, **kwargs)
+
+# === be/benhan/models.py :: DonThuoc.tinh_tong_tien ===
+ 276 |     def tinh_tong_tien(self):
+ 277 |         tong = sum(item.thanh_tien() for item in self.chi_tiet_don_thuoc.all())
+ 278 |         self.tong_tien = tong
+ 279 |         self.save()
+ 280 |         return tong
+</pre>
+              </details>
+            </div>
+            
+  </div>
+</div>
+<script>
+function filterCards(status, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.tc-card').forEach(card => {
+    if (status === 'ALL' || card.dataset.status === status) {
+      card.style.display = 'block';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

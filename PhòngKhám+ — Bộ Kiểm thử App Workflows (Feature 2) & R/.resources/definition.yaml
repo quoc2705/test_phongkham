@@ -1,0 +1,13 @@
+$kind: collection
+name: PhòngKhám+ — Bộ Kiểm thử App Workflows (Feature 2) & REST API RBAC (Feature 4)
+description: "Bộ Postman Collection v2.1 tự động kiểm thử luồng Ứng dụng (Feature 2: UC005..UC010 - 16 TCs) và REST API & Phân quyền RBAC (Feature 4: UC009, UC011..013 - 14 TCs) trên hệ thống PhòngKhám+ (http://127.0.0.1:8000)."
+variables:
+  base_url: http://127.0.0.1:8000
+  token_bacsi1: ""
+  token_letan: ""
+  token_banthuoc: ""
+  token_ketoan: ""
+  token_bn1: ""
+  lich_hen_id: ""
+  ho_so_id: ""
+  don_hang_id: ""

@@ -1,0 +1,82 @@
+Vai trò	Tên đăng nhập	Mật khẩu	Ghi chú / Chức năng chính
+Quản trị viên (Admin)	admin	Admin@123	Quản lý nhân sự, danh mục thuốc/vaccine, thông báo, nhật ký hệ thống
+Bác sĩ Nội khoa	bacsi	Bacsi@123	BS. Nguyễn Minh Tuấn (P01) — Đã có lịch khám hôm nay & toa thuốc mẫu
+Bác sĩ Tiêm chủng	bacsi2	Bacsi@123	BS. Trần Thu Hà (P02) — Đã có lịch hẹn tiêm chủng chờ khám sàng lọc
+Lễ tân	letan	Letan@123	Tiếp đón walk-in, lấy số thứ tự, điều phối bác sĩ theo ca trực
+Nhân viên Bán thuốc	banthuoc	Banthuoc@123	Bán thuốc theo đơn bác sĩ hoặc bán lẻ tại quầy
+Kế toán & Kho dược	ketoan	Ketoan@123	Thu phí, xem báo cáo doanh thu, quản lý & duyệt nhập/xuất kho thuốc/vaccine
+Bệnh nhân 1	benhnhan	Benhnhan@123	Võ Văn Khang — Có sẵn hồ sơ bệnh án, đơn thuốc, lịch hẹn khám
+Bệnh nhân 2	benhnhan2	Benhnhan@123	Đặng Ngọc Lan — Có sẵn lịch hẹn tiêm chủng hôm nay
+💻 3. Hướng dẫn tự chạy lại chương trình cho các lần sau
+
+Tôi đã cấu hình sẵn tệp môi trường be/.env và settings.py dùng SQLite (be/db.sqlite3) và InMemoryChannelLayer để bạn chạy được ngay mà không bắt buộc phải bật MySQL hay Redis.
+
+Cách 1: Chạy nhanh bằng 1 cú nhấp chuột
+
+Chạy trực tiếp file run.bat ở thư mục gốc của dự án (nhấp đúp vào run.bat hoặc gõ .\run.bat trong Terminal).
+
+Cách 2: Chạy bằng lệnh trong Terminal (PowerShell / CMD)
+
+Mở Terminal tại thư mục gốc của dự án và chạy:
+
+powershell
+# 1. Chạy server (môi trường ảo .venv đã được cài đặt sẵn)
+.\.venv\Scripts\python.exe be\manage.py runserver 127.0.0.1:8000
+
+Nếu sau này bạn muốn tạo lại dữ liệu mẫu (hoặc nạp lại thuốc/vaccine):
+
+powershell
+# Nạp lại toàn bộ dữ liệu mẫu (Tài khoản, Ca trực, Thuốc/Vaccine, Lịch hẹn, Bệnh án)
+.\.venv\Scripts\python.exe be\manage.py seed_sample_data
+# Hoặc chỉ nạp lại dữ liệu Thuốc & Vaccine
+.\.venv\Scripts\python.exe be\manage.py seed_thuoc_vaccine
+
+.venv\Scripts\python -X utf8 be\manage.py test test_feature1_web test_feature2_app test_feature3_performance test_feature4_api test_feature5_unit -v 2
+
+2. Các lệnh chạy thực tế từng công cụ (đã kiểm chứng 100%)
+
+Chạy toàn bộ 73 Test Cases bằng Pytest (pytest-django):
+
+powershell
+.venv\Scripts\pytest
+
+(Kết quả: collected 73 items 
+→
+→ 62 passed, 11 failed trong 11.98s)
+
+Chạy toàn bộ 73 Test Cases bằng Django TestCase (unittest):
+
+powershell
+.venv\Scripts\python -X utf8 be\manage.py test test_feature1_web test_feature2_app test_feature3_performance test_feature4_api test_feature5_unit -v 2
+
+Chạy kiểm thử tự động trình duyệt Web SPA bằng Selenium WebDriver:
+
+powershell
+.venv\Scripts\python -X utf8 be\selenium_web_runner.py --headless
+
+(Bỏ --headless nếu muốn mở cửa sổ Chrome/Edge thật để trình chiếu thao tác điền form)
+
+Chạy kiểm thử chịu tải nhiều người truy cập bằng Locust hoặc JMeter:
+
+Locust Web UI (mở giao diện biểu đồ tải tại http://localhost:8089
+):
+powershell
+.venv\Scripts\locust -f be/locustfile.py --host=http://127.0.0.1:8000
+Locust Headless (25 Virtual Users đồng thời trong 30 giây):
+powershell
+.venv\Scripts\locust -f be/locustfile.py --headless -u 25 -r 5 -t 30s --host=http://127.0.0.1:8000
+Apache JMeter: Mở file PhongKham_JMeter_LoadTest.jmx trong JMeter GUI và nhấn Start.
+
+Kiểm thử App & API bằng Postman và Desktop App GUI:
+
+Postman: Mở Postman 
+→
+→ Chọn Import 
+→
+→ Chọn file PhongKham_Postman_Collection.json 
+→
+→ Nhấn Run Collection.
+Desktop App Giả lập (Tkinter):
+powershell
+.venv\Scripts\python -X utf8 app_desktop_phongkham.py
+(Hoặc nhấp đúp vào file chay_app_desktop.bat)

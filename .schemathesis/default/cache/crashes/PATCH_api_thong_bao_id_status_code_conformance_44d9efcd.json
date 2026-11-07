@@ -1,0 +1,125 @@
+{
+  "operation": "PATCH /api/thong-bao/{id}/",
+  "method": "PATCH",
+  "path_template": "/api/thong-bao/{id}/",
+  "fingerprint": "44d9efcd",
+  "case_id": "ff4Nrt",
+  "code_sample": "curl -X PATCH -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' -H 'Content-Type: multipart/form-data; boundary=e231d32a1e9725e2bab5c9bc4b79f25e' -d $'--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"loai\"\\r\\n\\r\\nHE_THONG\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"tieu_de\"\\r\\n\\r\\n\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"noi_dung\"\\r\\n\\r\\n\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"du_lieu_lien_quan\"\\r\\n\\r\\nnull\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"da_xem\"\\r\\n\\r\\nfalse\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"ngay_xem\"\\r\\n\\r\\n2000-01-01T00:00:00Z\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"nguoi_nhan\"\\r\\n\\r\\n\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e--\\r\\n' http://127.0.0.1:8000/api/thong-bao/0/\n\n\u26a0\ufe0f  Request body contains non-printable characters. Actual value: b'--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"loai\"\\r\\n\\r\\nHE_THONG\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"tieu_de\"\\r\\n\\r\\n\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"noi_dung\"\\r\\n\\r\\n\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"du_lieu_lien_quan\"\\r\\n\\r\\nnull\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"da_xem\"\\r\\n\\r\\nfalse\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"ngay_xem\"\\r\\n\\r\\n2000-01-01T00:00:00Z\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e\\r\\nContent-Disposition: form-data; name=\"nguoi_nhan\"\\r\\n\\r\\n\\r\\n--e231d32a1e9725e2bab5c9bc4b79f25e--\\r\\n'",
+  "sequence": [
+    {
+      "method": "PATCH",
+      "url": "http://127.0.0.1:8000/api/thong-bao/0/",
+      "url_template": "http://127.0.0.1:8000/api/thong-bao/{id}/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "ff4Nrt",
+        "Cookie": "[Filtered]",
+        "Content-Length": "702",
+        "Content-Type": "multipart/form-data; boundary=b7d12937ee088f4c331a9281eee9a4f5"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 6.509991362690926e-05,
+          "mode": "negative"
+        },
+        "components": {
+          "PATH": "positive",
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "BODY": "negative"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "nguoi_nhan: Value not matching the 'uuid' format",
+            "location": "/properties/nguoi_nhan/format",
+            "parameter": "multipart/form-data",
+            "parameter_location": "BODY",
+            "scenario": "invalid_format"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [
+          [
+            "path",
+            "id"
+          ]
+        ],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "PATH": {
+            "id": "0"
+          },
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/thong-bao/{id}/",
+      "path_parameters": {
+        "id": "0"
+      },
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "json",
+        "value": {
+          "loai": "HE_THONG",
+          "tieu_de": "",
+          "noi_dung": "",
+          "du_lieu_lien_quan": null,
+          "da_xem": false,
+          "ngay_xem": "2000-01-01T00:00:00Z",
+          "nguoi_nhan": ""
+        }
+      },
+      "media_type": "multipart/form-data",
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "PATCH /api/thong-bao/{id}/"
+    }
+  ],
+  "aliases": [
+    "MfAmFL"
+  ]
+}

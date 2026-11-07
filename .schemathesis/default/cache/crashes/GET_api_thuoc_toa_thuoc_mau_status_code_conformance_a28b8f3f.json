@@ -1,0 +1,110 @@
+{
+  "operation": "GET /api/thuoc/toa-thuoc-mau/",
+  "method": "GET",
+  "path_template": "/api/thuoc/toa-thuoc-mau/",
+  "fingerprint": "a28b8f3f",
+  "case_id": "8943Hy",
+  "code_sample": "curl -X GET -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' 'http://127.0.0.1:8000/api/thuoc/toa-thuoc-mau/?search=&x-schemathesis-unknown-property=42'",
+  "sequence": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/api/thuoc/toa-thuoc-mau/?search=&x-schemathesis-unknown-property=42",
+      "url_template": "http://127.0.0.1:8000/api/thuoc/toa-thuoc-mau/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "8943Hy",
+        "Cookie": "[Filtered]"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, POST, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 0.00016029994003474712,
+          "mode": "negative"
+        },
+        "components": {
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "QUERY": "negative"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Object with unexpected properties",
+            "location": null,
+            "parameter": null,
+            "parameter_location": "QUERY",
+            "scenario": "object_unexpected_properties"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          },
+          "QUERY": {
+            "search": "",
+            "x-schemathesis-unknown-property": 42
+          }
+        }
+      },
+      "path": "/api/thuoc/toa-thuoc-mau/",
+      "path_parameters": {},
+      "query": {
+        "search": "",
+        "x-schemathesis-unknown-property": "42"
+      },
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "GET /api/thuoc/toa-thuoc-mau/"
+    }
+  ],
+  "aliases": [
+    "2sEul3"
+  ]
+}

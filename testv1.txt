@@ -1,0 +1,111 @@
+================================================================================
+[BẢN 1 - testv1.txt] TỔNG HỢP LỆNH CHẠY TẤT CẢ CÁC LOẠI KIỂM THỬ & CÔNG CỤ TƯƠNG ỨNG
+Tổng số: 73 Test Cases (5 Features / 10 Chức năng) -> 62 Passed (84.93%), 11 Failed (15.07%)
+(Lưu ý: Mở Terminal / PowerShell tại thư mục gốc: Maneger-Medical-System-main)
+================================================================================
+
+--------------------------------------------------------------------------------
+I. CHẠY TỔNG HỢP TOÀN BỘ 73 TEST CASES (5 FEATURES CÙNG LÚC)
+--------------------------------------------------------------------------------
+1. Bằng công cụ Pytest (pytest + pytest-django):
+.venv\Scripts\pytest
+
+2. Bằng công cụ Django TestCase (unittest):
+.venv\Scripts\python -X utf8 be\manage.py test test_feature1_web test_feature2_app test_feature3_performance test_feature4_api test_feature5_unit -v 2
+
+
+--------------------------------------------------------------------------------
+II. LỆNH CHẠY TỪNG LOẠI KIỂM THỬ ỨNG VỚI CÔNG CỤ CỦA NÓ
+--------------------------------------------------------------------------------
+
+================================================================================
+1. WEB TESTING (Kiểm thử giao diện website, nút bấm, form, điều hướng trên trình duyệt)
+   - Công cụ: Selenium WebDriver + Pytest / Django Test Client
+   - Quy mô: 20 Test Cases (TC_WEB_01 .. TC_WEB_20) -> 17 Passed, 3 Failed
+================================================================================
+# a) Chạy 20 Test Cases Web bằng Pytest:
+.venv\Scripts\pytest be/test_feature1_web.py
+
+# b) Chạy 20 Test Cases Web bằng Django TestCase:
+.venv\Scripts\python -X utf8 be\manage.py test test_feature1_web -v 2
+
+# c) Chạy kiểm thử tự động trên trình duyệt thật bằng Selenium WebDriver (Headless):
+.venv\Scripts\python -X utf8 be\selenium_web_runner.py --headless
+
+# d) Chạy Selenium mở trực tiếp cửa sổ trình duyệt Chrome/Edge để quan sát thao tác:
+.venv\Scripts\python -X utf8 be\selenium_web_runner.py
+
+
+================================================================================
+2. APP TESTING (Kiểm thử ứng dụng, chức năng Bác sĩ khám bệnh & Bệnh nhân mua thuốc)
+   - Công cụ: Desktop App Giả lập (Tkinter GUI) + Postman + Pytest / DRF APIClient
+   - Quy mô: 16 Test Cases (TC_APP_01 .. TC_APP_16) -> 13 Passed, 3 Failed
+================================================================================
+# a) Mở giao diện ứng dụng Desktop App PhòngKhám+ (Tkinter GUI):
+.venv\Scripts\python -X utf8 app_desktop_phongkham.py
+# (Hoặc nhấp đúp chuột vào file: chay_app_desktop.bat)
+
+# b) Chạy tự động 16 Test Cases ngay trên engine của Desktop App (--self-test):
+.venv\Scripts\python -X utf8 app_desktop_phongkham.py --self-test
+
+# c) Chạy 16 Test Cases App bằng Pytest:
+.venv\Scripts\pytest be/test_feature2_app.py
+
+# d) Chạy 16 Test Cases App bằng Django TestCase:
+.venv\Scripts\python -X utf8 be\manage.py test test_feature2_app -v 2
+
+# e) Chạy bằng công cụ Postman:
+#    Mở ứng dụng Postman -> Chọn Import -> Chọn file: PhongKham_Postman_Collection.json -> Nhấn "Run Collection"
+
+
+================================================================================
+3. PERFORMANCE TESTING (Kiểm thử tốc độ phản hồi, khả năng chịu tải, nhiều người truy cập)
+   - Công cụ: Locust + Apache JMeter + Pytest / Atomic Concurrency Harness
+   - Quy mô: 10 Test Cases (TC_PERF_01 .. TC_PERF_10) -> 9 Passed, 1 Failed
+================================================================================
+# a) Chạy 10 Test Cases Performance & Concurrency bằng Pytest:
+.venv\Scripts\pytest be/test_feature3_performance.py
+
+# b) Chạy 10 Test Cases Performance & Concurrency bằng Django TestCase:
+.venv\Scripts\python -X utf8 be\manage.py test test_feature3_performance -v 2
+
+# c) Chạy công cụ chịu tải Locust (Giao diện Web UI tại http://localhost:8089):
+#    Bước 1 (Terminal 1 - Bật server Django): .venv\Scripts\python be\manage.py runserver 127.0.0.1:8000
+#    Bước 2 (Terminal 2 - Chạy Locust):
+.venv\Scripts\locust -f be/locustfile.py --host=http://127.0.0.1:8000
+
+# d) Chạy công cụ Locust ở chế độ tự động Headless (25 người dùng đồng thời trong 30 giây):
+.venv\Scripts\locust -f be/locustfile.py --headless -u 25 -r 5 -t 30s --host=http://127.0.0.1:8000 --html=locust_report.html
+
+# e) Chạy công cụ Apache JMeter:
+#    Mở Apache JMeter -> File -> Open -> Chọn file: PhongKham_JMeter_LoadTest.jmx -> Nhấn nút Start (mũi tên xanh)
+#    (Hoặc chạy dòng lệnh JMeter CLI nếu đã cài JMeter vào PATH):
+jmeter -n -t PhongKham_JMeter_LoadTest.jmx -l jmeter_results.jtl
+
+
+================================================================================
+4. API & RBAC TESTING (Kiểm thử REST API, phân quyền 6 vai trò & hợp đồng dữ liệu JSON)
+   - Công cụ: Postman + Pytest + DRF APIClient
+   - Quy mô: 14 Test Cases (TC_API_01 .. TC_API_14) -> 12 Passed, 2 Failed
+================================================================================
+# a) Chạy 14 Test Cases API & RBAC bằng Pytest:
+.venv\Scripts\pytest be/test_feature4_api.py
+
+# b) Chạy 14 Test Cases API & RBAC bằng Django TestCase:
+.venv\Scripts\python -X utf8 be\manage.py test test_feature4_api -v 2
+
+# c) Chạy bằng công cụ Postman:
+#    Mở Postman -> Import file: PhongKham_Postman_Collection.json -> Chạy thư mục "2. Feature 4 - REST API & RBAC"
+
+
+================================================================================
+5. UNIT TESTING (Kiểm thử hộp trắng từng hàm, phương thức, class trong Django)
+   - Công cụ: Pytest (pytest-django) + Django TestCase (unittest)
+   - Quy mô: 13 Test Cases (TC_UNIT_01 .. TC_UNIT_13) -> 11 Passed, 2 Failed
+================================================================================
+# a) Chạy 13 Test Cases Unit Testing bằng Pytest:
+.venv\Scripts\pytest be/test_feature5_unit.py
+
+# b) Chạy 13 Test Cases Unit Testing bằng Django TestCase (unittest):
+.venv\Scripts\python -X utf8 be\manage.py test test_feature5_unit -v 2
+

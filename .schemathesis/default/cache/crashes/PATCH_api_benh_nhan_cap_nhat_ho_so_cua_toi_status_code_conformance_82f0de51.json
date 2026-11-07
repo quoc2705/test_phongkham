@@ -1,0 +1,129 @@
+{
+  "operation": "PATCH /api/benh-nhan/cap_nhat_ho_so_cua_toi/",
+  "method": "PATCH",
+  "path_template": "/api/benh-nhan/cap_nhat_ho_so_cua_toi/",
+  "fingerprint": "82f0de51",
+  "case_id": "iMBgyW",
+  "code_sample": "curl -X PATCH -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' -H 'Content-Type: multipart/form-data; boundary=dd0d7101f38a6f0eee1bd7a7eb2dbc8a' -d $'--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"nguoi_dung\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ma_benh_nhan\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ngay_sinh\"\\r\\n\\r\\n2000-01-01\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"gioi_tinh\"\\r\\n\\r\\nNAM\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"dia_chi\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"so_bao_hiem\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ngay_dang_ky_bhyt\"\\r\\n\\r\\n2000-01-01\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ngay_het_han_bhyt\"\\r\\n\\r\\n2000-01-01\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"noi_dang_ky_kham_chua\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"nhom_mau\"\\r\\n\\r\\nA+\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"chieu_cao\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"can_nang\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"tien_su_benh\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"tien_su_di_ung\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"benh_man_tinh\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"nghe_nghiep\"\\r\\n\\r\\nKHAC\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"noi_lam_viec\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"tinh_trang_hon_nhan\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ho_ten_nguoi_than\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"quan_he_nguoi_than\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"sdt_nguoi_than\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"updated_at\"\\r\\n\\r\\n{}\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a--\\r\\n' http://127.0.0.1:8000/api/benh-nhan/cap_nhat_ho_so_cua_toi/\n\n\u26a0\ufe0f  Request body contains non-printable characters. Actual value: b'--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"nguoi_dung\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ma_benh_nhan\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ngay_sinh\"\\r\\n\\r\\n2000-01-01\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"gioi_tinh\"\\r\\n\\r\\nNAM\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"dia_chi\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"so_bao_hiem\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ngay_dang_ky_bhyt\"\\r\\n\\r\\n2000-01-01\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ngay_het_han_bhyt\"\\r\\n\\r\\n2000-01-01\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"noi_dang_ky_kham_chua\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"nhom_mau\"\\r\\n\\r\\nA+\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"chieu_cao\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"can_nang\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"tien_su_benh\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"tien_su_di_ung\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"benh_man_tinh\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"nghe_nghiep\"\\r\\n\\r\\nKHAC\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"noi_lam_viec\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"tinh_trang_hon_nhan\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"ho_ten_nguoi_than\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"quan_he_nguoi_than\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"sdt_nguoi_than\"\\r\\n\\r\\n\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a\\r\\nContent-Disposition: form-data; name=\"updated_at\"\\r\\n\\r\\n{}\\r\\n--dd0d7101f38a6f0eee1bd7a7eb2dbc8a--\\r\\n'",
+  "sequence": [
+    {
+      "method": "PATCH",
+      "url": "http://127.0.0.1:8000/api/benh-nhan/cap_nhat_ho_so_cua_toi/",
+      "url_template": "http://127.0.0.1:8000/api/benh-nhan/cap_nhat_ho_so_cua_toi/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "iMBgyW",
+        "Cookie": "[Filtered]",
+        "Content-Length": "2175",
+        "Content-Type": "multipart/form-data; boundary=1bb4c26e18fdac434bf18c8642c5403c"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "PATCH, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 4.910002462565899e-05,
+          "mode": "negative"
+        },
+        "components": {
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "BODY": "negative"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "updated_at: Value is not allowed",
+            "location": "/properties/updated_at/not",
+            "parameter": "multipart/form-data",
+            "parameter_location": "BODY",
+            "scenario": "matches_not_schema"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/benh-nhan/cap_nhat_ho_so_cua_toi/",
+      "path_parameters": {},
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "json",
+        "value": {
+          "nguoi_dung": "e3e70682-c209-1cac-a29f-6fbed82c07cd",
+          "ma_benh_nhan": "",
+          "ngay_sinh": "2000-01-01",
+          "gioi_tinh": "NAM",
+          "dia_chi": "",
+          "so_bao_hiem": "",
+          "ngay_dang_ky_bhyt": "2000-01-01",
+          "ngay_het_han_bhyt": "2000-01-01",
+          "noi_dang_ky_kham_chua": "",
+          "nhom_mau": "A+",
+          "chieu_cao": "",
+          "can_nang": "",
+          "tien_su_benh": "",
+          "tien_su_di_ung": "",
+          "benh_man_tinh": "",
+          "nghe_nghiep": "KHAC",
+          "noi_lam_viec": "",
+          "tinh_trang_hon_nhan": "",
+          "ho_ten_nguoi_than": "",
+          "quan_he_nguoi_than": "",
+          "sdt_nguoi_than": "",
+          "updated_at": {}
+        }
+      },
+      "media_type": "multipart/form-data",
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "PATCH /api/benh-nhan/cap_nhat_ho_so_cua_toi/"
+    }
+  ],
+  "aliases": [
+    "VZPFBE"
+  ]
+}

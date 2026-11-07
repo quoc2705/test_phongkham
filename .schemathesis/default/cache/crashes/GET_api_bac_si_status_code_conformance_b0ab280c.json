@@ -1,0 +1,118 @@
+{
+  "operation": "GET /api/bac-si/",
+  "method": "GET",
+  "path_template": "/api/bac-si/",
+  "fingerprint": "b0ab280c",
+  "case_id": "Y5AP6H",
+  "code_sample": "curl -X GET -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' 'http://127.0.0.1:8000/api/bac-si/?chuc_vu=BAC_SI_CHU_NHIEM&chuyen_khoa=&is_working=true&ordering=&page=0&search='",
+  "sequence": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/api/bac-si/?chuc_vu=BAC_SI_CHU_NHIEM&chuyen_khoa=&is_working=true&ordering=&page=0&search=",
+      "url_template": "http://127.0.0.1:8000/api/bac-si/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "Y5AP6H",
+        "Cookie": "[Filtered]"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, POST, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 1.3499986380338669e-05,
+          "mode": "positive"
+        },
+        "components": {
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "QUERY": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "All required and 6 optional properties",
+            "location": null,
+            "parameter": null,
+            "parameter_location": "QUERY",
+            "scenario": "object_required_and_optional"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          },
+          "QUERY": {
+            "chuc_vu": "BAC_SI_CHU_NHIEM",
+            "chuyen_khoa": "",
+            "is_working": true,
+            "ordering": "",
+            "page": 0,
+            "search": ""
+          }
+        }
+      },
+      "path": "/api/bac-si/",
+      "path_parameters": {},
+      "query": {
+        "chuc_vu": "BAC_SI_CHU_NHIEM",
+        "chuyen_khoa": "",
+        "is_working": "true",
+        "ordering": "",
+        "page": "0",
+        "search": ""
+      },
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "GET /api/bac-si/"
+    }
+  ],
+  "aliases": [
+    "L2cKKP"
+  ]
+}

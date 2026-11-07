@@ -1,0 +1,21 @@
+$kind: http-request
+name: "[TC_API_07] RBAC: Chặn Lễ tân / Bệnh nhân gọi API Bán thuốc lẻ tại quầy (403 Forbidden)"
+url: "{{base_url}}/api/don-hang/don-hang/ban-thuoc-le/"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token_letan}}
+body:
+  type: text
+  content: |-
+    {
+      "chi_tiet": []
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('TC_API_07: Chặn vai trò không phải BAN_THUOC bán thuốc lẻ (HTTP 403)', function () {
+          pm.response.to.have.status(403);
+      });
+    language: text/javascript
+order: 2000

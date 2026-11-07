@@ -1,0 +1,26 @@
+$kind: http-request
+name: "[TC_APP_07 - BUG-04] Kiểm thử bỏ trống mã ICD-10 (Kỳ vọng SRS: 400 Bad Request)"
+url: "{{base_url}}/api/benh-an/ho-so-benh-an/{{ho_so_id}}/nhap_chan_doan/"
+method: POST
+headers:
+  Content-Type: application/json
+  Authorization: Bearer {{token_bacsi1}}
+body:
+  type: text
+  content: |-
+    {
+      "trieu_chung": "Ho nhẹ",
+      "ket_qua_kham_lam_sang": "Họng đỏ nhẹ",
+      "ma_icd10": "",
+      "ten_benh": "Viêm họng",
+      "loai_benh": "NGOAI_TRU",
+      "muc_do": "NHẸ"
+    }
+scripts:
+  - type: afterResponse
+    code: |-
+      pm.test('TC_APP_07 [REQ-DIAG-02]: Bỏ trống ma_icd10 phải trả về 400 Bad Request', function () {
+          pm.response.to.have.status(400);
+      });
+    language: text/javascript
+order: 4000

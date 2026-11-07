@@ -1,0 +1,65 @@
+================================================================================
+BẢN TEST DATA & KỊCH BẢN KIỂM THỬ — PHIÊN BẢN V4.0 (datav4.txt)
+Giai đoạn 4: Rà soát mở rộng Feature 1 (Web SPA) lên 20 TCs -> Hoàn thiện 73 Test Cases
+================================================================================
+
+1. TỔNG QUAN PHIÊN BẢN V4.0:
+- Cải tiến lớn:
+  + Rà soát toàn diện mã nguồn Frontend (`be/static/js/pages/benh-nhan/lich-hen.js`, `be/static/js/pages/le-tan/dashboard.js`) và Backend (`be/lichhen/views.py`, `serializers.py`), mở rộng Feature 1 (`Web`) từ 13 TCs lên **20 Test Cases** (Func 1.1: 11 TCs, Func 1.2: 9 TCs).
+  + Phát hiện thêm lỗi thực tế `BUG-02` tại `TC_WEB_11` (`LichHenCreateSerializer` không kiểm tra bác sĩ có đăng ký ca trực trong bảng `DoctorSchedule` hay không).
+- Tổng số Test Cases V4.0: **73 Test Cases**:
+  + Feature 1 (Web - `be/test_feature1_web.py`): **20 TCs** (11 + 9) -> **17 Passed, 3 Failed** (`TC_WEB_10`, `TC_WEB_11`, `TC_WEB_20`)
+  + Feature 2 (App - `be/test_feature2_app.py`): **16 TCs** (8 + 8) -> **13 Passed, 3 Failed** (`TC_APP_07`, `TC_APP_08`, `TC_APP_16`)
+  + Feature 3 (Performance - `be/test_feature3_performance.py`): **10 TCs** (5 + 5) -> **9 Passed, 1 Failed** (`TC_PERF_10`)
+  + Feature 4 (API - `be/test_feature4_api.py`): **14 TCs** (7 + 7) -> **12 Passed, 2 Failed** (`TC_API_13`, `TC_API_14`)
+  + Feature 5 (Unit - `be/test_feature5_unit.py`): **13 TCs** (7 + 6) -> **11 Passed, 2 Failed** (`TC_UNIT_07`, `TC_UNIT_13`)
+- Kết quả thực thi V4.0: **62 Passed (84.93%), 11 Failed (15.07% — 11 lỗi BUG-01..BUG-11)**.
+
+--------------------------------------------------------------------------------
+2. CHI TIẾT DỮ LIỆU NHẬP (du_lieu_nhap) CHO 20 TEST CASES WEB SPA (TC_WEB_01..20):
+--------------------------------------------------------------------------------
+* Chức năng 1.1 — Đặt lịch khám / tiêm chủng trực tuyến trên Web SPA Bệnh nhân (11 TCs):
+  - TC_WEB_01 (Smoke/UI trang chủ Web SPA):
+    { "url_trang_chu": "/", "tu_khoa_tim_kiem": "Đặt lịch khám bệnh", "loai_lich_mac_dinh": "KHAM_BENH" }
+  - TC_WEB_02 (EP Đặt lịch khám bệnh hợp lệ):
+    { "bac_si": "BS_TEST_01", "loai_lich": "KHAM_BENH", "ngay_gio_hen": "Ngày mai + 2h", "ngay_gio_ket_thuc": "+30 phút", "so_dien_thoai_lien_he": "0901000007", "email_lien_he": "bn1_test@gmail.com", "can_nhac_nho": true, "ghi_chu": "Đau đầu, chóng mặt 2 ngày" }
+  - TC_WEB_03 (Decision Table Đặt lịch tiêm chủng có chọn Vaccine):
+    { "bac_si": "BS_TEST_01", "loai_lich": "TIEM_CHUNG", "vaccine": "VC_CUM_01 (Influvac Tetra 0.5ml)", "so_dien_thoai_lien_he": "0901000007", "ghi_chu": "Đăng ký tiêm mũi nhắc cúm mùa hàng năm" }
+  - TC_WEB_04 (Decision Table Đặt lịch tiêm chủng bỏ trống Vaccine -> 400):
+    { "bac_si": "BS_TEST_01", "loai_lich": "TIEM_CHUNG", "vaccine": null, "ghi_chu": "Quên chọn loại vaccine trên dropdown" }
+  - TC_WEB_05 (BVA Biên thời gian quá khứ now - 1h -> 400):
+    { "bac_si": "BS_TEST_01", "loai_lich": "KHAM_BENH", "ngay_gio_hen": "Hôm nay - 1 giờ", "ghi_chu": "Kiểm thử biên thời gian quá khứ" }
+  - TC_WEB_06 (BVA Giờ kết thúc <= Giờ bắt đầu & Bỏ trống giờ hẹn -> 400):
+    Kịch bản A: { "ngay_gio_hen": "11:00", "ngay_gio_ket_thuc": "10:30" } | Kịch bản B: { "ngay_gio_hen": null }
+  - TC_WEB_07 (BVA Đặt lịch trùng slot 30 phút của cùng Bác sĩ -> 400):
+    { "bac_si": "BS_TEST_01", "ngay_gio_hen": "T + 10 phút (chồng vào khung [T, T+30p] đã DA_XAC_NHAN)" }
+  - TC_WEB_08 (RBAC Cô lập lịch sử lịch hẹn giữa các bệnh nhân & Chặn tự sửa trạng thái):
+    { "filter_trang_thai": "CHO_XAC_NHAN", "hack_trang_thai": "HOAN_THANH" }
+  - TC_WEB_09 (State Transition Bệnh nhân hủy lịch CHO_XAC_NHAN hợp lệ):
+    { "ly_do_huy": "Bận công tác đột xuất, xin dời sang tuần sau" }
+  - TC_WEB_10 (State Transition Bệnh nhân hủy lịch khi đang DANG_KHAM -> Phát hiện BUG-01):
+    { "ly_do_huy": "Tự ý bấm hủy trên Web khi đang ở trong phòng khám" }
+  - TC_WEB_11 (Decision Table Đặt lịch với Bác sĩ 2 chưa đăng ký ca trực -> Phát hiện BUG-02):
+    { "bac_si": "BS_TEST_02 (Chưa có DoctorSchedule)", "loai_lich": "KHAM_BENH", "ghi_chu": "Đặt lịch với bác sĩ không có ca trực" }
+
+* Chức năng 1.2 — Tiếp nhận Walk-in & Điều phối hàng chờ trên Web SPA Lễ tân (9 TCs):
+  - TC_WEB_12 (EP Tiếp nhận Walk-in Khám bệnh bằng mã BN_TEST_01, tự chọn BS ít lịch & cấp STT=1):
+    { "ma_benh_nhan": "BN_TEST_01", "loai_lich": "KHAM_BENH", "ghi_chu": "Khách vãng lai đến quầy Lễ tân số 1" }
+  - TC_WEB_13 (Decision Table Walk-in Tiêm chủng có chọn & bỏ trống Vaccine):
+    Kịch bản A (400): { "ma_benh_nhan": "BN_TEST_01", "loai_lich": "TIEM_CHUNG", "vaccine": null }
+    Kịch bản B (201): { "ma_benh_nhan": "BN_TEST_01", "loai_lich": "TIEM_CHUNG", "vaccine": "VC_CUM_01" }
+  - TC_WEB_14 (EP Nhập sai mã bệnh nhân 'BN_KHONG_TON_TAI_999' hoặc bỏ trống '' -> 404/400):
+    Kịch bản A: { "ma_benh_nhan": "BN_KHONG_TON_TAI_999" } | Kịch bản B: { "ma_benh_nhan": "   " }
+  - TC_WEB_15 (State Chặn tạo Walk-in trùng khi bệnh nhân đang CHECKED_IN chờ khám -> 400):
+    { "ma_benh_nhan": "BN_TEST_01 (đang có lịch CHECKED_IN hôm nay)", "loai_lich": "KHAM_BENH" }
+  - TC_WEB_16 (State Lễ tân Check-in cho khách đặt lịch trực tuyến DA_XAC_NHAN):
+    { "ma_lich_hen_tim_kiem": "LH...", "xac_nhan_check_in": true }
+  - TC_WEB_17 (Decision Table Tra cứu xếp hạng bác sĩ trực ca & Phân công bác sĩ):
+    { "bac_si_id": "BS_TEST_01", "ma_phong": "P101", "ten_phong": "Phòng Khám Nội 1" }
+  - TC_WEB_18 (EP Lễ tân cập nhật phòng khám P202 & Bấm Chuông gửi thông báo mời vào khám):
+    { "ma_phong": "P202", "ten_phong": "Phòng Khám Nhi 2", "noi_dung": "Mời bệnh nhân vào Phòng Khám Nhi 2 (P202) gặp BS. Nguyễn Văn An" }
+  - TC_WEB_19 (RBAC Chặn tài khoản Bệnh nhân gọi 4 API điều phối của Lễ tân -> 403 Forbidden):
+    Gọi trái phép: tiep_nhan_walk_in, check_in, dieu_phoi, gui_thong_bao_nhac
+  - TC_WEB_20 (State Lễ tân nhấn Xác nhận lịch hẹn mới đặt CHO_XAC_NHAN -> Phát hiện BUG-03):
+    { "ghi_chu_xac_nhan": "Lễ tân đã gọi điện xác nhận lịch hẹn với bệnh nhân" }
+

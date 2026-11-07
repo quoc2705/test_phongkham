@@ -1,0 +1,181 @@
+================================================================================
+HƯỚNG DẪN TOÀN DIỆN CÁC LỆNH CHẠY KIỂM THỬ & CÁCH THAO TÁC TỪNG CÔNG CỤ
+DỰ ÁN: HỆ THỐNG QUẢN LÝ PHÒNG KHÁM ĐA KHOA & TIÊM CHỦNG — PHÒNGKHÁM+
+Quy mô: 73 Test Cases (5 Features / 10 Chức năng) -> 62 Passed (84.93%), 11 Failed (15.07%)
+(Lưu ý: Luôn mở Terminal / PowerShell tại thư mục gốc: Maneger-Medical-System-main)
+================================================================================
+
+********************************************************************************
+BẢNG CHUẨN: FEATURE NÀO CHẠY VỚI CÔNG CỤ NÀO LÀ HỢP LÝ NHẤT KHI BÁO CÁO / DEMO
+********************************************************************************
+1. Feature 1 (Web Testing - 20 TCs):
+   -> Công cụ hợp lý nhất: SELENIUM WEBDRIVER (kết hợp Pytest)
+   - Lệnh mở trình duyệt thật tự điền form: .venv\Scripts\python -X utf8 be\selenium_web_runner.py
+   - Lệnh chấm điểm 20 TCs (17 Pass, 3 Fail): .venv\Scripts\pytest be/test_feature1_web.py
+
+2. Feature 2 (App Testing - 16 TCs):
+   -> Công cụ hợp lý nhất: DESKTOP APP GIẢ LẬP TKINTER GUI (kết hợp Postman)
+   - Lệnh mở cửa sổ App bấm nút chạy 16 TCs: .venv\Scripts\python -X utf8 app_desktop_phongkham.py
+   - Lệnh chạy tự động 16 TCs (13 Pass, 3 Fail): .venv\Scripts\python -X utf8 app_desktop_phongkham.py --self-test
+
+3. Feature 3 (Performance Testing - 10 TCs):
+   -> Công cụ hợp lý nhất: LOCUST (hoặc APACHE JMETER) + Pytest Concurrency
+   - Lệnh mở biểu đồ tải Locust (http://localhost:8089): .venv\Scripts\locust -f be/locustfile.py --host=http://127.0.0.1:8000
+   - Lệnh chấm điểm 10 TCs (9 Pass, 1 Fail): .venv\Scripts\pytest be/test_feature3_performance.py
+
+4. Feature 4 (API & RBAC Testing - 14 TCs):
+   -> Công cụ hợp lý nhất: SCHEMATHESIS (OpenAPI 3.0 Schema) + POSTMAN + DRF APIClient (Pytest)
+   - Lệnh chạy tự động Schemathesis + OpenAPI Schema + 14 TCs: .venv\Scripts\python -X utf8 be\api_schema_runner.py
+   - Lệnh chạy Schemathesis CLI fuzzing theo Schema: .venv\Scripts\st run PhongKham_OpenAPI_Schema.json --url=http://127.0.0.1:8000 --max-examples=5
+   - Giao diện Swagger UI trên trình duyệt: http://127.0.0.1:8000/api/docs/
+   - Trên Postman: Import file PhongKham_Postman_Collection.json -> bấm "Run Collection"
+   - Lệnh chấm điểm 14 TCs (12 Pass, 2 Fail): .venv\Scripts\pytest be/test_feature4_api.py
+
+5. Feature 5 (Unit Testing - 13 TCs):
+   -> Công cụ hợp lý nhất: PYTEST (pytest-django) hoặc DJANGO TESTCASE (unittest)
+   - Lệnh chạy Pytest (11 Pass, 2 Fail): .venv\Scripts\pytest be/test_feature5_unit.py
+   - Lệnh chạy Unittest: .venv\Scripts\python -X utf8 be\manage.py test test_feature5_unit -v 2
+
+
+
+********************************************************************************
+PHẦN A: NHÓM LỆNH CHẠY TỰ ĐỘNG 100% (GÕ LỆNH LÀ TỰ CHẠY & IN KẾT QUẢ NGAY)
+-> Không cần bấm thêm gì sau khi gõ lệnh, tự tạo DB kiểm thử cô lập và chấm Pass/Fail
+********************************************************************************
+
+1. Chạy TỰ ĐỘNG toàn bộ 73 Test Cases (gộp cả 5 Features) bằng Pytest:
+   Lệnh:
+   .venv\Scripts\pytest
+   -> Sau khi chạy: Tự động chạy 73 Test Cases và in ra "11 failed, 62 passed".
+
+2. Chạy TỰ ĐỘNG toàn bộ 73 Test Cases (gộp cả 5 Features) bằng Django TestCase (unittest):
+   Lệnh:
+   .venv\Scripts\python -X utf8 be\manage.py test test_feature1_web test_feature2_app test_feature3_performance test_feature4_api test_feature5_unit -v 2
+   -> Sau khi chạy: Tự động chạy 73 Test Cases và in ra "Ran 73 tests ... FAILED (failures=11)".
+
+3. Chạy TỰ ĐỘNG riêng lẻ từng Feature bằng Pytest (Gõ lệnh là tự chạy xong 100%):
+   - Feature 1 (Web - 20 TCs: 17 Passed, 3 Failed):
+     .venv\Scripts\pytest be/test_feature1_web.py
+
+   - Feature 2 (App - 16 TCs: 13 Passed, 3 Failed):
+     .venv\Scripts\pytest be/test_feature2_app.py
+
+   - Feature 3 (Performance - 10 TCs: 9 Passed, 1 Failed):
+     .venv\Scripts\pytest be/test_feature3_performance.py
+
+   - Feature 4 (API & RBAC - 14 TCs: 12 Passed, 2 Failed):
+     .venv\Scripts\pytest be/test_feature4_api.py
+
+   - Feature 5 (Unit Test - 13 TCs: 11 Passed, 2 Failed):
+     .venv\Scripts\pytest be/test_feature5_unit.py
+
+4. Chạy TỰ ĐỘNG riêng lẻ từng Feature bằng Django TestCase (unittest):
+   - Feature 1 (Web - 20 TCs):
+     .venv\Scripts\python -X utf8 be\manage.py test test_feature1_web -v 2
+   - Feature 2 (App - 16 TCs):
+     .venv\Scripts\python -X utf8 be\manage.py test test_feature2_app -v 2
+   - Feature 3 (Performance - 10 TCs):
+     .venv\Scripts\python -X utf8 be\manage.py test test_feature3_performance -v 2
+   - Feature 4 (API - 14 TCs):
+     .venv\Scripts\python -X utf8 be\manage.py test test_feature4_api -v 2
+   - Feature 5 (Unit - 13 TCs):
+     .venv\Scripts\python -X utf8 be\manage.py test test_feature5_unit -v 2
+
+
+********************************************************************************
+PHẦN B: CHI TIẾT TỪNG CÔNG CỤ CHUYÊN BIỆT & HƯỚNG DẪN LÀM GÌ TIẾP THEO SAU KHI GÕ LỆNH
+********************************************************************************
+
+================================================================================
+CÔNG CỤ 1: SELENIUM WEBDRIVER — Kiểm thử Giao diện Web SPA trên Trình duyệt thật
+(File kịch bản: be/selenium_web_runner.py)
+================================================================================
+
+[Cách 1.1 - CHẠY TỰ ĐỘNG NGẦM (Headless Browser - không hiện cửa sổ trình duyệt)]:
+- Bước 1 (Mở Terminal 1 - Bật server Web):
+  .venv\Scripts\python be\manage.py runserver 127.0.0.1:8000
+- Bước 2 (Mở Terminal 2 - Chạy Selenium Headless):
+  .venv\Scripts\python -X utf8 be\selenium_web_runner.py --headless
+- Làm gì tiếp theo?: KHÔNG CẦN LÀM GÌ THÊM. Selenium tự động mở Chrome/Edge ngầm, truy cập http://127.0.0.1:8000, kiểm tra tiêu đề "PhòngKhám+", tự điền dữ liệu vào các ô form Đặt lịch (#bn-lh-loai, #bn-lh-ngay-gio, #bn-lh-sdt, #bn-lh-email, #bn-lh-ghi-chu), form Walk-in Lễ tân (#lt-walkin-patient-code), in kết quả "[PASSED]" ra màn hình và tự đóng.
+
+[Cách 1.2 - MỞ TRÌNH DUYỆT THẬT LÊN MÀN HÌNH ĐỂ QUAN SÁT (CHẾ ĐỘ CHẬM SLOW-MOTION)]:
+- Bước 1 (Terminal 1): Đảm bảo server đang chạy (.venv\Scripts\python be\manage.py runserver 127.0.0.1:8000)
+- Bước 2 (Terminal 2 - Chạy chế độ trình chiếu chậm mặc định 2.2 giây/bước):
+  .venv\Scripts\python -X utf8 be\selenium_web_runner.py
+  (Hoặc muốn chậm hơn nữa, ví dụ dừng 3.5 giây mỗi bước thì gõ):
+  .venv\Scripts\python -X utf8 be\selenium_web_runner.py --delay=3.5
+- Làm gì tiếp theo?: Quan sát cửa sổ Chrome/Edge tự động bật lên, hiện thanh Banner thông báo từng Test Case (TC_WEB_01, TC_WEB_02, TC_WEB_03, TC_WEB_12, TC_WEB_18) ở trên đầu trang, tự động tô viền xanh từng ô input, gõ chậm từng chữ vào form Đăng nhập -> Đặt lịch Bệnh nhân -> Tiếp nhận Walk-in Lễ tân, và dừng lại 8 giây đếm ngược ở cuối trước khi đóng!
+
+
+================================================================================
+CÔNG CỤ 2: DESKTOP APP GIẢ LẬP (TKINTER GUI) — Kiểm thử Ứng dụng (Feature 2: 16 TCs)
+(File ứng dụng: app_desktop_phongkham.py | File chạy nhanh: chay_app_desktop.bat)
+================================================================================
+
+[Cách 2.1 - CHẠY TỰ ĐỘNG 100% TRÊN TERMINAL (Không mở cửa sổ GUI)]:
+- Lệnh:
+  .venv\Scripts\python -X utf8 app_desktop_phongkham.py --self-test
+- Làm gì tiếp theo?: KHÔNG CẦN LÀM GÌ THÊM. Chương trình tự nạp dữ liệu mẫu, tự chạy một mạch từ TC_APP_01 đến TC_APP_16, in bảng kết quả "Tổng: 16 TCs | Passed: 13 | Failed: 3" ra Terminal rồi tự thoát.
+
+[Cách 2.2 - MỞ CỬA SỔ PHẦN MỀM DESKTOP APP TỰ ĐỘNG CHẠY TỪNG BƯỚC NHƯ WEB (AUTO-DEMO)]:
+- Lệnh mở ứng dụng tự động trình chiếu (mặc định 1.8 giây/bước, hoặc nhấp đúp chay_app_desktop.bat):
+  .venv\Scripts\python -X utf8 app_desktop_phongkham.py
+  (Hoặc muốn chậm hơn nữa, ví dụ 3 giây/bước thì gõ):
+  .venv\Scripts\python -X utf8 app_desktop_phongkham.py --delay=3
+- Làm gì tiếp theo sau khi cửa sổ Desktop App hiện lên?:
+  + KHÔNG CẦN BẤM GÌ CẢ! Cửa sổ vừa mở lên sẽ TỰ ĐỘNG chạy lần lượt từ [1/16] TC_APP_01 đến [16/16] TC_APP_16:
+    1. Thanh Banner màu nổi bật trên đầu cửa sổ tự động hiển thị tên từng Test Case và kết quả (Xanh lá = Passed, Đỏ = Failed phát hiện lỗi SRS).
+    2. Giao diện tự động chuyển qua Tab 1 (Bác sĩ khám bệnh, nhập ICD-10, Kê đơn, Tiêm chủng) -> tự điền các ô input -> tự chuyển sang Tab 2 (Bệnh nhân thêm giỏ hàng, đặt đơn Online, thanh toán VNPay, hủy đơn) -> và cuối cùng tự động mở Tab 3 hiển thị bảng tổng kết 16/16 câu (13 Passed, 3 Failed).
+    3. Trên thanh Banner có sẵn nút "⏸ Tạm dừng Tự động" và "🔁 Chạy lại Tự động từ đầu" nếu bạn muốn dừng lại bất kỳ lúc nào để thuyết trình.
+
+
+================================================================================
+CÔNG CỤ 3: LOCUST — Kiểm thử Hiệu năng & Chịu tải nhiều người truy cập (Feature 3)
+(File kịch bản tải: be/locustfile.py)
+================================================================================
+
+* Bước chuẩn bị bắt buộc: Mở Terminal 1 để bật Server Django trước:
+  .venv\Scripts\python be\manage.py runserver 127.0.0.1:8000
+
+[Cách 3.1 - CHẠY TỰ ĐỘNG 100% TRÊN TERMINAL (Headless Mode - không cần mở trình duyệt)]:
+- Mở Terminal 2 và chạy lệnh:
+  .venv\Scripts\locust -f be/locustfile.py --headless -u 25 -r 5 -t 30s --host=http://127.0.0.1:8000 --html=locust_report.html
+- Làm gì tiếp theo?: KHÔNG CẦN LÀM GÌ THÊM. Locust tự động sinh 25 người dùng ảo đồng thời (Lễ tân, Bệnh nhân, Kế toán), bắn tải liên tục trong 30 giây, tự động in bảng thống kê độ trễ (ms) & RPS ra Terminal, đồng thời xuất ra file báo cáo "locust_report.html".
+
+[Cách 3.2 - MỞ GIAO DIỆN BIỂU ĐỒ WEB UI CỦA LOCUST]:
+- Bước 1: Mở Terminal 2 và chạy lệnh:
+  .venv\Scripts\locust -f be/locustfile.py --host=http://127.0.0.1:8000
+- Bước 2 (Làm gì tiếp theo?):
+  1. Mở trình duyệt Chrome/Edge truy cập địa chỉ: http://localhost:8089
+  2. Trên màn hình Locust Web UI, nhập vào 3 ô:
+     - Number of users (Số người truy cập cùng lúc): nhập 25
+     - Spawn rate (Tốc độ thêm user mỗi giây): nhập 5
+     - Host: giữ nguyên http://127.0.0.1:8000
+  3. Bấm nút "Start" (Start swarming).
+  4. Bấm qua tab "Statistics" để xem bảng tốc độ phản hồi từng API (TC_PERF_01..04, TC_PERF_09), hoặc bấm tab "Charts" để xem biểu đồ đường thời gian thực. Khi muốn dừng thì bấm nút "Stop" ở góc trên bên phải.
+
+
+================================================================================
+CÔNG CỤ 4: APACHE JMETER — Kiểm thử Chịu tải & Assertion < 2000ms (Feature 3)
+(File kịch bản JMeter: PhongKham_JMeter_LoadTest.jmx)
+================================================================================
+- Bước 1: Đảm bảo Server Django đang chạy ở Terminal 1:
+  .venv\Scripts\python be\manage.py runserver 127.0.0.1:8000
+- Bước 2 (Làm gì tiếp theo trong phần mềm Apache JMeter?):
+  1. Mở phần mềm Apache JMeter -> Vào menu File -> Open -> Chọn file:
+     PhongKham_JMeter_LoadTest.jmx
+  2. Nhấn nút "Start" (biểu tượng tam giác màu xanh lá trên thanh công cụ).
+  3. Nhấp vào mục "View Results Tree" hoặc "Summary Report" ở cây thư mục bên trái để xem kết quả 25 luồng người dùng đồng thời và bộ kiểm tra tự động "Duration Assertion < 2000ms".
+
+
+================================================================================
+CÔNG CỤ 5: POSTMAN — Kiểm thử App Workflows & REST API / Phân quyền RBAC
+(File bộ kịch bản: PhongKham_Postman_Collection.json)
+================================================================================
+- Bước 1: Đảm bảo Server Django đang chạy ở Terminal 1, và đã khởi tạo dữ liệu mẫu (bằng cách chạy qua 1 lần lệnh: .venv\Scripts\python -X utf8 app_desktop_phongkham.py --self-test).
+- Bước 2 (Làm gì tiếp theo trong phần mềm Postman?):
+  1. Mở ứng dụng Postman -> Bấm nút "Import" (góc trên bên trái).
+  2. Chọn file: PhongKham_Postman_Collection.json ở thư mục gốc dự án.
+  3. Nhấp chuột phải vào Collection "PhòngKhám+ — Bộ Kiểm thử App Workflows (Feature 2) & REST API RBAC (Feature 4)" -> Chọn "Run collection".
+  4. Bấm nút màu cam "Run PhòngKhám+...".
+  5. Postman sẽ tự động chạy các request từ lấy JWT Token đến các kịch bản App & API, tự động chấm Pass/Fail bằng các đoạn code kiểm thử pm.test(...) đã viết sẵn trong tab Tests của từng request.

@@ -1,0 +1,118 @@
+{
+  "operation": "GET /api/thuoc/vaccine/",
+  "method": "GET",
+  "path_template": "/api/thuoc/vaccine/",
+  "fingerprint": "6cffd29a",
+  "case_id": "4zoXmB",
+  "code_sample": "curl -X GET -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' 'http://127.0.0.1:8000/api/thuoc/vaccine/?loai_vaccine=e3e70682-c209-1cac-a29f-6fbed82c07cd&ordering=&page=0&page_size=0&search=&so_mui=0'",
+  "sequence": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/api/thuoc/vaccine/?loai_vaccine=e3e70682-c209-1cac-a29f-6fbed82c07cd&ordering=&page=0&page_size=0&search=&so_mui=0",
+      "url_template": "http://127.0.0.1:8000/api/thuoc/vaccine/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "4zoXmB",
+        "Cookie": "[Filtered]"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, POST, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 1.5900004655122757e-05,
+          "mode": "positive"
+        },
+        "components": {
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "QUERY": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "All required and 6 optional properties",
+            "location": null,
+            "parameter": null,
+            "parameter_location": "QUERY",
+            "scenario": "object_required_and_optional"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          },
+          "QUERY": {
+            "loai_vaccine": "e3e70682-c209-1cac-a29f-6fbed82c07cd",
+            "ordering": "",
+            "page": 0,
+            "page_size": 0,
+            "search": "",
+            "so_mui": 0
+          }
+        }
+      },
+      "path": "/api/thuoc/vaccine/",
+      "path_parameters": {},
+      "query": {
+        "loai_vaccine": "e3e70682-c209-1cac-a29f-6fbed82c07cd",
+        "ordering": "",
+        "page": "0",
+        "page_size": "0",
+        "search": "",
+        "so_mui": "0"
+      },
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "GET /api/thuoc/vaccine/"
+    }
+  ],
+  "aliases": [
+    "SZlDST"
+  ]
+}

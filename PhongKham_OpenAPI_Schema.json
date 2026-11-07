@@ -1,0 +1,6544 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "PhòngKhám+ — Hệ thống Quản lý Phòng khám Đa khoa & Tiêm chủng REST API",
+    "version": "2.0.0",
+    "description": "OpenAPI 3.0 Schema phục vụ kiểm thử tự động Schemathesis, Postman & Swagger UI"
+  },
+  "paths": {
+    "/api/bao-cao/bao-cao/": {
+      "get": {
+        "operationId": "bao_cao_bao_cao_list",
+        "description": "ViewSet quản lý báo cáo",
+        "parameters": [
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedBaoCaoList"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "post": {
+        "operationId": "bao_cao_bao_cao_create",
+        "description": "ViewSet quản lý báo cáo",
+        "tags": [
+          "bao-cao"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "200": {
+            "description": "OK — Thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/bao-cao/bao-cao/{id}/": {
+      "get": {
+        "operationId": "bao_cao_bao_cao_retrieve",
+        "description": "ViewSet quản lý báo cáo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Báo cáo.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "put": {
+        "operationId": "bao_cao_bao_cao_update",
+        "description": "ViewSet quản lý báo cáo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Báo cáo.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "bao-cao"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "bao_cao_bao_cao_partial_update",
+        "description": "ViewSet quản lý báo cáo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Báo cáo.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "bao-cao"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedBaoCao"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedBaoCao"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedBaoCao"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "bao_cao_bao_cao_destroy",
+        "description": "ViewSet quản lý báo cáo",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Báo cáo.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          },
+          "200": {
+            "description": "OK — Thành công"
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/bao-cao/bao-cao/{id}/xuat_excel/": {
+      "get": {
+        "operationId": "bao_cao_bao_cao_xuat_excel_retrieve",
+        "description": "Xuất báo cáo ra Excel",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Báo cáo.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/bao-cao/bao-cao/{id}/xuat_pdf/": {
+      "get": {
+        "operationId": "bao_cao_bao_cao_xuat_pdf_retrieve",
+        "description": "Xuất báo cáo ra PDF",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Báo cáo.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/bao-cao/bao-cao/doanh_thu_theo_thang/": {
+      "get": {
+        "operationId": "bao_cao_bao_cao_doanh_thu_theo_thang_retrieve",
+        "description": "Thống kê doanh thu theo tháng",
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/bao-cao/bao-cao/tao_bao_cao/": {
+      "post": {
+        "operationId": "bao_cao_bao_cao_tao_bao_cao_create",
+        "description": "Tạo báo cáo mới",
+        "tags": [
+          "bao-cao"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/BaoCao"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/bao-cao/bao-cao/thong_ke_tong_quan/": {
+      "get": {
+        "operationId": "bao_cao_bao_cao_thong_ke_tong_quan_retrieve",
+        "description": "Thống kê tổng quan dashboard",
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/bao-cao/bao-cao/top_thuoc_ban_chay/": {
+      "get": {
+        "operationId": "bao_cao_bao_cao_top_thuoc_ban_chay_retrieve",
+        "description": "Top 10 thuốc bán chạy",
+        "tags": [
+          "bao-cao"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BaoCao"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/doctor-schedule/": {
+      "get": {
+        "operationId": "doctor_schedule_list",
+        "description": "Đăng ký ca làm bác sĩ — lưu bảng doctor_schedule.",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "bac_si",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "in": "query",
+            "name": "ca_lam",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "CHIEU",
+                "SANG",
+                "TOI"
+              ]
+            },
+            "description": "* `SANG` - Ca sáng\n* `CHIEU` - Ca chiều\n* `TOI` - Ca tối"
+          },
+          {
+            "in": "query",
+            "name": "ngay_lam",
+            "schema": {
+              "type": "string",
+              "format": "date"
+            }
+          },
+          {
+            "name": "ordering",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          }
+        ],
+        "tags": [
+          "doctor-schedule"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedDoctorScheduleList"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "post": {
+        "operationId": "doctor_schedule_create",
+        "description": "Đăng ký ca làm bác sĩ — lưu bảng doctor_schedule.",
+        "tags": [
+          "doctor-schedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorScheduleCreate"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorScheduleCreate"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorScheduleCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorScheduleCreate"
+                }
+              }
+            },
+            "description": ""
+          },
+          "200": {
+            "description": "OK — Thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/doctor-schedule/{id}/": {
+      "get": {
+        "operationId": "doctor_schedule_retrieve",
+        "description": "Đăng ký ca làm bác sĩ — lưu bảng doctor_schedule.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Lịch ca làm bác sĩ.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "doctor-schedule"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorSchedule"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "put": {
+        "operationId": "doctor_schedule_update",
+        "description": "Đăng ký ca làm bác sĩ — lưu bảng doctor_schedule.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Lịch ca làm bác sĩ.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "doctor-schedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorScheduleCreate"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorScheduleCreate"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorScheduleCreate"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorScheduleCreate"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "doctor_schedule_partial_update",
+        "description": "Đăng ký ca làm bác sĩ — lưu bảng doctor_schedule.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Lịch ca làm bác sĩ.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "doctor-schedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedDoctorScheduleCreate"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedDoctorScheduleCreate"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedDoctorScheduleCreate"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorScheduleCreate"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "doctor_schedule_destroy",
+        "description": "Đăng ký ca làm bác sĩ — lưu bảng doctor_schedule.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Lịch ca làm bác sĩ.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "doctor-schedule"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          },
+          "200": {
+            "description": "OK — Thành công"
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/doctor-schedule/dang_ky_nhieu/": {
+      "post": {
+        "operationId": "doctor_schedule_dang_ky_nhieu_create",
+        "description": "Đăng ký nhiều ca trong một ngày: {ngay_lam, ca_lam: ['SANG','CHIEU'], ghi_chu?}.",
+        "tags": [
+          "doctor-schedule"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorSchedule"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorSchedule"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/DoctorSchedule"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DoctorSchedule"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/don-hang/don-hang/ban-theo-toa/": {
+      "post": {
+        "operationId": "don_hang_don_hang_ban_theo_toa_create",
+        "description": "Tạo đơn hàng tại quầy từ một phần toa bác sĩ — chỉ thuốc trong kho, SL ≤ dòng toa và ≤ tồn kho.",
+        "tags": [
+          "don-hang"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response body"
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/don-hang/don-hang/ban-thuoc-le/": {
+      "post": {
+        "operationId": "don_hang_don_hang_ban_thuoc_le_create",
+        "description": "Bán lẻ không cần toa — nhập benh_nhan_id + danh sách thuốc trong kho.",
+        "tags": [
+          "don-hang"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response body"
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/thuoc/dashboard/ke-toan/tai-chinh-xuat/": {
+      "get": {
+        "operationId": "thuoc_dashboard_ke_toan_tai_chinh_xuat_retrieve",
+        "description": "Xuất báo cáo tài chính — endpoint Django thuần (tránh DRF ép JSON).",
+        "tags": [
+          "thuoc"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "No response body"
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/thuoc/phieu-nhap/": {
+      "get": {
+        "operationId": "thuoc_phieu_nhap_list",
+        "description": "API cho phiếu nhập kho",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "da_cap_nhat_kho",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "da_duyet_chi",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "da_thanh_toan",
+            "schema": {
+              "type": "boolean"
+            }
+          },
+          {
+            "in": "query",
+            "name": "loai_nhap",
+            "schema": {
+              "type": "string",
+              "enum": [
+                "THUOC",
+                "VACCINE"
+              ]
+            },
+            "description": "* `THUOC` - Thuốc\n* `VACCINE` - Vaccine"
+          },
+          {
+            "in": "query",
+            "name": "nha_cung_cap",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "ordering",
+            "required": false,
+            "in": "query",
+            "description": "Which field to use when ordering the results.",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "page",
+            "required": false,
+            "in": "query",
+            "description": "A page number within the paginated result set.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "page_size",
+            "required": false,
+            "in": "query",
+            "description": "Number of results to return per page.",
+            "schema": {
+              "type": "integer"
+            }
+          },
+          {
+            "name": "search",
+            "required": false,
+            "in": "query",
+            "description": "A search term.",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "tags": [
+          "thuoc"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PaginatedPhieuNhapKhoList"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "post": {
+        "operationId": "thuoc_phieu_nhap_create",
+        "description": "API cho phiếu nhập kho",
+        "tags": [
+          "thuoc"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhieuNhapKho"
+                }
+              }
+            },
+            "description": ""
+          },
+          "200": {
+            "description": "OK — Thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/thuoc/phieu-nhap/{id}/": {
+      "get": {
+        "operationId": "thuoc_phieu_nhap_retrieve",
+        "description": "API cho phiếu nhập kho",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Phiếu nhập kho.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "thuoc"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhieuNhapKho"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "put": {
+        "operationId": "thuoc_phieu_nhap_update",
+        "description": "API cho phiếu nhập kho",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Phiếu nhập kho.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "thuoc"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhieuNhapKho"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "patch": {
+        "operationId": "thuoc_phieu_nhap_partial_update",
+        "description": "API cho phiếu nhập kho",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Phiếu nhập kho.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "thuoc"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedPhieuNhapKho"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedPhieuNhapKho"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PatchedPhieuNhapKho"
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhieuNhapKho"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      },
+      "delete": {
+        "operationId": "thuoc_phieu_nhap_destroy",
+        "description": "API cho phiếu nhập kho",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Phiếu nhập kho.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "thuoc"
+        ],
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "No response body"
+          },
+          "200": {
+            "description": "OK — Thành công"
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/thuoc/phieu-nhap/{id}/duyet_chi/": {
+      "post": {
+        "operationId": "thuoc_phieu_nhap_duyet_chi_create",
+        "description": "Kế toán duyệt phiếu nhập: ghi nhận chi phí và cập nhật tồn kho.",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Phiếu nhập kho.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "thuoc"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhieuNhapKho"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    },
+    "/api/thuoc/phieu-nhap/{id}/xac_nhan_thanh_toan/": {
+      "post": {
+        "operationId": "thuoc_phieu_nhap_xac_nhan_thanh_toan_create",
+        "description": "Xác nhận đã thanh toán phiếu nhập",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "description": "A UUID string identifying this Phiếu nhập kho.",
+            "required": true
+          }
+        ],
+        "tags": [
+          "thuoc"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "application/x-www-form-urlencoded": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            },
+            "multipart/form-data": {
+              "schema": {
+                "$ref": "#/components/schemas/PhieuNhapKho"
+              }
+            }
+          },
+          "required": true
+        },
+        "security": [
+          {
+            "jwtAuth": []
+          },
+          {
+            "cookieAuth": []
+          },
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PhieuNhapKho"
+                }
+              }
+            },
+            "description": ""
+          },
+          "201": {
+            "description": "Created — Tạo mới thành công"
+          },
+          "204": {
+            "description": "No Content — Xóa thành công"
+          },
+          "400": {
+            "description": "Bad Request — Dữ liệu đầu vào không hợp lệ (Validation Error)"
+          },
+          "401": {
+            "description": "Unauthorized — Chưa xác thực JWT Token"
+          },
+          "403": {
+            "description": "Forbidden — Không đủ quyền truy cập (RBAC)"
+          },
+          "404": {
+            "description": "Not Found — Không tìm thấy tài nguyên"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BacSi": {
+        "type": "object",
+        "description": "Serializer cho bác sĩ",
+        "properties": {
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "readOnly": true
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "readOnly": true
+          },
+          "trinh_do_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "chuc_vu_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "danh_gia_trung_binh": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "ma_bac_si": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "chuyen_khoa": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "so_giay_phep": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "trinh_do": {
+            "$ref": "#/components/schemas/TrinhDoEnum"
+          },
+          "chuc_vu": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ChucVuC82Enum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "chuyen_mon": {
+            "type": "string",
+            "description": "Lĩnh vực chuyên môn sâu"
+          },
+          "khoa_phong": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ngay_bat_dau_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngay_ket_thuc_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "chung_chi": {
+            "type": "string",
+            "description": "Các chứng chỉ đã đạt được"
+          },
+          "ngoai_ngu": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "lich_lam_viec": {
+            "description": "Lịch làm việc mẫu"
+          },
+          "gioi_thieu": {
+            "type": "string",
+            "description": "Giới thiệu về bác sĩ"
+          },
+          "thanh_tich": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "is_working": {
+            "type": "boolean",
+            "description": "Đang công tác"
+          }
+        },
+        "required": [
+          "avatar",
+          "chuc_vu_display",
+          "chuyen_khoa",
+          "created_at",
+          "danh_gia_trung_binh",
+          "email",
+          "ho_ten",
+          "ma_bac_si",
+          "nguoi_dung",
+          "so_dien_thoai",
+          "so_giay_phep",
+          "trinh_do_display",
+          "updated_at"
+        ]
+      },
+      "BacSiCreate": {
+        "type": "object",
+        "description": "Serializer cho tạo bác sĩ mới",
+        "properties": {
+          "nguoi_dung": {
+            "$ref": "#/components/schemas/NguoiDungCreate"
+          },
+          "ma_bac_si": {
+            "type": "string"
+          },
+          "chuyen_khoa": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "so_giay_phep": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "trinh_do": {
+            "$ref": "#/components/schemas/TrinhDoEnum"
+          },
+          "chuc_vu": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ChucVuC82Enum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "chuyen_mon": {
+            "type": "string",
+            "description": "Lĩnh vực chuyên môn sâu"
+          },
+          "khoa_phong": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ngay_bat_dau_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngay_ket_thuc_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "chung_chi": {
+            "type": "string",
+            "description": "Các chứng chỉ đã đạt được"
+          },
+          "ngoai_ngu": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "lich_lam_viec": {
+            "description": "Lịch làm việc mẫu"
+          },
+          "gioi_thieu": {
+            "type": "string",
+            "description": "Giới thiệu về bác sĩ"
+          },
+          "thanh_tich": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "is_working": {
+            "type": "boolean",
+            "description": "Đang công tác"
+          }
+        },
+        "required": [
+          "chuyen_khoa",
+          "created_at",
+          "nguoi_dung",
+          "so_giay_phep",
+          "updated_at"
+        ]
+      },
+      "BacSiDetail": {
+        "type": "object",
+        "description": "Serializer chi tiết cho bác sĩ",
+        "properties": {
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "readOnly": true
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "readOnly": true
+          },
+          "trinh_do_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "chuc_vu_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "danh_gia_trung_binh": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "danh_gia": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_bac_si": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "chuyen_khoa": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "so_giay_phep": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "trinh_do": {
+            "$ref": "#/components/schemas/TrinhDoEnum"
+          },
+          "chuc_vu": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ChucVuC82Enum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "chuyen_mon": {
+            "type": "string",
+            "description": "Lĩnh vực chuyên môn sâu"
+          },
+          "khoa_phong": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ngay_bat_dau_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngay_ket_thuc_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "chung_chi": {
+            "type": "string",
+            "description": "Các chứng chỉ đã đạt được"
+          },
+          "ngoai_ngu": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "lich_lam_viec": {
+            "description": "Lịch làm việc mẫu"
+          },
+          "gioi_thieu": {
+            "type": "string",
+            "description": "Giới thiệu về bác sĩ"
+          },
+          "thanh_tich": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "is_working": {
+            "type": "boolean",
+            "description": "Đang công tác"
+          }
+        },
+        "required": [
+          "avatar",
+          "chuc_vu_display",
+          "chuyen_khoa",
+          "created_at",
+          "danh_gia",
+          "danh_gia_trung_binh",
+          "email",
+          "ho_ten",
+          "ma_bac_si",
+          "nguoi_dung",
+          "so_dien_thoai",
+          "so_giay_phep",
+          "trinh_do_display",
+          "updated_at"
+        ]
+      },
+      "BaoCao": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_bao_cao": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "loai": {
+            "$ref": "#/components/schemas/Loai474Enum"
+          },
+          "thoi_gian_bat_dau": {
+            "type": "string",
+            "format": "date"
+          },
+          "thoi_gian_ket_thuc": {
+            "type": "string",
+            "format": "date"
+          },
+          "du_lieu": {},
+          "ngay_tao": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "nguoi_tao": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "id",
+          "loai",
+          "ngay_tao",
+          "nguoi_tao",
+          "ten_bao_cao",
+          "thoi_gian_bat_dau",
+          "thoi_gian_ket_thuc"
+        ]
+      },
+      "BenhNhan": {
+        "type": "object",
+        "description": "Serializer cho bệnh nhân",
+        "properties": {
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "readOnly": true
+          },
+          "tuoi": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "bhyt_con_han": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bmi": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_benh_nhan": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date"
+          },
+          "gioi_tinh": {
+            "$ref": "#/components/schemas/GioiTinhEnum"
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "so_bao_hiem": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50
+          },
+          "ngay_dang_ky_bhyt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngay_het_han_bhyt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "noi_dang_ky_kham_chua": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "nhom_mau": {
+            "$ref": "#/components/schemas/NhomMauEnum"
+          },
+          "chieu_cao": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "cm"
+          },
+          "can_nang": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "kg"
+          },
+          "tien_su_benh": {
+            "type": "string",
+            "description": "Tiền sử bệnh lý"
+          },
+          "tien_su_di_ung": {
+            "type": "string",
+            "description": "Dị ứng thuốc/thực phẩm"
+          },
+          "benh_man_tinh": {
+            "type": "string",
+            "description": "Bệnh mãn tính (nếu có)"
+          },
+          "nghe_nghiep": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/NgheNghiepEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "noi_lam_viec": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "tinh_trang_hon_nhan": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TinhTrangHonNhanEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "ho_ten_nguoi_than": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "quan_he_nguoi_than": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "sdt_nguoi_than": {
+            "type": "string",
+            "maxLength": 15
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "bhyt_con_han",
+          "bmi",
+          "created_at",
+          "dia_chi",
+          "email",
+          "gioi_tinh",
+          "ho_ten",
+          "ma_benh_nhan",
+          "ngay_sinh",
+          "nguoi_dung",
+          "so_dien_thoai",
+          "tuoi",
+          "updated_at"
+        ]
+      },
+      "BenhNhanCreate": {
+        "type": "object",
+        "description": "Serializer cho tạo bệnh nhân mới",
+        "properties": {
+          "nguoi_dung": {
+            "$ref": "#/components/schemas/NguoiDungCreate"
+          },
+          "ma_benh_nhan": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date"
+          },
+          "gioi_tinh": {
+            "$ref": "#/components/schemas/GioiTinhEnum"
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "so_bao_hiem": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50
+          },
+          "nhom_mau": {
+            "$ref": "#/components/schemas/NhomMauEnum"
+          },
+          "chieu_cao": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "cm"
+          },
+          "can_nang": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "kg"
+          },
+          "tien_su_benh": {
+            "type": "string",
+            "description": "Tiền sử bệnh lý"
+          },
+          "tien_su_di_ung": {
+            "type": "string",
+            "description": "Dị ứng thuốc/thực phẩm"
+          },
+          "benh_man_tinh": {
+            "type": "string",
+            "description": "Bệnh mãn tính (nếu có)"
+          },
+          "ho_ten_nguoi_than": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "quan_he_nguoi_than": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "sdt_nguoi_than": {
+            "type": "string",
+            "maxLength": 15
+          }
+        },
+        "required": [
+          "dia_chi",
+          "gioi_tinh",
+          "ngay_sinh",
+          "nguoi_dung"
+        ]
+      },
+      "BenhNhanDetail": {
+        "type": "object",
+        "description": "Serializer chi tiết cho bệnh nhân",
+        "properties": {
+          "ma_benh_nhan": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date"
+          },
+          "gioi_tinh": {
+            "$ref": "#/components/schemas/GioiTinhEnum"
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "so_bao_hiem": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50
+          },
+          "ngay_dang_ky_bhyt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngay_het_han_bhyt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "noi_dang_ky_kham_chua": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "nhom_mau": {
+            "$ref": "#/components/schemas/NhomMauEnum"
+          },
+          "chieu_cao": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "cm"
+          },
+          "can_nang": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "kg"
+          },
+          "tien_su_benh": {
+            "type": "string",
+            "description": "Tiền sử bệnh lý"
+          },
+          "tien_su_di_ung": {
+            "type": "string",
+            "description": "Dị ứng thuốc/thực phẩm"
+          },
+          "benh_man_tinh": {
+            "type": "string",
+            "description": "Bệnh mãn tính (nếu có)"
+          },
+          "nghe_nghiep": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/NgheNghiepEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "noi_lam_viec": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "tinh_trang_hon_nhan": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TinhTrangHonNhanEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "ho_ten_nguoi_than": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "quan_he_nguoi_than": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "sdt_nguoi_than": {
+            "type": "string",
+            "maxLength": 15
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "lich_su_kham": {
+            "type": "string",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "created_at",
+          "dia_chi",
+          "gioi_tinh",
+          "lich_su_kham",
+          "ma_benh_nhan",
+          "ngay_sinh",
+          "nguoi_dung",
+          "updated_at"
+        ]
+      },
+      "BlankEnum": {
+        "enum": [
+          ""
+        ]
+      },
+      "CaLamEnum": {
+        "enum": [
+          "SANG",
+          "CHIEU",
+          "TOI"
+        ],
+        "type": "string",
+        "description": "* `SANG` - Ca sáng\n* `CHIEU` - Ca chiều\n* `TOI` - Ca tối"
+      },
+      "ChiTietPhieuNhapThuoc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_thuoc": {
+            "type": "string",
+            "readOnly": true
+          },
+          "so_luong": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "don_gia": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$"
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date"
+          },
+          "lo_sx": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "phieu_nhap": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "thuoc": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "don_gia",
+          "han_su_dung",
+          "id",
+          "phieu_nhap",
+          "so_luong",
+          "ten_thuoc",
+          "thuoc"
+        ]
+      },
+      "ChiTietPhieuNhapVaccine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_vaccine": {
+            "type": "string",
+            "readOnly": true
+          },
+          "so_luong": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "don_gia": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$"
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date"
+          },
+          "lo_sx": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "phieu_nhap": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "vaccine": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "don_gia",
+          "han_su_dung",
+          "id",
+          "phieu_nhap",
+          "so_luong",
+          "ten_vaccine",
+          "vaccine"
+        ]
+      },
+      "ChiTietToaMau": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_thuoc": {
+            "type": "string",
+            "readOnly": true
+          },
+          "don_gia": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "readOnly": true
+          },
+          "lieu_luong": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "so_luong": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "cach_dung": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "toa_thuoc": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "thuoc": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "don_gia",
+          "id",
+          "lieu_luong",
+          "ten_thuoc",
+          "thuoc",
+          "toa_thuoc"
+        ]
+      },
+      "ChucVu379Enum": {
+        "enum": [
+          "BAN_THUOC",
+          "LE_TAN",
+          "KE_TOAN"
+        ],
+        "type": "string",
+        "description": "* `BAN_THUOC` - Bán thuốc\n* `LE_TAN` - Lễ tân\n* `KE_TOAN` - Kế toán"
+      },
+      "ChucVuC82Enum": {
+        "enum": [
+          "TRUONG_KHOA",
+          "PHO_KHOA",
+          "BAC_SI_CHU_NHIEM",
+          "BAC_SI_DIEU_TRI",
+          "BAC_SI_NOI_TRU",
+          "THUC_TAP_SINH"
+        ],
+        "type": "string",
+        "description": "* `TRUONG_KHOA` - Trưởng khoa\n* `PHO_KHOA` - Phó khoa\n* `BAC_SI_CHU_NHIEM` - Bác sĩ chủ nhiệm\n* `BAC_SI_DIEU_TRI` - Bác sĩ điều trị\n* `BAC_SI_NOI_TRU` - Bác sĩ nội trú\n* `THUC_TAP_SINH` - Thực tập sinh"
+      },
+      "DanhGiaBacSi": {
+        "type": "object",
+        "description": "Serializer cho đánh giá bác sĩ",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_benh_nhan": {
+            "type": "string",
+            "readOnly": true
+          },
+          "diem": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiemEnum"
+              }
+            ],
+            "description": "Điểm từ 1-5\n\n* `1` - 1\n* `2` - 2\n* `3` - 3\n* `4` - 4\n* `5` - 5",
+            "minimum": -9223372036854775808,
+            "maximum": 9223372036854775807
+          },
+          "nhan_xet": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "benh_nhan": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bac_si": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_so": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "required": [
+          "bac_si",
+          "benh_nhan",
+          "created_at",
+          "diem",
+          "id",
+          "ten_benh_nhan"
+        ]
+      },
+      "DiemEnum": {
+        "enum": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "type": "integer",
+        "description": "* `1` - 1\n* `2` - 2\n* `3` - 3\n* `4` - 4\n* `5` - 5"
+      },
+      "DoctorSchedule": {
+        "type": "object",
+        "description": "Không dùng source qua bac_si.* để tránh JOIN collation MySQL (doctor_schedule vs bac_si).",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "bac_si": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ma_bac_si": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ten_bac_si": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ngay_lam": {
+            "type": "string",
+            "format": "date",
+            "description": "Ngày làm việc"
+          },
+          "ca_lam": {
+            "$ref": "#/components/schemas/CaLamEnum"
+          },
+          "ca_lam_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "bac_si",
+          "ca_lam",
+          "ca_lam_display",
+          "created_at",
+          "id",
+          "ma_bac_si",
+          "ngay_lam",
+          "ten_bac_si",
+          "updated_at"
+        ]
+      },
+      "DoctorScheduleCreate": {
+        "type": "object",
+        "properties": {
+          "ngay_lam": {
+            "type": "string",
+            "format": "date",
+            "description": "Ngày làm việc"
+          },
+          "ca_lam": {
+            "$ref": "#/components/schemas/CaLamEnum"
+          },
+          "ghi_chu": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ca_lam",
+          "ngay_lam"
+        ]
+      },
+      "DonViTinh": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_don_vi": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "ky_hieu": {
+            "type": "string",
+            "maxLength": 20
+          }
+        },
+        "required": [
+          "id",
+          "ten_don_vi"
+        ]
+      },
+      "GioiTinhEnum": {
+        "enum": [
+          "NAM",
+          "NU",
+          "KHAC"
+        ],
+        "type": "string",
+        "description": "* `NAM` - Nam\n* `NU` - Nữ\n* `KHAC` - Khác"
+      },
+      "HanhDongEnum": {
+        "enum": [
+          "DANG_NHAP",
+          "DANG_XUAT",
+          "XEM",
+          "THEM",
+          "SUA",
+          "XOA",
+          "THANH_TOAN",
+          "KHAC"
+        ],
+        "type": "string",
+        "description": "* `DANG_NHAP` - Đăng nhập\n* `DANG_XUAT` - Đăng xuất\n* `XEM` - Xem\n* `THEM` - Thêm\n* `SUA` - Sửa\n* `XOA` - Xóa\n* `THANH_TOAN` - Thanh toán\n* `KHAC` - Khác"
+      },
+      "KhoThuoc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ma_thuoc": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ten_thuoc": {
+            "type": "string",
+            "readOnly": true
+          },
+          "don_gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "readOnly": true
+          },
+          "tong_tien": {
+            "type": "string",
+            "readOnly": true
+          },
+          "con_han": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "so_luong": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "ngay_nhap": {
+            "type": "string",
+            "format": "date"
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date"
+          },
+          "lo_sx": {
+            "type": "string",
+            "title": "Lô sản xuất",
+            "maxLength": 100
+          },
+          "vi_tri": {
+            "type": "string",
+            "description": "Vị trí lưu kho",
+            "maxLength": 100
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "thuoc": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "con_han",
+          "don_gia_nhap",
+          "han_su_dung",
+          "id",
+          "ma_thuoc",
+          "ngay_nhap",
+          "ten_thuoc",
+          "thuoc",
+          "tong_tien"
+        ]
+      },
+      "KhoVaccine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ma_vaccine": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ten_vaccine": {
+            "type": "string",
+            "readOnly": true
+          },
+          "gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "readOnly": true
+          },
+          "tong_tien": {
+            "type": "string",
+            "readOnly": true
+          },
+          "con_han": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "so_luong": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "ngay_nhap": {
+            "type": "string",
+            "format": "date"
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date"
+          },
+          "lo_sx": {
+            "type": "string",
+            "title": "Lô sản xuất",
+            "maxLength": 100
+          },
+          "vi_tri": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "vaccine": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "con_han",
+          "gia_nhap",
+          "han_su_dung",
+          "id",
+          "ma_vaccine",
+          "ngay_nhap",
+          "ten_vaccine",
+          "tong_tien",
+          "vaccine"
+        ]
+      },
+      "LichLamViec": {
+        "type": "object",
+        "description": "Serializer cho lịch làm việc",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_nguoi_dung": {
+            "type": "string",
+            "readOnly": true
+          },
+          "trang_thai_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ngay": {
+            "type": "string",
+            "format": "date"
+          },
+          "gio_bat_dau": {
+            "type": "string",
+            "format": "time"
+          },
+          "gio_ket_thuc": {
+            "type": "string",
+            "format": "time"
+          },
+          "trang_thai": {
+            "$ref": "#/components/schemas/TrangThaiEnum"
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "benh_nhan": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "required": [
+          "created_at",
+          "gio_bat_dau",
+          "gio_ket_thuc",
+          "id",
+          "ngay",
+          "nguoi_dung",
+          "ten_nguoi_dung",
+          "trang_thai_display",
+          "updated_at"
+        ]
+      },
+      "Loai474Enum": {
+        "enum": [
+          "DOANH_THU",
+          "BENH_NHAN",
+          "THUOC",
+          "VACCINE",
+          "LICH_HEN",
+          "KHAC"
+        ],
+        "type": "string",
+        "description": "* `DOANH_THU` - Doanh thu\n* `BENH_NHAN` - Bệnh nhân\n* `THUOC` - Thuốc\n* `VACCINE` - Vaccine\n* `LICH_HEN` - Lịch hẹn\n* `KHAC` - Khác"
+      },
+      "LoaiBaoCaoEnum": {
+        "enum": [
+          "DOANH_THU",
+          "BENH_NHAN",
+          "THUOC",
+          "VACCINE",
+          "LICH_HEN",
+          "KHAC"
+        ],
+        "type": "string",
+        "description": "* `DOANH_THU` - Doanh thu\n* `BENH_NHAN` - Bệnh nhân\n* `THUOC` - Thuốc\n* `VACCINE` - Vaccine\n* `LICH_HEN` - Lịch hẹn\n* `KHAC` - Khác"
+      },
+      "LoaiNhapEnum": {
+        "enum": [
+          "THUOC",
+          "VACCINE"
+        ],
+        "type": "string",
+        "description": "* `THUOC` - Thuốc\n* `VACCINE` - Vaccine"
+      },
+      "LoaiThuoc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_loai": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "mo_ta": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "ten_loai"
+        ]
+      },
+      "LoaiVaccine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_loai": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "mo_ta": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "ten_loai"
+        ]
+      },
+      "MauBaoCao": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_mau": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "loai_bao_cao": {
+            "$ref": "#/components/schemas/LoaiBaoCaoEnum"
+          },
+          "tham_so": {
+            "description": "Các tham số mặc định cho báo cáo"
+          },
+          "mo_ta": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "loai_bao_cao",
+          "ten_mau"
+        ]
+      },
+      "NgheNghiepEnum": {
+        "enum": [
+          "HOC_SINH",
+          "SINH_VIEN",
+          "CAN_BO",
+          "KINH_DOANH",
+          "HUU_TRI",
+          "TU_DO",
+          "NOI_TRO",
+          "KHAC"
+        ],
+        "type": "string",
+        "description": "* `HOC_SINH` - Học sinh\n* `SINH_VIEN` - Sinh viên\n* `CAN_BO` - Cán bộ công nhân viên\n* `KINH_DOANH` - Kinh doanh\n* `HUU_TRI` - Hưu trí\n* `TU_DO` - Tự do\n* `NOI_TRO` - Nội trợ\n* `KHAC` - Khác"
+      },
+      "NguoiDung": {
+        "type": "object",
+        "description": "Serializer cơ bản cho người dùng",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_dang_nhap": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "ho_ten": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "pattern": "^0[0-9]{9,10}$",
+            "maxLength": 15
+          },
+          "vai_tro": {
+            "$ref": "#/components/schemas/VaiTroEnum"
+          },
+          "vai_tro_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "gioi_tinh": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/GioiTinhEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "gioi_tinh_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "cccd": {
+            "nullable": true,
+            "description": "Căn cước công dân",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{9,12}$",
+                "maxLength": 12
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "nguoi_lien_he_khan": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "sdt_lien_he_khan": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^0[0-9]{9,10}$",
+                "maxLength": 15
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "is_active": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "is_verified": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "Đã xác thực email/SĐT"
+          },
+          "last_login": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true,
+            "title": "Lần cuối đăng nhập"
+          },
+          "last_active": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
+          },
+          "ngay_tao": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        },
+        "required": [
+          "email",
+          "gioi_tinh_display",
+          "ho_ten",
+          "id",
+          "is_active",
+          "is_verified",
+          "last_active",
+          "last_login",
+          "ngay_tao",
+          "so_dien_thoai",
+          "ten_dang_nhap",
+          "vai_tro",
+          "vai_tro_display"
+        ]
+      },
+      "NguoiDungCreate": {
+        "type": "object",
+        "description": "Serializer cho tạo người dùng mới",
+        "properties": {
+          "ten_dang_nhap": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "password": {
+            "type": "string",
+            "writeOnly": true
+          },
+          "password2": {
+            "type": "string",
+            "writeOnly": true
+          },
+          "ho_ten": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "pattern": "^0[0-9]{9,10}$",
+            "maxLength": 15
+          },
+          "vai_tro": {
+            "$ref": "#/components/schemas/VaiTroEnum"
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "gioi_tinh": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/GioiTinhEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "dia_chi": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "email",
+          "ho_ten",
+          "password",
+          "password2",
+          "so_dien_thoai",
+          "ten_dang_nhap",
+          "vai_tro"
+        ]
+      },
+      "NguoiDungUpdate": {
+        "type": "object",
+        "description": "Serializer cho cập nhật thông tin người dùng",
+        "properties": {
+          "ho_ten": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "pattern": "^0[0-9]{9,10}$",
+            "maxLength": 15
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "gioi_tinh": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/GioiTinhEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "cccd": {
+            "nullable": true,
+            "description": "Căn cước công dân",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{9,12}$",
+                "maxLength": 12
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "nguoi_lien_he_khan": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "sdt_lien_he_khan": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^0[0-9]{9,10}$",
+                "maxLength": 15
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          }
+        },
+        "required": [
+          "email",
+          "ho_ten",
+          "so_dien_thoai"
+        ]
+      },
+      "NhaCungCap": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ma_ncc": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "ten_ncc": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "email": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "ma_so_thue": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "nguoi_lien_he": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "trang_thai": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "dia_chi",
+          "id",
+          "ma_ncc",
+          "so_dien_thoai",
+          "ten_ncc"
+        ]
+      },
+      "NhanVien": {
+        "type": "object",
+        "description": "Serializer cho nhân viên",
+        "properties": {
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "readOnly": true
+          },
+          "chuc_vu_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_nhan_vien": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "phong_ban": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "chuc_vu": {
+            "$ref": "#/components/schemas/ChucVu379Enum"
+          },
+          "ngay_bat_dau_lam": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "mo_ta_cong_viec": {
+            "type": "string"
+          },
+          "quyen_han": {
+            "description": "Các quyền được cấp"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "is_working": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "chuc_vu_display",
+          "created_at",
+          "email",
+          "ho_ten",
+          "ma_nhan_vien",
+          "nguoi_dung",
+          "phong_ban",
+          "so_dien_thoai",
+          "updated_at"
+        ]
+      },
+      "NhanVienCreate": {
+        "type": "object",
+        "description": "Serializer cho tạo nhân viên mới (cùng pattern BacSiCreateSerializer: fields __all__).",
+        "properties": {
+          "nguoi_dung": {
+            "$ref": "#/components/schemas/NguoiDungCreate"
+          },
+          "ma_nhan_vien": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "phong_ban": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "chuc_vu": {
+            "$ref": "#/components/schemas/ChucVu379Enum"
+          },
+          "ngay_bat_dau_lam": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "mo_ta_cong_viec": {
+            "type": "string"
+          },
+          "quyen_han": {
+            "description": "Các quyền được cấp"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "is_working": {
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "created_at",
+          "ma_nhan_vien",
+          "nguoi_dung",
+          "phong_ban",
+          "updated_at"
+        ]
+      },
+      "NhatKyHoatDong": {
+        "type": "object",
+        "description": "Serializer cho nhật ký hoạt động",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_nguoi_dung": {
+            "type": "string",
+            "readOnly": true
+          },
+          "hanh_dong_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "hanh_dong": {
+            "$ref": "#/components/schemas/HanhDongEnum"
+          },
+          "doi_tuong": {
+            "type": "string",
+            "description": "Loại đối tượng thao tác",
+            "maxLength": 100
+          },
+          "doi_tuong_id": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "du_lieu_cu": {},
+          "du_lieu_moi": {},
+          "ip_address": {
+            "type": "string",
+            "nullable": true
+          },
+          "user_agent": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "required": [
+          "created_at",
+          "doi_tuong",
+          "hanh_dong",
+          "hanh_dong_display",
+          "id",
+          "ten_nguoi_dung"
+        ]
+      },
+      "NhomMauEnum": {
+        "enum": [
+          "A+",
+          "A-",
+          "B+",
+          "B-",
+          "AB+",
+          "AB-",
+          "O+",
+          "O-",
+          "CHUA_XAC_DINH"
+        ],
+        "type": "string",
+        "description": "* `A+` - A+\n* `A-` - A-\n* `B+` - B+\n* `B-` - B-\n* `AB+` - AB+\n* `AB-` - AB-\n* `O+` - O+\n* `O-` - O-\n* `CHUA_XAC_DINH` - Chưa xác định"
+      },
+      "PaginatedBacSiList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BacSi"
+            }
+          }
+        }
+      },
+      "PaginatedBaoCaoList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BaoCao"
+            }
+          }
+        }
+      },
+      "PaginatedBenhNhanList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/BenhNhan"
+            }
+          }
+        }
+      },
+      "PaginatedDanhGiaBacSiList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DanhGiaBacSi"
+            }
+          }
+        }
+      },
+      "PaginatedDoctorScheduleList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DoctorSchedule"
+            }
+          }
+        }
+      },
+      "PaginatedKhoThuocList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KhoThuoc"
+            }
+          }
+        }
+      },
+      "PaginatedKhoVaccineList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/KhoVaccine"
+            }
+          }
+        }
+      },
+      "PaginatedLichLamViecList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LichLamViec"
+            }
+          }
+        }
+      },
+      "PaginatedMauBaoCaoList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/MauBaoCao"
+            }
+          }
+        }
+      },
+      "PaginatedNguoiDungList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NguoiDung"
+            }
+          }
+        }
+      },
+      "PaginatedNhaCungCapList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NhaCungCap"
+            }
+          }
+        }
+      },
+      "PaginatedNhanVienList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NhanVien"
+            }
+          }
+        }
+      },
+      "PaginatedNhatKyHoatDongList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NhatKyHoatDong"
+            }
+          }
+        }
+      },
+      "PaginatedPhieuNhapKhoList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PhieuNhapKho"
+            }
+          }
+        }
+      },
+      "PaginatedThongBaoList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ThongBao"
+            }
+          }
+        }
+      },
+      "PaginatedThuocList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Thuoc"
+            }
+          }
+        }
+      },
+      "PaginatedToaThuocMauList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ToaThuocMau"
+            }
+          }
+        }
+      },
+      "PaginatedVaccineList": {
+        "type": "object",
+        "required": [
+          "count",
+          "results"
+        ],
+        "properties": {
+          "count": {
+            "type": "integer",
+            "example": 123
+          },
+          "next": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=4"
+          },
+          "previous": {
+            "type": "string",
+            "nullable": true,
+            "format": "uri",
+            "example": "http://api.example.org/accounts/?page=2"
+          },
+          "results": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Vaccine"
+            }
+          }
+        }
+      },
+      "PatchedBacSi": {
+        "type": "object",
+        "description": "Serializer cho bác sĩ",
+        "properties": {
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "readOnly": true
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true,
+            "readOnly": true
+          },
+          "trinh_do_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "chuc_vu_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "danh_gia_trung_binh": {
+            "type": "number",
+            "format": "double",
+            "readOnly": true
+          },
+          "ma_bac_si": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "chuyen_khoa": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "so_giay_phep": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "trinh_do": {
+            "$ref": "#/components/schemas/TrinhDoEnum"
+          },
+          "chuc_vu": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/ChucVuC82Enum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "chuyen_mon": {
+            "type": "string",
+            "description": "Lĩnh vực chuyên môn sâu"
+          },
+          "khoa_phong": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ngay_bat_dau_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngay_ket_thuc_cong_tac": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "chung_chi": {
+            "type": "string",
+            "description": "Các chứng chỉ đã đạt được"
+          },
+          "ngoai_ngu": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "lich_lam_viec": {
+            "description": "Lịch làm việc mẫu"
+          },
+          "gioi_thieu": {
+            "type": "string",
+            "description": "Giới thiệu về bác sĩ"
+          },
+          "thanh_tich": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "is_working": {
+            "type": "boolean",
+            "description": "Đang công tác"
+          }
+        }
+      },
+      "PatchedBaoCao": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_bao_cao": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "loai": {
+            "$ref": "#/components/schemas/Loai474Enum"
+          },
+          "thoi_gian_bat_dau": {
+            "type": "string",
+            "format": "date"
+          },
+          "thoi_gian_ket_thuc": {
+            "type": "string",
+            "format": "date"
+          },
+          "du_lieu": {},
+          "ngay_tao": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "nguoi_tao": {
+            "type": "string",
+            "readOnly": true
+          }
+        }
+      },
+      "PatchedBenhNhan": {
+        "type": "object",
+        "description": "Serializer cho bệnh nhân",
+        "properties": {
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "readOnly": true
+          },
+          "tuoi": {
+            "type": "integer",
+            "readOnly": true
+          },
+          "bhyt_con_han": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "bmi": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_benh_nhan": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date"
+          },
+          "gioi_tinh": {
+            "$ref": "#/components/schemas/GioiTinhEnum"
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "so_bao_hiem": {
+            "type": "string",
+            "nullable": true,
+            "maxLength": 50
+          },
+          "ngay_dang_ky_bhyt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "ngay_het_han_bhyt": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "noi_dang_ky_kham_chua": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "nhom_mau": {
+            "$ref": "#/components/schemas/NhomMauEnum"
+          },
+          "chieu_cao": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "cm"
+          },
+          "can_nang": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "nullable": true,
+            "description": "kg"
+          },
+          "tien_su_benh": {
+            "type": "string",
+            "description": "Tiền sử bệnh lý"
+          },
+          "tien_su_di_ung": {
+            "type": "string",
+            "description": "Dị ứng thuốc/thực phẩm"
+          },
+          "benh_man_tinh": {
+            "type": "string",
+            "description": "Bệnh mãn tính (nếu có)"
+          },
+          "nghe_nghiep": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/NgheNghiepEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "noi_lam_viec": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "tinh_trang_hon_nhan": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/TinhTrangHonNhanEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "ho_ten_nguoi_than": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "quan_he_nguoi_than": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "sdt_nguoi_than": {
+            "type": "string",
+            "maxLength": 15
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "PatchedDanhGiaBacSi": {
+        "type": "object",
+        "description": "Serializer cho đánh giá bác sĩ",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_benh_nhan": {
+            "type": "string",
+            "readOnly": true
+          },
+          "diem": {
+            "allOf": [
+              {
+                "$ref": "#/components/schemas/DiemEnum"
+              }
+            ],
+            "description": "Điểm từ 1-5\n\n* `1` - 1\n* `2` - 2\n* `3` - 3\n* `4` - 4\n* `5` - 5",
+            "minimum": -9223372036854775808,
+            "maximum": 9223372036854775807
+          },
+          "nhan_xet": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "benh_nhan": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "bac_si": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_so": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        }
+      },
+      "PatchedDoctorScheduleCreate": {
+        "type": "object",
+        "properties": {
+          "ngay_lam": {
+            "type": "string",
+            "format": "date",
+            "description": "Ngày làm việc"
+          },
+          "ca_lam": {
+            "$ref": "#/components/schemas/CaLamEnum"
+          },
+          "ghi_chu": {
+            "type": "string"
+          }
+        }
+      },
+      "PatchedDonViTinh": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_don_vi": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "ky_hieu": {
+            "type": "string",
+            "maxLength": 20
+          }
+        }
+      },
+      "PatchedKhoThuoc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ma_thuoc": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ten_thuoc": {
+            "type": "string",
+            "readOnly": true
+          },
+          "don_gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "readOnly": true
+          },
+          "tong_tien": {
+            "type": "string",
+            "readOnly": true
+          },
+          "con_han": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "so_luong": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "ngay_nhap": {
+            "type": "string",
+            "format": "date"
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date"
+          },
+          "lo_sx": {
+            "type": "string",
+            "title": "Lô sản xuất",
+            "maxLength": 100
+          },
+          "vi_tri": {
+            "type": "string",
+            "description": "Vị trí lưu kho",
+            "maxLength": 100
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "thuoc": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "PatchedKhoVaccine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ma_vaccine": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ten_vaccine": {
+            "type": "string",
+            "readOnly": true
+          },
+          "gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "readOnly": true
+          },
+          "tong_tien": {
+            "type": "string",
+            "readOnly": true
+          },
+          "con_han": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "so_luong": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "ngay_nhap": {
+            "type": "string",
+            "format": "date"
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date"
+          },
+          "lo_sx": {
+            "type": "string",
+            "title": "Lô sản xuất",
+            "maxLength": 100
+          },
+          "vi_tri": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "vaccine": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "PatchedLichLamViec": {
+        "type": "object",
+        "description": "Serializer cho lịch làm việc",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_nguoi_dung": {
+            "type": "string",
+            "readOnly": true
+          },
+          "trang_thai_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ngay": {
+            "type": "string",
+            "format": "date"
+          },
+          "gio_bat_dau": {
+            "type": "string",
+            "format": "time"
+          },
+          "gio_ket_thuc": {
+            "type": "string",
+            "format": "time"
+          },
+          "trang_thai": {
+            "$ref": "#/components/schemas/TrangThaiEnum"
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "benh_nhan": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        }
+      },
+      "PatchedLoaiThuoc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_loai": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "mo_ta": {
+            "type": "string"
+          }
+        }
+      },
+      "PatchedLoaiVaccine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_loai": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "mo_ta": {
+            "type": "string"
+          }
+        }
+      },
+      "PatchedMauBaoCao": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_mau": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "loai_bao_cao": {
+            "$ref": "#/components/schemas/LoaiBaoCaoEnum"
+          },
+          "tham_so": {
+            "description": "Các tham số mặc định cho báo cáo"
+          },
+          "mo_ta": {
+            "type": "string"
+          }
+        }
+      },
+      "PatchedNguoiDung": {
+        "type": "object",
+        "description": "Serializer cơ bản cho người dùng",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_dang_nhap": {
+            "type": "string",
+            "maxLength": 150
+          },
+          "ho_ten": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "pattern": "^0[0-9]{9,10}$",
+            "maxLength": 15
+          },
+          "vai_tro": {
+            "$ref": "#/components/schemas/VaiTroEnum"
+          },
+          "vai_tro_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "gioi_tinh": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/GioiTinhEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "gioi_tinh_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "cccd": {
+            "nullable": true,
+            "description": "Căn cước công dân",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{9,12}$",
+                "maxLength": 12
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "nguoi_lien_he_khan": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "sdt_lien_he_khan": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^0[0-9]{9,10}$",
+                "maxLength": 15
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "is_active": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "is_verified": {
+            "type": "boolean",
+            "readOnly": true,
+            "description": "Đã xác thực email/SĐT"
+          },
+          "last_login": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true,
+            "title": "Lần cuối đăng nhập"
+          },
+          "last_active": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
+          },
+          "ngay_tao": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          }
+        }
+      },
+      "PatchedNguoiDungUpdate": {
+        "type": "object",
+        "description": "Serializer cho cập nhật thông tin người dùng",
+        "properties": {
+          "ho_ten": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "maxLength": 254
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "pattern": "^0[0-9]{9,10}$",
+            "maxLength": 15
+          },
+          "avatar": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "ngay_sinh": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "gioi_tinh": {
+            "oneOf": [
+              {
+                "$ref": "#/components/schemas/GioiTinhEnum"
+              },
+              {
+                "$ref": "#/components/schemas/BlankEnum"
+              }
+            ]
+          },
+          "cccd": {
+            "nullable": true,
+            "description": "Căn cước công dân",
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^[0-9]{9,12}$",
+                "maxLength": 12
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "nguoi_lien_he_khan": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "sdt_lien_he_khan": {
+            "oneOf": [
+              {
+                "type": "string",
+                "pattern": "^0[0-9]{9,10}$",
+                "maxLength": 15
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          }
+        }
+      },
+      "PatchedNhaCungCap": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ma_ncc": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "ten_ncc": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "dia_chi": {
+            "type": "string"
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "email": {
+            "oneOf": [
+              {
+                "type": "string",
+                "format": "email",
+                "maxLength": 254
+              },
+              {
+                "type": "string",
+                "maxLength": 0
+              }
+            ]
+          },
+          "ma_so_thue": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "nguoi_lien_he": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "trang_thai": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PatchedNhanVien": {
+        "type": "object",
+        "description": "Serializer cho nhân viên",
+        "properties": {
+          "nguoi_dung": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ho_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "readOnly": true
+          },
+          "so_dien_thoai": {
+            "type": "string",
+            "readOnly": true
+          },
+          "chuc_vu_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_nhan_vien": {
+            "type": "string",
+            "maxLength": 20
+          },
+          "phong_ban": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "chuc_vu": {
+            "$ref": "#/components/schemas/ChucVu379Enum"
+          },
+          "ngay_bat_dau_lam": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "mo_ta_cong_viec": {
+            "type": "string"
+          },
+          "quyen_han": {
+            "description": "Các quyền được cấp"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "is_working": {
+            "type": "boolean"
+          }
+        }
+      },
+      "PatchedPhieuNhapKho": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_nha_cung_cap": {
+            "type": "string",
+            "readOnly": true
+          },
+          "chi_tiet_thuoc": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChiTietPhieuNhapThuoc"
+            },
+            "readOnly": true
+          },
+          "chi_tiet_vaccine": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChiTietPhieuNhapVaccine"
+            },
+            "readOnly": true
+          },
+          "ma_phieu": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "loai_nhap": {
+            "$ref": "#/components/schemas/LoaiNhapEnum"
+          },
+          "ngay_nhap": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "ngay_chung_tu": {
+            "type": "string",
+            "format": "date"
+          },
+          "so_chung_tu": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "tong_tien": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,13}(?:\\.\\d{0,2})?$",
+            "readOnly": true
+          },
+          "da_thanh_toan": {
+            "type": "boolean"
+          },
+          "da_duyet_chi": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "nguoi_duyet_chi": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ngay_duyet_chi": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
+          },
+          "da_cap_nhat_kho": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "nguoi_nhap": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "nha_cung_cap": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "PatchedThongBao": {
+        "type": "object",
+        "description": "Serializer cho thông báo",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "loai_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "loai": {
+            "$ref": "#/components/schemas/ThongBaoLoaiEnum"
+          },
+          "tieu_de": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "noi_dung": {
+            "type": "string"
+          },
+          "du_lieu_lien_quan": {},
+          "da_xem": {
+            "type": "boolean"
+          },
+          "ngay_xem": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "nguoi_nhan": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "PatchedThuoc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "loai_thuoc_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "don_vi_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ton_kho": {
+            "type": "string",
+            "readOnly": true
+          },
+          "han_sd_gan_nhat": {
+            "type": "string",
+            "readOnly": true
+          },
+          "nha_cung_cap": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NhaCungCap"
+            },
+            "readOnly": true
+          },
+          "nha_cung_cap_id": {
+            "type": "string",
+            "format": "uuid",
+            "writeOnly": true,
+            "nullable": true
+          },
+          "hinh_anh_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_thuoc": {
+            "type": "string"
+          },
+          "ten_thuoc": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "don_gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "description": "Giá nhập vào"
+          },
+          "ty_le_ke_khai": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "description": "Tỷ lệ kê khai (%)"
+          },
+          "gia_ban": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "description": "Giá bán lẻ"
+          },
+          "nha_san_xuat": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "nuoc_san_xuat": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "thanh_phan": {
+            "type": "string",
+            "description": "Thành phần chính"
+          },
+          "ham_luong": {
+            "type": "string",
+            "description": "Hàm lượng (VD: 500mg)",
+            "maxLength": 100
+          },
+          "cach_dung": {
+            "type": "string"
+          },
+          "chi_dinh": {
+            "type": "string"
+          },
+          "chong_chi_dinh": {
+            "type": "string"
+          },
+          "tac_dung_phu": {
+            "type": "string"
+          },
+          "can_don_thuoc": {
+            "type": "boolean"
+          },
+          "can_tu_van": {
+            "type": "boolean"
+          },
+          "la_thuoc_ban_chay": {
+            "type": "boolean"
+          },
+          "mo_ta": {
+            "type": "string"
+          },
+          "hinh_anh": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "trang_thai": {
+            "type": "boolean",
+            "description": "True: đang kinh doanh, False: ngừng"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "loai_thuoc": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "don_vi": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "PatchedToaThuocMau": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "chi_tiet": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChiTietToaMau"
+            },
+            "readOnly": true
+          },
+          "ma_toa": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "ten_toa": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "chuan_doan": {
+            "type": "string",
+            "description": "Chẩn đoán áp dụng"
+          },
+          "trieu_chung": {
+            "type": "string"
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "thuoc": {
+            "type": "string",
+            "format": "uuid"
+          }
+        }
+      },
+      "PatchedVaccine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "loai_vaccine_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ten_nha_cung_cap": {
+            "type": "string",
+            "readOnly": true,
+            "nullable": true
+          },
+          "ton_kho": {
+            "type": "string",
+            "readOnly": true
+          },
+          "han_sd_gan_nhat": {
+            "type": "string",
+            "readOnly": true
+          },
+          "hinh_anh_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_vaccine": {
+            "type": "string"
+          },
+          "ten_vaccine": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$"
+          },
+          "gia_tiem": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$"
+          },
+          "phong_benh": {
+            "type": "string",
+            "description": "Phòng bệnh gì",
+            "maxLength": 255
+          },
+          "do_tuoi_ap_dung": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "so_mui": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "lich_tiem": {
+            "type": "string",
+            "description": "Lịch tiêm chi tiết"
+          },
+          "khoang_cach_mui": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64",
+            "nullable": true,
+            "description": "Khoảng cách giữa các mũi (ngày)"
+          },
+          "bao_quan": {
+            "type": "string",
+            "description": "Nhiệt độ bảo quản",
+            "maxLength": 255
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "nha_san_xuat": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "nuoc_san_xuat": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "thanh_phan": {
+            "type": "string"
+          },
+          "chong_chi_dinh": {
+            "type": "string"
+          },
+          "phan_ung_sau_tiem": {
+            "type": "string",
+            "description": "Phản ứng sau tiêm"
+          },
+          "mo_ta": {
+            "type": "string"
+          },
+          "hinh_anh": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "trang_thai": {
+            "type": "boolean"
+          },
+          "la_vaccine_dich_vu": {
+            "type": "boolean",
+            "description": "Vaccine dịch vụ"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "loai_vaccine": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nha_cung_cap": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        }
+      },
+      "PhieuNhapKho": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "ten_nha_cung_cap": {
+            "type": "string",
+            "readOnly": true
+          },
+          "chi_tiet_thuoc": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChiTietPhieuNhapThuoc"
+            },
+            "readOnly": true
+          },
+          "chi_tiet_vaccine": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChiTietPhieuNhapVaccine"
+            },
+            "readOnly": true
+          },
+          "ma_phieu": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "loai_nhap": {
+            "$ref": "#/components/schemas/LoaiNhapEnum"
+          },
+          "ngay_nhap": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "ngay_chung_tu": {
+            "type": "string",
+            "format": "date"
+          },
+          "so_chung_tu": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "tong_tien": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,13}(?:\\.\\d{0,2})?$",
+            "readOnly": true
+          },
+          "da_thanh_toan": {
+            "type": "boolean"
+          },
+          "da_duyet_chi": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "nguoi_duyet_chi": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ngay_duyet_chi": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true,
+            "nullable": true
+          },
+          "da_cap_nhat_kho": {
+            "type": "boolean",
+            "readOnly": true
+          },
+          "nguoi_nhap": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "nha_cung_cap": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "chi_tiet_thuoc",
+          "chi_tiet_vaccine",
+          "da_cap_nhat_kho",
+          "da_duyet_chi",
+          "id",
+          "loai_nhap",
+          "ma_phieu",
+          "ngay_chung_tu",
+          "ngay_duyet_chi",
+          "ngay_nhap",
+          "nguoi_duyet_chi",
+          "nguoi_nhap",
+          "nha_cung_cap",
+          "ten_nha_cung_cap",
+          "tong_tien"
+        ]
+      },
+      "ThongBao": {
+        "type": "object",
+        "description": "Serializer cho thông báo",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "loai_display": {
+            "type": "string",
+            "readOnly": true
+          },
+          "loai": {
+            "$ref": "#/components/schemas/ThongBaoLoaiEnum"
+          },
+          "tieu_de": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "noi_dung": {
+            "type": "string"
+          },
+          "du_lieu_lien_quan": {},
+          "da_xem": {
+            "type": "boolean"
+          },
+          "ngay_xem": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "nguoi_nhan": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "created_at",
+          "id",
+          "loai",
+          "loai_display",
+          "nguoi_nhan",
+          "noi_dung",
+          "tieu_de"
+        ]
+      },
+      "ThongBaoLoaiEnum": {
+        "enum": [
+          "HE_THONG",
+          "LICH_HEN",
+          "DON_THUOC",
+          "TIEM_CHUNG",
+          "THANH_TOAN",
+          "TAI_KHOAN"
+        ],
+        "type": "string",
+        "description": "* `HE_THONG` - Hệ thống\n* `LICH_HEN` - Lịch hẹn\n* `DON_THUOC` - Đơn thuốc\n* `TIEM_CHUNG` - Tiêm chủng\n* `THANH_TOAN` - Thanh toán\n* `TAI_KHOAN` - Tài khoản"
+      },
+      "Thuoc": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "loai_thuoc_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "don_vi_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ton_kho": {
+            "type": "string",
+            "readOnly": true
+          },
+          "han_sd_gan_nhat": {
+            "type": "string",
+            "readOnly": true
+          },
+          "nha_cung_cap": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/NhaCungCap"
+            },
+            "readOnly": true
+          },
+          "nha_cung_cap_id": {
+            "type": "string",
+            "format": "uuid",
+            "writeOnly": true,
+            "nullable": true
+          },
+          "hinh_anh_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_thuoc": {
+            "type": "string"
+          },
+          "ten_thuoc": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "don_gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "description": "Giá nhập vào"
+          },
+          "ty_le_ke_khai": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,3}(?:\\.\\d{0,2})?$",
+            "description": "Tỷ lệ kê khai (%)"
+          },
+          "gia_ban": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$",
+            "description": "Giá bán lẻ"
+          },
+          "nha_san_xuat": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "nuoc_san_xuat": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "thanh_phan": {
+            "type": "string",
+            "description": "Thành phần chính"
+          },
+          "ham_luong": {
+            "type": "string",
+            "description": "Hàm lượng (VD: 500mg)",
+            "maxLength": 100
+          },
+          "cach_dung": {
+            "type": "string"
+          },
+          "chi_dinh": {
+            "type": "string"
+          },
+          "chong_chi_dinh": {
+            "type": "string"
+          },
+          "tac_dung_phu": {
+            "type": "string"
+          },
+          "can_don_thuoc": {
+            "type": "boolean"
+          },
+          "can_tu_van": {
+            "type": "boolean"
+          },
+          "la_thuoc_ban_chay": {
+            "type": "boolean"
+          },
+          "mo_ta": {
+            "type": "string"
+          },
+          "hinh_anh": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "trang_thai": {
+            "type": "boolean",
+            "description": "True: đang kinh doanh, False: ngừng"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "loai_thuoc": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "don_vi": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "created_at",
+          "don_gia_nhap",
+          "don_vi",
+          "don_vi_ten",
+          "gia_ban",
+          "han_sd_gan_nhat",
+          "hinh_anh_url",
+          "id",
+          "loai_thuoc",
+          "loai_thuoc_ten",
+          "nha_cung_cap",
+          "ten_thuoc",
+          "ton_kho",
+          "updated_at"
+        ]
+      },
+      "TinhTrangHonNhanEnum": {
+        "enum": [
+          "DOC_THAN",
+          "DA_KET_HON",
+          "LY_HON",
+          "GOA"
+        ],
+        "type": "string",
+        "description": "* `DOC_THAN` - Độc thân\n* `DA_KET_HON` - Đã kết hôn\n* `LY_HON` - Ly hôn\n* `GOA` - Góa"
+      },
+      "ToaThuocMau": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "chi_tiet": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ChiTietToaMau"
+            },
+            "readOnly": true
+          },
+          "ma_toa": {
+            "type": "string",
+            "maxLength": 50
+          },
+          "ten_toa": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "chuan_doan": {
+            "type": "string",
+            "description": "Chẩn đoán áp dụng"
+          },
+          "trieu_chung": {
+            "type": "string"
+          },
+          "ghi_chu": {
+            "type": "string"
+          },
+          "thuoc": {
+            "type": "string",
+            "format": "uuid"
+          }
+        },
+        "required": [
+          "chi_tiet",
+          "chuan_doan",
+          "id",
+          "ma_toa",
+          "ten_toa",
+          "thuoc"
+        ]
+      },
+      "TrangThaiEnum": {
+        "enum": [
+          "RANH",
+          "DA_DAT",
+          "DA_KHAM",
+          "HUY"
+        ],
+        "type": "string",
+        "description": "* `RANH` - Rảnh\n* `DA_DAT` - Đã đặt\n* `DA_KHAM` - Đã khám\n* `HUY` - Đã hủy"
+      },
+      "TrinhDoEnum": {
+        "enum": [
+          "TIEN_SI",
+          "THAC_SI",
+          "BAC_SI_CK2",
+          "BAC_SI_CK1",
+          "BAC_SI",
+          "Y_SI"
+        ],
+        "type": "string",
+        "description": "* `TIEN_SI` - Tiến sĩ\n* `THAC_SI` - Thạc sĩ\n* `BAC_SI_CK2` - Bác sĩ chuyên khoa II\n* `BAC_SI_CK1` - Bác sĩ chuyên khoa I\n* `BAC_SI` - Bác sĩ\n* `Y_SI` - Y sĩ"
+      },
+      "Vaccine": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid",
+            "readOnly": true
+          },
+          "loai_vaccine_ten": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ten_nha_cung_cap": {
+            "type": "string",
+            "readOnly": true,
+            "nullable": true
+          },
+          "ton_kho": {
+            "type": "string",
+            "readOnly": true
+          },
+          "han_sd_gan_nhat": {
+            "type": "string",
+            "readOnly": true
+          },
+          "hinh_anh_url": {
+            "type": "string",
+            "readOnly": true
+          },
+          "ma_vaccine": {
+            "type": "string"
+          },
+          "ten_vaccine": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "gia_nhap": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$"
+          },
+          "gia_tiem": {
+            "type": "string",
+            "format": "decimal",
+            "pattern": "^-?\\d{0,8}(?:\\.\\d{0,2})?$"
+          },
+          "phong_benh": {
+            "type": "string",
+            "description": "Phòng bệnh gì",
+            "maxLength": 255
+          },
+          "do_tuoi_ap_dung": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "so_mui": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64"
+          },
+          "lich_tiem": {
+            "type": "string",
+            "description": "Lịch tiêm chi tiết"
+          },
+          "khoang_cach_mui": {
+            "type": "integer",
+            "maximum": 9223372036854775807,
+            "minimum": -9223372036854775808,
+            "format": "int64",
+            "nullable": true,
+            "description": "Khoảng cách giữa các mũi (ngày)"
+          },
+          "bao_quan": {
+            "type": "string",
+            "description": "Nhiệt độ bảo quản",
+            "maxLength": 255
+          },
+          "han_su_dung": {
+            "type": "string",
+            "format": "date",
+            "nullable": true
+          },
+          "nha_san_xuat": {
+            "type": "string",
+            "maxLength": 255
+          },
+          "nuoc_san_xuat": {
+            "type": "string",
+            "maxLength": 100
+          },
+          "thanh_phan": {
+            "type": "string"
+          },
+          "chong_chi_dinh": {
+            "type": "string"
+          },
+          "phan_ung_sau_tiem": {
+            "type": "string",
+            "description": "Phản ứng sau tiêm"
+          },
+          "mo_ta": {
+            "type": "string"
+          },
+          "hinh_anh": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+          },
+          "trang_thai": {
+            "type": "boolean"
+          },
+          "la_vaccine_dich_vu": {
+            "type": "boolean",
+            "description": "Vaccine dịch vụ"
+          },
+          "created_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "updated_at": {
+            "type": "string",
+            "format": "date-time",
+            "readOnly": true
+          },
+          "loai_vaccine": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "nha_cung_cap": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "required": [
+          "created_at",
+          "do_tuoi_ap_dung",
+          "gia_nhap",
+          "gia_tiem",
+          "han_sd_gan_nhat",
+          "hinh_anh_url",
+          "id",
+          "loai_vaccine",
+          "loai_vaccine_ten",
+          "phong_benh",
+          "ten_nha_cung_cap",
+          "ten_vaccine",
+          "ton_kho",
+          "updated_at"
+        ]
+      },
+      "VaiTroEnum": {
+        "enum": [
+          "BENH_NHAN",
+          "BAC_SI",
+          "NHAN_VIEN",
+          "ADMIN"
+        ],
+        "type": "string",
+        "description": "* `BENH_NHAN` - Bệnh nhân\n* `BAC_SI` - Bác sĩ\n* `NHAN_VIEN` - Nhân viên\n* `ADMIN` - Quản trị viên"
+      }
+    },
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      },
+      "cookieAuth": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "sessionid"
+      },
+      "jwtAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    }
+  }
+}

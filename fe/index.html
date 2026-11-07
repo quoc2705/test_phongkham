@@ -1,0 +1,67 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="csrf-token" content="{{ csrf_token }}">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0c1929">
+  <title>PhòngKhám+ — Hệ thống Quản lý Phòng khám</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}?v=20260610-1">
+
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('pk_theme');
+        if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+      } catch (e) {}
+    })();
+  </script>
+</head>
+<body>
+
+<div id="splash" role="status" aria-live="polite" aria-label="Đang tải">
+  <div class="splash-logo" aria-hidden="true">🏥</div>
+  <h1>Phòng<span>Khám</span>+</h1>
+  <p>Hệ thống Quản lý Phòng khám</p>
+  <div class="splash-bar"><div class="splash-bar-fill"></div></div>
+</div>
+
+<div id="app-root"></div>
+
+<script src="{% static 'js/shared/ui-enhancements.js' %}?v=20260522-4"></script>
+<script src="{% static 'js/api.js' %}?v=20260608-1"></script>
+<script src="{% static 'js/shared/role-dashboard-shell.js' %}?v=20260519-1"></script>
+<script src="{% static 'js/shared/thong-bao-bell.js' %}?v=20260522-3"></script>
+
+<script src="{% static 'js/shared/bao-cao-tai-chinh.js' %}?v=20260527-7"></script>
+<script src="{% static 'js/pages/login.js' %}?v=20260519-1"></script>
+<script src="{% static 'js/pages/admin/dashboard.js' %}?v=20260608-2"></script>
+<script src="{% static 'js/pages/benh-nhan/dashboard.js' %}?v=20260519-1"></script>
+<script src="{% static 'js/pages/benh-nhan/ho-so.js' %}?v=20260519-1"></script>
+<script src="{% static 'js/pages/benh-nhan/lich-hen.js' %}?v=20260522-4"></script>
+<script src="{% static 'js/pages/benh-nhan/don-thuoc.js' %}?v=20260519-1"></script>
+<script src="{% static 'js/pages/benh-nhan/mua-thuoc.js' %}?v=20260608-3"></script>
+<script src="{% static 'js/pages/benh-nhan/thong-bao.js' %}?v=20260519-1"></script>
+<script src="{% static 'js/pages/le-tan/dashboard.js' %}?v=20260610-1"></script>
+<script src="{% static 'js/pages/bac-si/dashboard.js' %}?v=20260610-1"></script>
+<script src="{% static 'js/pages/ban-thuoc/dashboard.js' %}?v=20260608-1"></script>
+<script src="{% static 'js/pages/kho/dashboard.js' %}?v=20260522-10"></script>
+<script src="{% static 'js/pages/ke-toan/dashboard.js' %}?v=20260608-1"></script>
+
+<script>
+  (function () {
+    setTimeout(function () {
+      var splash = document.getElementById('splash');
+      if (!splash) return;
+      splash.style.opacity = '0';
+      splash.style.pointerEvents = 'none';
+      setTimeout(function () { splash.remove(); }, 450);
+    }, 900);
+  })();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,144 @@
+{
+  "operation": "PATCH /api/thuoc/thuoc/{id}/",
+  "method": "PATCH",
+  "path_template": "/api/thuoc/thuoc/{id}/",
+  "fingerprint": "d3dc120e",
+  "case_id": "0GnFmD",
+  "code_sample": "curl -X PATCH -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' -H 'Content-Type: multipart/form-data; boundary=6c870c6b587c36c8245156b22e5c5460' -d $'--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"nha_cung_cap_id\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ma_thuoc\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ten_thuoc\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"don_gia_nhap\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ty_le_ke_khai\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"gia_ban\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"nha_san_xuat\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"nuoc_san_xuat\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"thanh_phan\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ham_luong\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"cach_dung\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"chi_dinh\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"chong_chi_dinh\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"tac_dung_phu\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"can_don_thuoc\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"can_tu_van\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"la_thuoc_ban_chay\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"mo_ta\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"hinh_anh\"\\r\\n\\r\\nhttps://0.com\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"trang_thai\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"loai_thuoc\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"don_vi\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--6c870c6b587c36c8245156b22e5c5460--\\r\\n' http://127.0.0.1:8000/api/thuoc/thuoc/null%2Cnull/\n\n\u26a0\ufe0f  Request body contains non-printable characters. Actual value: b'--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"nha_cung_cap_id\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ma_thuoc\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ten_thuoc\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"don_gia_nhap\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ty_le_ke_khai\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"gia_ban\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"nha_san_xuat\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"nuoc_san_xuat\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"thanh_phan\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"ham_luong\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"cach_dung\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"chi_dinh\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"chong_chi_dinh\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"tac_dung_phu\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"can_don_thuoc\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"can_tu_van\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"la_thuoc_ban_chay\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"mo_ta\"\\r\\n\\r\\n\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"hinh_anh\"\\r\\n\\r\\nhttps://0.com\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"trang_thai\"\\r\\n\\r\\nfalse\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"loai_thuoc\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--6c870c6b587c36c8245156b22e5c5460\\r\\nContent-Disposition: form-data; name=\"don_vi\"\\r\\n\\r\\ne3e70682-c209-1cac-a29f-6fbed82c07cd\\r\\n--6c870c6b587c36c8245156b22e5c5460--\\r\\n'",
+  "sequence": [
+    {
+      "method": "PATCH",
+      "url": "http://127.0.0.1:8000/api/thuoc/thuoc/null%2Cnull/",
+      "url_template": "http://127.0.0.1:8000/api/thuoc/thuoc/{id}/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "0GnFmD",
+        "Cookie": "[Filtered]",
+        "Content-Length": "2191",
+        "Content-Type": "multipart/form-data; boundary=def78fe541d747daeab85c960271c208"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 3.3700140193104744e-05,
+          "mode": "negative"
+        },
+        "components": {
+          "PATH": "negative",
+          "HEADER": "positive",
+          "COOKIE": "positive",
+          "BODY": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Incorrect type",
+            "location": "/type",
+            "parameter": "id",
+            "parameter_location": "PATH",
+            "scenario": "incorrect_type"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [
+          [
+            "path",
+            "id"
+          ],
+          [
+            "body",
+            "nha_cung_cap_id"
+          ]
+        ],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "PATH": {
+            "id": "null,null"
+          },
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/thuoc/thuoc/{id}/",
+      "path_parameters": {
+        "id": "null%2Cnull"
+      },
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "json",
+        "value": {
+          "nha_cung_cap_id": "e3e70682-c209-1cac-a29f-6fbed82c07cd",
+          "ma_thuoc": "",
+          "ten_thuoc": "",
+          "don_gia_nhap": "",
+          "ty_le_ke_khai": "",
+          "gia_ban": "",
+          "nha_san_xuat": "",
+          "nuoc_san_xuat": "",
+          "thanh_phan": "",
+          "ham_luong": "",
+          "cach_dung": "",
+          "chi_dinh": "",
+          "chong_chi_dinh": "",
+          "tac_dung_phu": "",
+          "can_don_thuoc": false,
+          "can_tu_van": false,
+          "la_thuoc_ban_chay": false,
+          "mo_ta": "",
+          "hinh_anh": "https://0.com",
+          "trang_thai": false,
+          "loai_thuoc": "e3e70682-c209-1cac-a29f-6fbed82c07cd",
+          "don_vi": "e3e70682-c209-1cac-a29f-6fbed82c07cd"
+        }
+      },
+      "media_type": "multipart/form-data",
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "PATCH /api/thuoc/thuoc/{id}/"
+    }
+  ],
+  "aliases": [
+    "HxlhHD"
+  ]
+}

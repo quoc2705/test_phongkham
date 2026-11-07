@@ -1,0 +1,70 @@
+================================================================================
+BẢN TEST DATA & KỊCH BẢN KIỂM THỬ — PHIÊN BẢN V3.0 (datav3.txt)
+Giai đoạn 3: Bổ sung đầy đủ Dữ liệu nhập (du_lieu_nhap) & Test Case Procedure (66 TCs)
+================================================================================
+
+1. TỔNG QUAN PHIÊN BẢN V3.0:
+- Cải tiến lớn:
+  1) Bổ sung chi tiết biến `du_lieu_nhap` và quy trình thao tác từng bước trên giao diện (`Test Case Procedure`) cho toàn bộ Test Cases của `Web` và `App` (cập nhật trong `procedures_web_app.py`, `Test Report (1).xlsx` và `Software Test Documentation (2).docx`).
+  2) Mở rộng Feature 5 (`be/test_feature5_unit.py`) từ 10 TCs lên 13 TCs (Func 5.1: 7 TCs, Func 5.2: 6 TCs), phát hiện thêm lỗi `BUG-10` (`TC_UNIT_07`) và `BUG-11` (`TC_UNIT_13`).
+- Tổng số Test Cases V3.0: 66 Test Cases:
+  + Feature 1 (Web): 13 TCs (Func 1.1: 7 TCs, Func 1.2: 6 TCs) -> 11 Passed, 2 Failed
+  + Feature 2 (App): 16 TCs (Func 2.1: 8 TCs, Func 2.2: 8 TCs) -> 13 Passed, 3 Failed
+  + Feature 3 (Performance): 10 TCs (Func 3.1: 5 TCs, Func 3.2: 5 TCs) -> 9 Passed, 1 Failed
+  + Feature 4 (API): 14 TCs (Func 4.1: 7 TCs, Func 4.2: 7 TCs) -> 12 Passed, 2 Failed
+  + Feature 5 (Unit): 13 TCs (Func 5.1: 7 TCs, Func 5.2: 6 TCs) -> 11 Passed, 2 Failed
+- Kết quả thực thi V3.0: 56 Passed (84.85%), 10 Failed (15.15%).
+
+--------------------------------------------------------------------------------
+2. CHI TIẾT BỘ DỮ LIỆU NHẬP (du_lieu_nhap) CHO APP TESTING (16 TCs):
+--------------------------------------------------------------------------------
+* Chức năng 2.1 — Bác sĩ Khám bệnh, EMR, ICD-10, Kê đơn & Tiêm chủng (TC_APP_01..08):
+  - TC_APP_01 / TC_APP_02 (Mở hồ sơ bệnh án):
+    { "lich_hen_id": "<UUID lịch CHECKED_IN>", "trieu_chung": "Sốt nhẹ 38 độ, ho khan 2 ngày" }
+  - TC_APP_03 (Nhập khám lâm sàng & Chẩn đoán ICD-10 hợp lệ):
+    {
+      "trieu_chung": "Đau rát họng, sốt 38.5 độ C, ho khan",
+      "kham_lam_sang": "Niêm mạc họng đỏ xung huyết, amidan sưng nhẹ",
+      "chan_doan_so_bo": "Viêm họng cấp",
+      "chan_doan_chinh": "Viêm họng cấp (J02.9)",
+      "ma_icd10": "J02.9",
+      "ten_benh": "Viêm họng cấp không đặc hiệu",
+      "loai_benh": "NGOAI_TRU",
+      "muc_do": "TRUNG_BINH"
+    }
+  - TC_APP_04 (Kê đơn thuốc tự động tính tiền = 100.000đ):
+    {
+      "chan_doan": "Viêm họng cấp nhiễm khuẩn (J02.9)",
+      "ghi_chu": "Uống đủ nước ấm, tái khám sau 5 ngày",
+      "chi_tiet": [
+        { "thuoc": "TH_RX_01 (Augmentin 625mg)", "so_luong": 10, "lieu_dung": "1 viên x 2 lần/ngày", "cach_dung": "UONG", "thoi_diem_dung": "SAU_AN", "so_ngay_uong": 5 },
+        { "thuoc": "TH_OTC_01 (Paracetamol 500mg)", "so_luong": 10, "lieu_dung": "1 viên khi sốt > 38.5 độ", "cach_dung": "UONG", "thoi_diem_dung": "KHI_CAN", "so_ngay_uong": 3 }
+      ]
+    }
+  - TC_APP_05 (BVA Kê đơn rỗng / số lượng <= 0):
+    Kịch bản A: { "chi_tiet": [] } | Kịch bản B: { "so_luong": 0 }
+  - TC_APP_06 (Chỉ định tiêm chủng DA_TIEM trừ 1 liều vaccine FIFO):
+    { "vaccine": "VC_CUM_01 (Influvac Tetra 0.5ml)", "ket_qua_tiem": "DA_TIEM", "vi_tri_tiem": "Cơ delta cánh tay trái", "phan_ung_sau_tiem": "Bình thường sau 30 phút theo dõi" }
+  - TC_APP_07 (BVA Bỏ trống mã ICD-10 -> Phát hiện BUG-04):
+    { "ma_icd10": "", "ten_benh": "Viêm mũi dị ứng thời tiết", "loai_benh": "NGOAI_TRU", "muc_do": "NHE" }
+  - TC_APP_08 (EP Nhập loai_benh='CHINH' theo SRS -> Phát hiện BUG-05):
+    { "ma_icd10": "J00", "ten_benh": "Viêm mũi họng cấp (Cảm thường)", "loai_benh": "CHINH", "muc_do": "NHE" }
+
+* Chức năng 2.2 — Bệnh nhân Mua thuốc Online, Giỏ hàng & VNPay (TC_APP_09..16):
+  - TC_APP_09 (Lọc cửa hàng chỉ hiện thuốc OTC): { "search": "", "page_size": 50 }
+  - TC_APP_10 (Thêm thuốc OTC vào giỏ): { "thuoc_id": "TH_OTC_01", "so_luong": 5 }
+  - TC_APP_11 (BVA Thêm vượt tồn kho 151 > 150): { "thuoc_id": "TH_OTC_01", "so_luong": 151 }
+  - TC_APP_12 (Cập nhật SL=12 & Xóa khỏi giỏ): { "so_luong": 12 } -> DELETE
+  - TC_APP_13 (Đặt đơn hàng Online 20 viên + Ship 15.000đ = 55.000đ):
+    { "so_luong": 20, "nguoi_nhan": "Lê Văn Bệnh Nhân", "sdt_nhan": "0901000007", "email_nhan": "bn1_test@gmail.com", "dia_chi_giao": "123 Nguyễn Văn Linh, Quận Hải Châu, Đà Nẵng", "phi_van_chuyen": 15000 }
+  - TC_APP_14 (Đặt hàng khi giỏ trống): { "dia_chi_giao": "123 Nguyễn Văn Linh, Đà Nẵng", "sdt_nhan": "0901000007" }
+  - TC_APP_15 (Thanh toán VNPay Sandbox + IPN Callback):
+    Thẻ NCB Sandbox: { "ngan_hang": "NCB", "so_the": "9704198526191432198", "chu_the": "NGUYEN VAN A", "ngay_phat_hanh": "07/15", "otp": "123456", "vnp_ResponseCode": "00" }
+  - TC_APP_16 (Hủy đơn hàng Online kiểm tra hoàn kho -> Phát hiện BUG-06):
+    { "ly_do_huy": "Đổi ý không mua nữa, muốn đổi sang thuốc khác" }
+
+--------------------------------------------------------------------------------
+3. HẠN CHẾ CỦA BẢN V3.0 (LÝ DO NÂNG CẤP LÊN V4.0):
+--------------------------------------------------------------------------------
+- Feature 1 (Web SPA) ở bản V3.0 mới có 13 Test Cases, còn thiếu các kịch bản quan trọng trên form Web SPA như: đặt lịch với bác sĩ chưa đăng ký ca trực, kiểm tra biên giờ kết thúc <= giờ bắt đầu, Lễ tân nhập sai mã bệnh nhân Walk-in, Walk-in tiêm chủng có/không chọn vaccine, chặn Walk-in trùng khi đang chờ khám, và bảng xếp hạng/phân công bác sĩ trực ca.
+

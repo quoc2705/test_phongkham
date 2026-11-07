@@ -1,0 +1,114 @@
+{
+  "operation": "DELETE /api/thong-bao/{id}/",
+  "method": "DELETE",
+  "path_template": "/api/thong-bao/{id}/",
+  "fingerprint": "0a0cdd85",
+  "case_id": "QxBSCh",
+  "code_sample": "curl -X DELETE -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' http://127.0.0.1:8000/api/thong-bao/0/",
+  "sequence": [
+    {
+      "method": "DELETE",
+      "url": "http://127.0.0.1:8000/api/thong-bao/0/",
+      "url_template": "http://127.0.0.1:8000/api/thong-bao/{id}/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "QxBSCh",
+        "Cookie": "[Filtered]",
+        "Content-Length": "0"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 204"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 0.0003208999987691641,
+          "mode": "positive"
+        },
+        "components": {
+          "PATH": "positive",
+          "HEADER": "positive",
+          "COOKIE": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Default positive test case",
+            "location": null,
+            "parameter": null,
+            "parameter_location": null,
+            "scenario": "default_positive_test"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [
+          [
+            "path",
+            "id"
+          ]
+        ],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "PATH": {
+            "id": "0"
+          },
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/thong-bao/{id}/",
+      "path_parameters": {
+        "id": "0"
+      },
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "DELETE /api/thong-bao/{id}/"
+    }
+  ],
+  "aliases": [
+    "fsr8OR"
+  ]
+}

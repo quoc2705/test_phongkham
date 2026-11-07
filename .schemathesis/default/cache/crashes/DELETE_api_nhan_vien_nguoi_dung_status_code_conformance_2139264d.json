@@ -1,0 +1,114 @@
+{
+  "operation": "DELETE /api/nhan-vien/{nguoi_dung}/",
+  "method": "DELETE",
+  "path_template": "/api/nhan-vien/{nguoi_dung}/",
+  "fingerprint": "2139264d",
+  "case_id": "9etHM0",
+  "code_sample": "curl -X DELETE -H 'Authorization: [Filtered]' -H 'Cookie: [Filtered]' http://127.0.0.1:8000/api/nhan-vien/null%2Cnull/",
+  "sequence": [
+    {
+      "method": "DELETE",
+      "url": "http://127.0.0.1:8000/api/nhan-vien/null%2Cnull/",
+      "url_template": "http://127.0.0.1:8000/api/nhan-vien/{nguoi_dung}/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "Authorization": "[Filtered]",
+        "X-Schemathesis-TestCaseId": "9etHM0",
+        "Cookie": "[Filtered]",
+        "Content-Length": "0"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, PUT, PATCH, DELETE, HEAD, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "107",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "set-cookie": "[Filtered]",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authorization header must contain two space-delimited values\",\"code\":\"bad_authorization_header\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 204"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 3.0300114303827286e-05,
+          "mode": "negative"
+        },
+        "components": {
+          "PATH": "negative",
+          "HEADER": "positive",
+          "COOKIE": "positive"
+        },
+        "phase": {
+          "name": "coverage",
+          "data": {
+            "type": "CoveragePhaseData",
+            "description": "Incorrect type",
+            "location": "/type",
+            "parameter": "nguoi_dung",
+            "parameter_location": "PATH",
+            "scenario": "incorrect_type"
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [
+          [
+            "path",
+            "nguoi_dung"
+          ]
+        ],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {
+          "PATH": {
+            "nguoi_dung": "null,null"
+          },
+          "HEADER": {
+            "Authorization": "Bearer "
+          },
+          "COOKIE": {
+            "sessionid": ""
+          }
+        }
+      },
+      "path": "/api/nhan-vien/{nguoi_dung}/",
+      "path_parameters": {
+        "nguoi_dung": "null%2Cnull"
+      },
+      "query": {},
+      "case_headers": {
+        "Authorization": "[Filtered]"
+      },
+      "cookies": {
+        "sessionid": "[Filtered]"
+      },
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "DELETE /api/nhan-vien/{nguoi_dung}/"
+    }
+  ],
+  "aliases": [
+    "i0cftv"
+  ]
+}

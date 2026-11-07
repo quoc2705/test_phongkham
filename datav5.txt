@@ -1,0 +1,69 @@
+================================================================================
+BẢN TEST DATA & HỆ SINH THÁI CÔNG CỤ KIỂM THỬ — PHIÊN BẢN V5.0 (datav5.txt - BẢN CUỐI CHUẨN NHẤT)
+Giai đoạn 5: Tích hợp đầy đủ Bộ Công cụ Kiểm thử chuẩn Django (Selenium, Desktop App, Postman, Locust, JMeter, Pytest)
+================================================================================
+
+1. TỔNG QUAN PHIÊN BẢN V5.0 (BẢN HOÀN THIỆN CUỐI CÙNG):
+- Giữ nguyên bộ 73 Test Cases chuẩn xác (62 Passed = 84.93%, 11 Failed = 15.07% phát hiện 11 lỗi BUG-01..BUG-11).
+- Nâng cấp toàn diện bộ công cụ thực thi kiểm thử chuẩn cho dự án Django:
+  1) Web Testing (20 TCs):
+     - Công cụ: Selenium WebDriver (`be/selenium_web_runner.py`) + Pytest (`be/test_feature1_web.py`)
+  2) App Testing (16 TCs):
+     - Công cụ: Ứng dụng Desktop App Giả lập Tkinter (`app_desktop_phongkham.py`, `chay_app_desktop.bat`) + Postman (`PhongKham_Postman_Collection.json`) + Pytest (`be/test_feature2_app.py`)
+  3) Performance Testing (10 TCs):
+     - Công cụ: Locust (`be/locustfile.py`, xuất `locust_report.html`) + Apache JMeter (`PhongKham_JMeter_LoadTest.jmx`) + Pytest (`be/test_feature3_performance.py`)
+  4) API & RBAC Testing (14 TCs):
+     - Công cụ: Postman Collection Runner (`PhongKham_Postman_Collection.json`) + DRF APIClient (`be/test_feature4_api.py`)
+  5) Unit Testing (13 TCs):
+     - Công cụ: Pytest (`pytest-django`, `pytest.ini`) + Django TestCase (`unittest` - `be/test_feature5_unit.py`)
+
+--------------------------------------------------------------------------------
+2. DỮ LIỆU ĐĂNG NHẬP TRÊN CÁC CÔNG CỤ (SELENIUM / DESKTOP APP / POSTMAN / LOCUST):
+--------------------------------------------------------------------------------
+a) Nhóm tài khoản Kiểm thử tự động (Tự khởi tạo khi chạy Desktop App hoặc Test Suite — Mật khẩu chung: Password@123):
+   - Admin:          admin_test      / Password@123
+   - Bác sĩ 1 (Có ca): bacsi1_test   / Password@123  (Mã BS: BS_TEST_01)
+   - Bác sĩ 2 (Không ca): bacsi2_test / Password@123 (Mã BS: BS_TEST_02)
+   - Lễ tân:         letan_test      / Password@123  (Mã NV: NV_LT_01)
+   - Bán thuốc:      banthuoc_test   / Password@123  (Mã NV: NV_BT_01)
+   - Kế toán & Kho:  ketoan_test     / Password@123  (Mã NV: NV_KT_01)
+   - Bệnh nhân 1:    benhnhan1_test  / Password@123  (Mã BN: BN_TEST_01, BHYT: DN4010123456789)
+   - Bệnh nhân 2:    benhnhan2_test  / Password@123  (Mã BN: BN_TEST_02, không BHYT)
+
+b) Nhóm tài khoản Demo Web SPA mặc định (trong seed_sample_data):
+   - Admin:          admin           / Admin@123
+   - Bác sĩ Nội:     bacsi           / Bacsi@123
+   - Bác sĩ Tiêm:    bacsi2          / Bacsi@123
+   - Lễ tân:         letan           / Letan@123
+   - Bán thuốc:      banthuoc        / Banthuoc@123
+   - Kế toán:        ketoan          / Ketoan@123
+   - Bệnh nhân 1:    benhnhan        / Benhnhan@123
+   - Bệnh nhân 2:    benhnhan2       / Benhnhan@123
+
+--------------------------------------------------------------------------------
+3. BẢNG TỔNG HỢP KẾT QUẢ 73 TEST CASES & 11 LỖI PHÁT HIỆN (BUG-01 .. BUG-11):
+--------------------------------------------------------------------------------
+- Feature 1 (Web - 20 TCs): 17 Passed, 3 Failed
+  + BUG-01 (TC_WEB_10): Bệnh nhân vẫn tự hủy được lịch hẹn khi đang ở trạng thái DANG_KHAM.
+  + BUG-02 (TC_WEB_11): Cho phép đặt lịch trực tuyến với bác sĩ chưa đăng ký ca trực (DoctorSchedule).
+  + BUG-03 (TC_WEB_20): Lễ tân nhấn Xác nhận lịch mới đặt (CHO_XAC_NHAN) bị lỗi 400 do code kiểm tra cứng != 'DA_DAT'.
+- Feature 2 (App - 16 TCs): 13 Passed, 3 Failed
+  + BUG-04 (TC_APP_07): Cho phép Bác sĩ lưu chẩn đoán bỏ trống mã bệnh quốc tế ICD-10.
+  + BUG-05 (TC_APP_08): Trường loai_benh trong ChanDoan khai báo NOI_TRU/NGOAI_TRU thay vì CHINH/PHU như SRS.
+  + BUG-06 (TC_APP_16): Khi khách hủy đơn hàng Online CHO_THANH_TOAN, hệ thống không hoàn trả lại 20 viên tồn kho thuốc đã trừ.
+- Feature 3 (Performance - 10 TCs): 9 Passed, 1 Failed
+  + BUG-07 (TC_PERF_10): Hàm _stt_ke_tiep_trong_ngay chỉ lọc theo ngay_gio_hen mà quên thoi_gian_den, gây cấp trùng STT=1.
+- Feature 4 (API - 14 TCs): 12 Passed, 2 Failed
+  + BUG-08 (TC_API_13): BaoCaoViewSet.tao_bao_cao gọi phương thức tao_bao_cao_doanh_thu() đã bị xóa gây AttributeError.
+  + BUG-09 (TC_API_14): BaoCaoViewSet.xuat_pdf đang để # TODO chỉ trả về JSON thay vì xuất file PDF.
+- Feature 5 (Unit - 13 TCs): 11 Passed, 2 Failed
+  + BUG-10 (TC_UNIT_07): Hàm Thuoc.sap_het_han() không lọc so_luong__gt=0 nên cảnh báo nhầm cả lô đã bán hết (so_luong=0).
+  + BUG-11 (TC_UNIT_13): DonThuoc.save() không tự động đồng bộ mã thẻ BHYT và tỷ lệ hưởng từ hồ sơ BenhNhan.
+
+--------------------------------------------------------------------------------
+4. TỆP HỒ SƠ ĐỒNG BỘ VỚI BẢN V5.0:
+--------------------------------------------------------------------------------
+- Báo cáo Excel: `Test Report (1).xlsx` (8 sheets: Cover, Test Cases, Test Statistics, Web, App, Performance, API, Unit)
+- Tài liệu Word: `Software Test Documentation (2).docx` (Giữ nguyên bìa & danh sách 5 sinh viên của nhóm)
+- Hướng dẫn lệnh chạy: `test.txt`
+

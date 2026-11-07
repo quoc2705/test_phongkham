@@ -1,0 +1,91 @@
+{
+  "operation": "GET /api/don-hang/don-hang/{don_hang_id}/",
+  "method": "GET",
+  "path_template": "/api/don-hang/don-hang/{don_hang_id}/",
+  "fingerprint": "80dbd2f0",
+  "case_id": "BVrqDI",
+  "code_sample": "curl -X GET http://127.0.0.1:8000/api/don-hang/don-hang/e3e70682-c209-1cac-a29f-6fbed82c07cd/",
+  "sequence": [
+    {
+      "method": "GET",
+      "url": "http://127.0.0.1:8000/api/don-hang/don-hang/e3e70682-c209-1cac-a29f-6fbed82c07cd/",
+      "url_template": "http://127.0.0.1:8000/api/don-hang/don-hang/{don_hang_id}/",
+      "headers": {
+        "User-Agent": "schemathesis/4.33.1",
+        "Accept-Encoding": "gzip, deflate, br, zstd",
+        "Accept": "*/*",
+        "Connection": "keep-alive",
+        "X-Schemathesis-TestCaseId": "BVrqDI"
+      },
+      "response": {
+        "status_code": 401,
+        "headers": {
+          "content-type": "application/json",
+          "www-authenticate": "[Filtered]",
+          "vary": "Accept, Cookie, origin",
+          "allow": "GET, OPTIONS",
+          "x-frame-options": "DENY",
+          "content-length": "58",
+          "x-content-type-options": "nosniff",
+          "referrer-policy": "same-origin",
+          "cross-origin-opener-policy": "same-origin",
+          "server": "daphne"
+        },
+        "body": "{\"detail\":\"Authentication credentials were not provided.\"}"
+      },
+      "link": null,
+      "checks": [
+        {
+          "name": "status_code_conformance",
+          "status": "failure",
+          "message": "Undocumented status code\n\nReceived: 401\nDocumented: 200"
+        }
+      ],
+      "meta": {
+        "generation": {
+          "time": 0.0049536998849362135,
+          "mode": "positive"
+        },
+        "components": {
+          "PATH": "positive",
+          "HEADER": "positive",
+          "COOKIE": "positive"
+        },
+        "phase": {
+          "name": "fuzzing",
+          "data": {
+            "type": "FuzzingPhaseData",
+            "description": "Positive test case",
+            "location": null,
+            "parameter": null,
+            "parameter_location": null,
+            "mutations": []
+          }
+        },
+        "pool_draws": [],
+        "pool_misses": [],
+        "semantic_draws": [],
+        "dictionary_draws": [],
+        "constants_draws": [],
+        "raw_containers": {}
+      },
+      "path": "/api/don-hang/don-hang/{don_hang_id}/",
+      "path_parameters": {
+        "don_hang_id": "e3e70682-c209-1cac-a29f-6fbed82c07cd"
+      },
+      "query": {},
+      "case_headers": {},
+      "cookies": {},
+      "case_body": {
+        "encoding": "none"
+      },
+      "media_type": null,
+      "parent_index": null,
+      "auth_identity": null,
+      "operation": "GET /api/don-hang/don-hang/{don_hang_id}/"
+    }
+  ],
+  "aliases": [
+    "HRP9th"
+  ]
+}
